@@ -1,0 +1,53 @@
+/* =========================================================
+   Darmaltoon — Responsive (responsive.css)
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .trust-grid { grid-template-columns: repeat(3, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+@media (max-width: 960px) {
+  .nav { display: none; }
+  .menu-toggle { display: inline-flex; }
+  .mobile-nav[hidden] { display: none; }
+  .mobile-nav:not([hidden]) { display: block; }
+
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-visual { margin-top: 1.5rem; }
+  .window-frame { transform: none; }
+  .float-card { display: none; }
+
+  .tab-panel.is-active { grid-template-columns: 1fr; }
+  .offline-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .pd-section { grid-template-columns: 1fr; gap: 1.5rem; }
+  .pd-section.reverse { direction: ltr; }
+  .form-wrap { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .header-actions .btn-sm { display: none; }
+  .lang-switch { padding: 2px; }
+  .lang-btn { padding: 0.35rem 0.55rem; font-size: 0.75rem; }
+
+  .form-row { grid-template-columns: 1fr; }
+
+  .workflow { flex-direction: column; align-items: stretch; }
+  .workflow li { text-align: center; }
+  .workflow li:not(:last-child)::after { content: "↓"; display: block; margin: 0.4rem 0 0; }
+  html[dir="rtl"] .workflow li:not(:last-child)::after { content: "↓"; }
+
+  .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; padding: 1.25rem 0; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; }
+}
+
+@media (max-width: 420px) {
+  h1 { font-size: 1.85rem; }
+  .hero-cta .btn { width: 100%; }
+  .cta-actions { flex-direction: column; }
+  .cta-actions .btn { width: 100%; }
+}
+
+img, svg, video { max-width: 100%; }
+body { overflow-x: hidden; }
