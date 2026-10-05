@@ -1,0 +1,29 @@
+/* =========================================================
+   Darmaltoon — RTL overrides (rtl.css)
+   ========================================================= */
+
+html[dir="rtl"] { direction: rtl; }
+html[dir="rtl"] body { text-align: right; }
+
+html[dir="rtl"] .brand,
+html[dir="rtl"] .nav-list,
+html[dir="rtl"] .header-actions,
+html[dir="rtl"] .hero-cta,
+html[dir="rtl"] .cta-actions,
+html[dir="rtl"] .footer-bottom { flex-direction: row-reverse; }
+
+html[dir="rtl"] .nav { margin-inline-start: auto; }
+html[dir="rtl"] .hero-points span::before { margin-inline-end: 0; margin-inline-start: 0.4rem; }
+html[dir="rtl"] .field label { text-align: right; }
+html[dir="rtl"] .field input,
+html[dir="rtl"] .field select,
+html[dir="rtl"] .field textarea { text-align: right; }
+html[dir="rtl"] .footer-col button { text-align: right; }
+html[dir="rtl"] .footer-brand p { margin-inline-start: auto; }
+html[dir="rtl"] .back-top { inset-inline-end: auto; inset-inline-start: 1.25rem; }
+html[dir="rtl"] .placeholder,
+html[dir="rtl"] input[type="tel"],
+html[dir="rtl"] input[type="email"],
+html[dir="rtl"] input[type="number"] { direction: ltr; text-align: right; }
+html[dir="rtl"] .tab,
+html[dir="rtl"] .tab-panel { text-align: right; }
