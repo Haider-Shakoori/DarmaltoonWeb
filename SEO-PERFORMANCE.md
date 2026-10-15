@@ -11,7 +11,7 @@ This repository hosts the public *marketing* website for Darmaltoon, not the pha
 ## Languages and SEO
 - English: `/`; Dari: `/fa/`; Pashto: `/ps/`.
 - Homepages have server-delivered localized content, canonical URLs, `hreflang`, descriptive titles, and JSON-LD for a Windows business software product.
-- Supplemental legacy pages remain at `/features.html`, `/pharmadesktop.html`, `/demo.html`, `/about.html` and `/contact.html`; translations for these are handled by the existing language script. Deep page-level SEO localization is the next deliverable.
+- Features and desktop product pages also have static Dari and Pashto counterparts with reciprocal hreflang. Legacy demo, about and contact pages are still localized client-side; statically pre-rendering those remaining pages is a future SEO improvement.
 - `robots.txt`, `sitemap.xml`, and `llms.txt` explain available public content. These are not promises of rankings or AI citations.
 
 ## Truthful marketing and screenshots
