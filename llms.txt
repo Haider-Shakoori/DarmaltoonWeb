@@ -1,11 +1,11 @@
 # Darmaltoon — Pharmacy Management Software
 > Darmaltoon is Windows desktop pharmacy management software designed for Afghan pharmacies.
-Website: https://darmaltoon.com/
-Languages: English https://darmaltoon.com/ ; Dari https://darmaltoon.com/fa/ ; Pashto https://darmaltoon.com/ps/
-Product information: https://darmaltoon.com/pharmadesktop.html
-Features: https://darmaltoon.com/features.html
-Request a demonstration: https://darmaltoon.com/demo.html
-Contact: https://darmaltoon.com/contact.html
+Website: https://web.darmaltoon.com/
+Languages: English https://web.darmaltoon.com/ ; Dari https://web.darmaltoon.com/fa/ ; Pashto https://web.darmaltoon.com/ps/
+Product information: https://web.darmaltoon.com/pharmadesktop.html
+Features: https://web.darmaltoon.com/features.html
+Request a demonstration: https://web.darmaltoon.com/demo.html
+Contact: https://web.darmaltoon.com/contact.html
 
 Capabilities: pharmacy sales/POS, medicines and inventory, purchases, suppliers, returns, expiry tracking, daily closing, and operational reports. Offline-first Windows desktop workflows.
 Important: Sample dashboard numbers on the marketing site are illustrative, not actual customer results. We do not publish fabricated customer counts or testimonials. Pricing and installation availability are not asserted here; contact the team for current details.
