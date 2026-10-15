@@ -256,3 +256,18 @@ html[data-design=dark] .hero::after{background:linear-gradient(90deg,rgba(1,8,18
  html[data-design=dark] .hero-trust{display:none}
 }
 @media(max-width:700px){html[data-design=dark] .hero::after{background:none}}
+
+/* Final dark reference density: three-line headline and compact hero. */
+@media(min-width:981px){
+ html[data-design=dark] .hero h1{font-size:clamp(34px,2.57vw,39px);line-height:1.11;margin:12px 0 9px}
+ html[data-design=dark] .hero-description{font-size:13px;line-height:1.57}
+ html[data-design=dark] .hero-points{margin-top:15px;gap:6px}
+ html[data-design=dark] .main-actions{margin-top:17px}
+ html[data-design=dark] .hero-trust{margin-top:15px}
+ html[data-design=dark] .hero-copy{padding-top:16px;padding-bottom:10px}
+ html[data-design=dark] .pharmacy-ui{height:362px}
+ html[data-design=dark] .hero-visual{padding-block:18px 12px}
+ html[data-design=dark] .hero-inner{min-height:545px}
+ html[data-design=dark] .hero{min-height:550px}
+ html[data-design=dark] .phone{height:218px}
+}
