@@ -84,7 +84,7 @@ for name, (lang, direction) in LANGS.items():
     ]:
         require(alt.get(code) == href, f"{name}: missing hreflang {code}")
     require("application/ld+json" in data, f"{name}: JSON-LD missing")
-    require("sample" in data.lower() or "نمونه" in data or "بېلګه" in data, f"{name}: demo data not disclosed")
+    require("sample" in data.lower() or "نمونه" in data or "بېلګه" in data or "بېلګې" in data, f"{name}: demo data not disclosed")
     for link in parser.links:
         href = link.get("href", "")
         if not href or href.startswith(("#", "data:", "tel:", "mailto:", "//")):
