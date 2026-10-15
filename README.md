@@ -1,65 +1,47 @@
-# Darmaltoon — Public Marketing Website
+# Darmaltoon — Public Pharmacy Software Website
 
-The public marketing website for **Darmaltoon**, modern pharmacy-management software designed primarily for pharmacies in Afghanistan.
+Premium, lightweight, static marketing site for **Darmaltoon** pharmacy management software, designed for pharmacies in Afghanistan. The Windows desktop application and Laravel backend live in separate repositories; this website does not modify either system.
 
-This repository contains the public-facing static website only. It does not contain the Darmaltoon SaaS platform, admin panel, pharmacy backend, authentication, licensing backend, or database.
+## Architecture and low-bandwidth approach
 
-## Pages
+- Static **HTML5**, modern **CSS3**, minimal **vanilla JavaScript**.
+- No frontend framework, app bundle, mandatory font download, or frontend API call to render the homepage.
+- One stylesheet and a tiny progressive-enhancement script power the homepage and light/dark design selector.
+- Apache/cPanel compression and caching rules are in `.htaccess`.
 
-- Home
-- Features
-- PharmaDesktop
-- Demo Request
-- About
-- Contact
-- 404
+## SEO, AI and localization
 
-## Frontend
+The main site and product pages are **pre-rendered** for crawlers in three languages:
 
-- HTML5
-- Custom CSS
-- Vanilla JavaScript
-- English, Dari and Pashto localization
-- LTR/RTL support
-- Responsive layouts
-- Frontend-only demo/contact form validation
+| Language | Homepage | Features | Desktop product |
+|---|---|---|---|
+| English | `/` | `/features.html` | `/pharmadesktop.html` |
+| Dari | `/fa/` | `/fa/features.html` | `/fa/pharmadesktop.html` |
+| Pashto | `/ps/` | `/ps/features.html` | `/ps/pharmadesktop.html` |
 
-## Project Structure
+- Each pre-rendered page has localized metadata, canonical URLs and `hreflang` relationships. Dari and Pashto use RTL.
+- `sitemap.xml`, `robots.txt`, `llms.txt` and structured data describe the public site.
+- Legacy demo, contact, about and 404 pages remain localized using the original language script.
+- No fake testimonials, invented clientele, search ranking claims or unsupported prices.
 
-darmaltoon/
-- index.html
-- features.html
-- pharmadesktop.html
-- demo.html
-- contact.html
-- about.html
-- 404.html
-- assets/css/main.css
-- assets/css/responsive.css
-- assets/css/rtl.css
-- assets/js/translations.js
-- assets/js/language.js
-- assets/js/app.js
-- assets/js/forms.js
-- assets/images/brand/
-- assets/images/screenshots/
+## Preview locally
 
-## Local Review
+Use a **local HTTP server** at the repository root. Because the new pages use site-root asset URLs, opening `index.html` with a `file://` link is not supported.
 
-Open index.html directly in a browser or serve the repository with any simple static web server.
+```bash
+python3 -m http.server 8000
+```
 
-## Forms
+Then open `http://localhost:8000/`, switch the theme in the navigation bar, or use `http://localhost:8000/?theme=dark`. Also inspect `/fa/` and `/ps/`.
 
-The demo and contact forms currently validate in the browser only. Backend submission endpoints will be connected later.
+The dashboard is an illustrative visual with sample numbers, not real customer data. Existing desktop screenshots were absent from the original repository, so an honest illustrative fallback remains until verified, privacy-cleared real screenshots can be added.
 
-## Localization
+## Release notes
 
-Translations are stored in assets/js/translations.js. The active language is persisted in localStorage. Dari and Pashto switch the document to RTL.
+- `python3 scripts/check_site.py` runs static SEO, localization, internal-link and size tests in GitHub Actions.
+- Demo and contact forms have **no delivery backend yet**. They do not submit data and now explicitly warn visitors instead of giving a false success message. This must be connected before public marketing campaigns.
+- See [SEO-PERFORMANCE.md](SEO-PERFORMANCE.md) for the launch checklist.
 
-## Screenshot Assets
+## Current branch
 
-The website expects PharmaDesktop screenshots under assets/images/screenshots/. The real application screenshots can be added without changing the page structure.
-
-## Next Phase
-
-After the static design is finalized, the contact and demo forms can be connected to the production Darmaltoon backend while preserving this frontend design.
+`feat/seo-first-bilingual-showcase` — under review through a draft pull request, not merged or deployed.
