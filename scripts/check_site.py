@@ -71,16 +71,16 @@ for name, (lang, direction) in LANGS.items():
     require(bool(parser.title.strip()) and len(parser.title.strip()) < 85, f"{name}: title missing/too long")
     require(60 < len(parser.meta.get("description", "")) < 350, f"{name}: meta description missing/invalid")
     require(parser.headings.count("h1") == 1, f"{name}: expected one h1")
-    expected = "https://darmaltoon.com/" + name.replace("index.html", "")
+    expected = "https://web.darmaltoon.com/" + name.replace("index.html", "")
     canonical = [link.get("href") for link in parser.links if link.get("rel") == "canonical"]
     require(canonical == [expected], f"{name}: incorrect canonical {canonical}")
     alt = {link.get("hreflang"): link.get("href") for link in parser.links if link.get("rel") == "alternate"}
     suffix = name.replace("fa/", "").replace("ps/", "").replace("index.html", "")
     for code, href in [
-        ("en", "https://darmaltoon.com/" + suffix),
-        ("fa-AF", "https://darmaltoon.com/fa/" + suffix),
-        ("ps-AF", "https://darmaltoon.com/ps/" + suffix),
-        ("x-default", "https://darmaltoon.com/" + suffix),
+        ("en", "https://web.darmaltoon.com/" + suffix),
+        ("fa-AF", "https://web.darmaltoon.com/fa/" + suffix),
+        ("ps-AF", "https://web.darmaltoon.com/ps/" + suffix),
+        ("x-default", "https://web.darmaltoon.com/" + suffix),
     ]:
         require(alt.get(code) == href, f"{name}: missing hreflang {code}")
     require("application/ld+json" in data, f"{name}: JSON-LD missing")
@@ -108,7 +108,7 @@ sitemap = ROOT/"sitemap.xml"
 if sitemap.exists():
     try:
         urls = [node.text for node in ET.parse(sitemap).iter() if node.tag.endswith("}loc")]
-        require({"https://darmaltoon.com/", "https://darmaltoon.com/fa/", "https://darmaltoon.com/ps/"}.issubset(urls), "Sitemap missing language URLs")
+        require({"https://web.darmaltoon.com/", "https://web.darmaltoon.com/fa/", "https://web.darmaltoon.com/ps/"}.issubset(urls), "Sitemap missing language URLs")
     except ET.ParseError as e:
         ERRORS.append(f"Sitemap XML invalid: {e}")
 if ERRORS:
