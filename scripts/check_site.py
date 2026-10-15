@@ -75,7 +75,13 @@ for name, (lang, direction) in LANGS.items():
     canonical = [link.get("href") for link in parser.links if link.get("rel") == "canonical"]
     require(canonical == [expected], f"{name}: incorrect canonical {canonical}")
     alt = {link.get("hreflang"): link.get("href") for link in parser.links if link.get("rel") == "alternate"}
-    for code, href in [("en", "https://darmaltoon.com/"), ("fa-AF", "https://darmaltoon.com/fa/"), ("ps-AF", "https://darmaltoon.com/ps/"), ("x-default", "https://darmaltoon.com/")]:
+    suffix = name.replace("fa/", "").replace("ps/", "").replace("index.html", "")
+    for code, href in [
+        ("en", "https://darmaltoon.com/" + suffix),
+        ("fa-AF", "https://darmaltoon.com/fa/" + suffix),
+        ("ps-AF", "https://darmaltoon.com/ps/" + suffix),
+        ("x-default", "https://darmaltoon.com/" + suffix),
+    ]:
         require(alt.get(code) == href, f"{name}: missing hreflang {code}")
     require("application/ld+json" in data, f"{name}: JSON-LD missing")
     require("sample" in data.lower() or "نمونه" in data or "بېلګه" in data, f"{name}: demo data not disclosed")
