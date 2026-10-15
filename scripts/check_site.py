@@ -55,7 +55,9 @@ class SiteParser(HTMLParser):
         if self.in_title:
             self.title += value
 
-LANGS = {"index.html": ("en", "ltr"), "fa/index.html": ("fa-AF", "rtl"), "ps/index.html": ("ps-AF", "rtl")}
+LANGS = {"index.html": ("en", "ltr"), "fa/index.html": ("fa-AF", "rtl"), "ps/index.html": ("ps-AF", "rtl"),
+         "fa/features.html": ("fa-AF", "rtl"), "ps/features.html": ("ps-AF", "rtl"),
+         "fa/pharmadesktop.html": ("fa-AF", "rtl"), "ps/pharmadesktop.html": ("ps-AF", "rtl")}
 for name, (lang, direction) in LANGS.items():
     path = ROOT / name
     require(path.is_file(), f"Missing language homepage: {name}")
@@ -107,4 +109,4 @@ if ERRORS:
     print("FAIL: " + str(len(ERRORS)) + " website checks")
     for error in ERRORS: print(" - " + error)
     sys.exit(1)
-print("PASS: 3 crawlable homepages, metadata, hreflang, internal links, SEO files, and size budgets")
+print("PASS: 7 crawlable localized pages, metadata, hreflang, internal links, SEO files, and size budgets")
