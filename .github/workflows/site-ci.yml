@@ -16,3 +16,5 @@ jobs:
           python-version: '3.12'
       - name: Verify language, SEO, links and lightweight budgets
         run: python scripts/check_site.py
+      - name: Verify approved ZIP layouts
+        run: python scripts/check_approved_ui.py
