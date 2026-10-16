@@ -1,0 +1,50 @@
+/* Merged D + arm altoon identity, not separate CSS text. */
+@media (min-width:901px) {
+  .zip-desktop .zd-brand {display:inline-flex;flex:0 0 auto;align-items:center;line-height:0;font-size:0;gap:0}
+  .zip-desktop .zd-brand img.merged-brand-wordmark {
+    display:block;width:clamp(178px,15.3vw,226px);height:auto;max-height:50px;
+    object-fit:contain;object-position:left center;
+  }
+  .zip-desktop .zd-top-inner{min-width:0}
+}
+@media(max-width:900px) {
+  .zip-native .zn-brand{display:inline-flex;flex:0 1 auto;min-width:0;gap:0;line-height:0;font-size:0}
+  .zip-native .zn-brand img.merged-brand-wordmark{
+    display:block;width:clamp(132px,43vw,211px);height:auto;max-height:47px;
+    object-fit:contain;object-position:left center;
+  }
+  .zip-native .zn-nav{flex-shrink:0}
+}
+@media(max-width:355px) {
+  .zip-native .zn-brand img.merged-brand-wordmark{width:clamp(117px,40vw,149px)}
+  .zip-native .zn-header{padding-inline:9px}
+  .zip-native .zn-languages a{padding-inline:3px}
+}
+.more .merged-brand-footer{width:min(100%,245px);height:auto;max-height:56px;display:block;object-fit:contain;object-position:left center}
+body:has(.zip-desktop[data-theme=dark]) .more .merged-brand-footer{filter:drop-shadow(0 0 5px #0ca2da22)}
+@media(max-width:900px){.more .merged-brand-footer{width:min(100%,230px)}}
+/* Legacy localized and informational pages: icon/text composites replaced by one PNG. */
+a.mark img.merged-brand-content,
+a.brand img.merged-brand-content{
+ display:block!important;
+ width:clamp(145px,15vw,210px)!important;
+ height:auto!important;
+ max-height:48px!important;
+ object-fit:contain!important;
+ object-position:left center!important;
+ border:0!important;
+ filter:none!important;
+}
+a.mark:has(img.merged-brand-content),
+a.brand:has(img.merged-brand-content){
+ display:inline-flex!important;
+ align-items:center!important;
+ line-height:0!important;
+ gap:0!important;
+}
+footer a.mark img.merged-brand-content,
+footer a.brand img.merged-brand-content{max-width:220px!important;}
+@media(max-width:600px){
+ a.mark img.merged-brand-content,
+ a.brand img.merged-brand-content{width:clamp(122px,36vw,180px)!important;}
+}
