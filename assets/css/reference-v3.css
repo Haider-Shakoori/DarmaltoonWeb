@@ -1,0 +1,167 @@
+
+/* Reference-accurate Darmaltoon homepage v3; layered on the existing accessible static site.
+   Design targets: 1448px dark (compact cinematic), light (tall pharmacy showcase).
+   All layout remains native HTML/CSS; no framework or downloaded fonts. */
+:root{--v3-cyan:#00e4ed;--v3-blue:#126cf6;--v3-navy:#071930}
+body{font-family:Inter,"Segoe UI",Arial,sans-serif}
+.top{height:54px;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);box-shadow:0 2px 15px rgba(45,114,198,.025)}
+html[data-design=dark] .top{background:#03101c;box-shadow:none}
+.top-inner{height:54px}
+.wrap{width:calc(100% - 120px);max-width:1360px}
+.mark{gap:8px}.mark img{height:38px;width:38px}.mark strong{font-size:23px;letter-spacing:-.045em}
+html[data-design=dark] .mark strong{color:#fff}
+.nav-links{gap:29px}.nav-links a{font-size:12px}.nav-links a[aria-current=page]::after{bottom:6px}
+.top-right{gap:10px}.top .btn{min-height:35px}.style-toggle{padding:6px 9px}
+.btn{border-radius:9px}
+.btn-main{box-shadow:0 6px 22px rgba(16,116,239,.21)}
+html[data-design=dark] .btn-main{background:#00e6ed;color:#001a27;box-shadow:0 0 23px rgba(0,230,237,.27)}
+html[data-design=dark] .btn-ghost{border-color:rgba(0,223,230,.7);background:rgba(1,12,22,.75)}
+html[data-design=light] .btn-main{background:linear-gradient(108deg,#1360ef,#06b8f0)}
+/* Dark cinematic composition */
+html[data-design=dark] .hero{height:445px;min-height:445px;background:#04111f}
+html[data-design=dark] .hero::before{background:radial-gradient(ellipse at 28% 35%,rgba(15,79,122,.26),transparent 66%),linear-gradient(#062039,#020a15)}
+html[data-design=dark] .hero::after{opacity:1;background:
+ linear-gradient(90deg,rgba(1,11,22,.48) 0%,rgba(2,14,28,.25) 38%,rgba(0,11,24,.15) 100%),
+ linear-gradient(0deg,rgba(1,8,17,.78) 0%,transparent 56%),
+ url("/assets/images/hero/herat-skyline.webp") center 46%/cover no-repeat}
+html[data-design=dark] .hero-inner{height:445px;min-height:445px;grid-template-columns:42.5% 57.5%;align-items:start}
+html[data-design=dark] .hero-copy{padding:25px 24px 7px 0;max-width:545px}
+html[data-design=dark] .pill{padding:5px 11px;font-size:10px;border:1px solid rgba(0,217,233,.4);background:rgba(0,221,229,.07)}
+html[data-design=dark] .hero h1{font-size:clamp(34px,3.12vw,46px);line-height:1.06;margin:15px 0 12px;letter-spacing:-.055em}
+html[data-design=dark] .hero h1 em{color:#00e4ee;font-size:1.11em}
+html[data-design=dark] .hero-description{font-size:14px;line-height:1.44;color:#f0f6ff;max-width:410px}
+html[data-design=dark] .hero-points{display:none}
+html[data-design=dark] .main-actions{margin-top:17px;gap:11px}
+html[data-design=dark] .main-actions .btn{height:43px;min-height:43px}
+html[data-design=dark] .hero-trust{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:44px;max-width:510px}
+html[data-design=dark] .hero-trust div{max-width:none;width:auto;text-align:left}
+html[data-design=dark] .hero-trust div:nth-child(5){display:none}
+html[data-design=dark] .hero-trust b{margin:0 0 7px;width:38px;height:38px;background:rgba(0,233,236,.08);font-size:21px;color:#00e6ed;border-color:rgba(0,224,241,.27)}
+html[data-design=dark] .hero-trust strong{font-size:11px;line-height:1.23;color:#fff}
+html[data-design=dark] .hero-trust small{font-size:10px;line-height:1.33;color:#c4d3de}
+html[data-design=dark] .hero-visual{padding:0;align-self:start;position:relative;margin-inline:-5px -1px;transform:translate(5px,-14px)}
+/* Taller bright pharmacy hero */
+html[data-design=light] .hero{height:636px;min-height:636px;background:#eff8ff}
+html[data-design=light] .hero::before{background:linear-gradient(100deg,#f6fdff 0%,#e9f6ff 48%,#d9eaff 100%)}
+html[data-design=light] .hero::after{opacity:.93;background:
+ linear-gradient(90deg,rgba(242,251,255,.91) 0%,rgba(241,250,255,.78) 28%,rgba(226,242,255,.32) 58%,rgba(233,246,255,.18) 100%),
+ url("/assets/images/hero/pharmacy-interior.webp") center/cover no-repeat}
+html[data-design=light] .hero-inner{height:636px;min-height:636px;grid-template-columns:33.1% 66.9%;align-items:start}
+html[data-design=light] .hero-copy{padding:44px 10px 0 0;z-index:4;max-width:450px}
+html[data-design=light] .pill{background:rgba(227,241,255,.76);border:1px solid rgba(66,145,235,.25);font-size:10px}
+html[data-design=light] .hero h1{font-size:clamp(39px,3.85vw,56px);line-height:1.06;letter-spacing:-.053em;margin:18px 0 10px;font-weight:900}
+html[data-design=light] .hero h1 em{font-size:1.05em;color:#1761f6}
+html[data-design=light] .hero-description{max-width:420px;font-size:14px;line-height:1.56;color:#354d76}
+html[data-design=light] .hero-points{gap:7px;margin-top:16px;font-size:12px;color:#324872}
+html[data-design=light] .hero-points span::before{width:18px;height:18px;background:#07ac7b}
+html[data-design=light] .main-actions{margin-top:17px;gap:11px}
+html[data-design=light] .main-actions .btn{min-height:47px;font-size:13px}
+html[data-design=light] .hero-visual{padding:0;align-self:start;transform:translate(2px,20px)}
+html[data-design=light] .hero-trust{display:flex;gap:17px;margin-top:19px}
+html[data-design=light] .hero-trust div{display:flex;align-items:center;gap:5px;text-align:left;max-width:140px}
+html[data-design=light] .hero-trust div:nth-child(n+4){display:none}
+html[data-design=light] .hero-trust b{width:22px;height:22px;font-size:15px;background:transparent;border:0;color:#1d61b9;margin:0}
+html[data-design=light] .hero-trust strong{font-size:9px;color:#476082;font-weight:600}
+html[data-design=light] .hero-trust small{display:none}
+/* True desktop screenshot with data from actual supplied PharmaDesktop UI */
+.dashboard-bezel{border:6px solid #172c45;border-bottom-width:7px;border-radius:23px 23px 7px 7px;box-shadow:0 20px 35px rgba(0,33,85,.18),0 0 0 2px rgba(255,255,255,.38);background:#e6f1ff;transform:none;overflow:hidden}
+html[data-design=dark] .dashboard-bezel{background:#06101c;border:7px solid #102c43;border-bottom-width:9px;box-shadow:0 0 0 1px #356080,0 15px 30px rgba(0,0,0,.65)}
+html[data-design=light] .dashboard-bezel{background:#e7f4ff;border-color:#142943;box-shadow:0 0 0 2px rgba(255,255,255,.75),0 20px 55px rgba(3,61,139,.25)}
+.dashboard-bezel .pharmacy-ui{display:none!important}
+.dashboard-bezel .real-dashboard{display:block;width:100%;height:100%;object-fit:fill}
+html[data-design=dark] .dashboard-bezel{height:431px}
+html[data-design=light] .dashboard-bezel{height:552px}
+html[data-design=dark] .real-dashboard{filter:brightness(.77) saturate(1.13)}
+html[data-design=light] .real-dashboard{filter:saturate(1.06)}
+.dashboard-foot{height:20px;background:linear-gradient(#617d96 0%,#e6edf4 50%,#4a637b 86%,#102c40 100%);box-shadow:0 8px 11px rgba(0,13,27,.28);margin-inline:-18px;border-radius:0 0 65% 65%}
+html[data-design=light] .dashboard-foot{height:17px;background:linear-gradient(#b9d6ef,#d6e7fa 35%,#466789 70%,#1a3653)}
+.mock-disc{inset-inline-end:10px;bottom:-22px;background:var(--tile);z-index:8;font-size:9px;border-radius:5px}
+html[data-design=light] .mock-disc{background:rgba(255,255,255,.96);color:#4b6c97}
+html[data-design=dark] .phone{display:none!important}
+/* Product prop using CSS rather than an extra heavyweight photo */
+.medicine-scene{display:none;position:absolute;z-index:2;inset-inline-start:0;bottom:0;width:370px;height:148px;pointer-events:none}
+html[data-design=light] .medicine-scene{display:block}
+.medicine-scene .bottle{position:absolute;left:30px;bottom:8px;width:106px;height:98px;background:linear-gradient(90deg,#e9f4ff,#ffffff 24%,#ecf7ff 75%,#b5d7fb);border-radius:13px 13px 10px 10px;box-shadow:0 10px 17px rgba(49,95,160,.2);border:1px solid #c7e1f6}
+.medicine-scene .cap{position:absolute;left:29px;top:-18px;width:108px;height:27px;background:repeating-linear-gradient(90deg,#fff 0 4px,#d5e5f5 5px 7px);border:1px solid #b8d0e6;border-radius:12px 12px 5px 5px}
+.medicine-scene .bottle-logo{position:absolute;left:14px;right:14px;top:25px;height:57px;border-radius:5px;background:linear-gradient(135deg,#1879ff,#1dd0dd);color:#fff;font-size:28px;font-weight:900;text-align:center;line-height:54px;box-shadow:0 4px 13px rgba(0,81,206,.25)}
+.medicine-scene .carton{position:absolute;left:153px;bottom:12px;width:186px;height:101px;background:linear-gradient(115deg,#f8fbff,#dfeeff);border-radius:4px;box-shadow:0 8px 21px rgba(40,92,165,.12);border:1px solid #c8dff6;padding:17px 13px}
+.medicine-scene .carton strong{font-size:18px;color:#1b68d9;display:block;letter-spacing:-.04em}
+.medicine-scene .carton small{color:#2b7fc6;font-size:10px}
+.medicine-scene .pill-shape{position:absolute;display:block;background:linear-gradient(120deg,#f9ffff 0 45%,#05b7ea 46% 100%);width:37px;height:14px;border-radius:17px;border:1px solid #acd8ec;box-shadow:0 3px 4px rgba(7,67,130,.15);bottom:2px;transform:rotate(-20deg)}
+.medicine-scene .pill-shape:nth-last-child(1){left:99px;bottom:3px;transform:rotate(36deg)}
+.medicine-scene .pill-shape:nth-last-child(2){left:156px;bottom:4px;transform:rotate(11deg)}
+.medicine-scene .pill-shape:nth-last-child(3){left:8px;bottom:13px;transform:rotate(-30deg)}
+/* Exact compact cards and language section */
+.features-section{padding:0;border:0;background:var(--bg)}
+html[data-design=dark] .features-section{height:250px;background:#03101c;border-top:1px solid rgba(31,122,163,.24);border-bottom:1px solid rgba(31,122,163,.3)}
+html[data-design=light] .features-section{height:163px;background:rgba(255,255,255,.96);border-top:1px solid #d9ebfa}
+.split-panels{display:grid;grid-template-columns:62.5% 37.5%;gap:0;height:100%;max-width:1448px;width:100%}
+.split-panels>div{padding:18px 23px 12px max(28px,calc((100vw - 1328px)/2));min-width:0}
+.section-heading h2{font-size:21px;margin:0 0 4px;font-weight:850}
+.section-heading p{font-size:11px;margin:0 0 9px}
+.features-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+.feature-card{min-height:75px;height:76px;border-radius:8px;padding:10px 9px;gap:10px;align-items:flex-start}
+.feature-card h3{font-size:10.5px;margin:1px 0 6px;line-height:1.2}
+.feature-card p{font-size:9px;line-height:1.39}
+.feature-icon{width:35px;height:36px;font-size:19px;border-radius:7px;box-shadow:0 3px 11px rgba(0,70,167,.14)}
+html[data-design=light] .feature-card:nth-child(n+5){display:none}
+html[data-design=light] .feature-card{height:85px;padding:12px 10px;background:#fff;box-shadow:0 4px 20px rgba(58,117,192,.06)}
+html[data-design=dark] .feature-card{background:linear-gradient(#081b2a,#041521);border-color:#174057}
+.language-area{padding:19px 27px 15px 23px;border:0;border-radius:0;box-shadow:none;overflow:hidden}
+html[data-design=dark] .language-area{background:linear-gradient(90deg,#04111b 0%,rgba(2,13,23,.81) 70%,rgba(3,17,31,.48)),url("/assets/images/hero/herat-skyline.webp") center 40%/cover}
+html[data-design=light] .language-area{background:linear-gradient(120deg,#eff7ff,#e6f1fa);border-radius:14px;margin:15px max(25px,calc((100vw - 1328px)/2)) 15px 13px;padding:12px 21px}
+.language-area .section-heading h2{font-size:22px}
+html[data-design=dark] .language-area .section-heading h2{font-size:25px;line-height:1.06;max-width:360px;margin:7px 0}
+html[data-design=dark] .language-area .section-heading p{max-width:380px;margin:8px 0 15px}
+html[data-design=light] .language-area .section-heading h2{font-size:18px}
+.locale-cards{gap:8px}
+.locale-card{min-height:64px;display:grid;grid-template-columns:31px 1fr;grid-template-rows:auto auto;column-gap:8px;align-content:center;text-align:start;padding:7px 8px;border-radius:8px}
+.locale-card .flag-img{grid-row:1/3;width:28px;height:20px;object-fit:cover;margin:0}
+.locale-card strong{font-size:10px}
+.locale-card small{font-size:9px;line-height:1.1}
+html[data-design=light] .locale-card{grid-template-columns:1fr;grid-template-rows:auto auto auto;text-align:center;min-height:72px}
+html[data-design=light] .locale-card .flag-img{grid-row:auto;justify-self:center}
+html[data-design=dark] .locale-card{background:rgba(1,14,25,.79);border-color:rgba(0,214,229,.45)}
+/* Real lower reference composition */
+.lower-section{padding:0}
+html[data-design=dark] .lower-section{height:195px;background:linear-gradient(90deg,rgba(2,12,25,.66),rgba(1,10,19,.83)),url("/assets/images/hero/herat-skyline.webp") center 62%/cover}
+html[data-design=light] .lower-section{min-height:220px;background:linear-gradient(#f7fbff,#eef7ff)}
+.lower-grid{width:100%;max-width:1448px;grid-template-columns:62.5% 37.5%;gap:0;height:100%}
+html[data-design=dark] .lower-grid{grid-template-columns:62.5% 37.5%;gap:0}
+.lower-grid>.lower-item{padding:17px 30px 15px max(28px,calc((100vw - 1328px)/2));overflow:hidden}
+.lower-grid>.lower-item:nth-child(2){display:none}
+html[data-design=dark] .lower-grid>.lower-item{border:0}
+html[data-design=dark] .lower-grid>.dark-only-faq{padding:16px 45px 10px 22px}
+html[data-design=light] .lower-grid{grid-template-columns:35% 0% 65%}
+html[data-design=light] .lower-grid>.lower-item:first-child{padding:23px 20px 15px max(28px,calc((100vw - 1328px)/2))}
+html[data-design=light] .lower-grid>.lower-item:nth-child(2){display:block;padding:23px 25px 15px 5px}
+html[data-design=light] .lower-grid>.light-faq{display:none}
+.lower-item h2{font-size:21px}
+.lower-item p{font-size:11px;line-height:1.5}
+html[data-design=dark] .lower-item h2{font-size:22px;line-height:1.15}
+html[data-design=dark] .lower-item p{max-width:440px;margin:6px 0 8px}
+html[data-design=dark] .product-platforms{display:flex;gap:7px;margin-top:4px}
+html[data-design=dark] .platform-chip{min-height:45px;width:100px;padding:7px 5px;display:flex;gap:5px;text-align:left;align-items:center}
+html[data-design=dark] .platform-chip b{font-size:19px}
+html[data-design=dark] .platform-chip strong{font-size:9px;margin:0}
+html[data-design=dark] .platform-chip small{display:none}
+html[data-design=dark] .faq-block{gap:4px}
+html[data-design=dark] .faq-block details{padding:4px 9px;border-radius:6px;background:rgba(2,22,33,.8)}
+html[data-design=dark] .faq-block summary{font-size:10px;line-height:1.3}
+html[data-design=dark] .faq-block details p{font-size:10px;margin:5px 0 0}
+html[data-design=light] .platform-chip{min-height:72px;padding:10px 4px}
+html[data-design=light] .lower-grid .afg-story{display:block!important}
+/* Closing full-bleed Afghanistan banner, like reference */
+.callout{padding:0}
+html[data-design=dark] .callout{height:142px;background:linear-gradient(0deg,rgba(0,9,20,.42),rgba(0,10,22,.16)),url("/assets/images/hero/herat-skyline.webp") center 54%/cover;border-top:1px solid rgba(13,134,177,.18)}
+html[data-design=light] .callout{height:125px;background:linear-gradient(95deg,#eaf6ff,#e1f1ff)}
+.callout-inner{height:100%;align-items:center}
+.callout h2{font-size:25px}
+.callout p{font-size:12px}
+.footer{padding:14px 0}
+html[data-design=dark] .footer{background:#030e19;color:#b6c9db}
+.photo-credit{display:none}
+@media(max-width:1250px){.wrap{width:calc(100% - 70px)}.split-panels>div,.lower-grid>.lower-item{padding-inline-start:35px}.language-area{margin-inline-end:30px}.nav-links{gap:17px}html[data-design=dark] .hero-copy{padding-inline-end:16px}html[data-design=dark] .hero h1{font-size:40px}}
+@media(max-width:1010px){html[data-design=dark] .hero,html[data-design=light] .hero{height:auto;min-height:unset}.hero-inner,html[data-design=dark] .hero-inner,html[data-design=light] .hero-inner{height:auto;min-height:unset;display:block;padding:22px 0 35px}.hero-copy,html[data-design=dark] .hero-copy,html[data-design=light] .hero-copy{padding:0;max-width:690px}.hero-visual,html[data-design=dark] .hero-visual,html[data-design=light] .hero-visual{width:100%;max-width:800px;margin:20px auto 0;transform:none}.dashboard-bezel{height:auto!important;aspect-ratio:1.68}.dashboard-foot{margin-inline:0}.medicine-scene{display:none!important}.split-panels{grid-template-columns:1fr;width:100%}.features-section,html[data-design=dark] .features-section,html[data-design=light] .features-section{height:auto}.split-panels>div{padding:24px 28px}.language-area,html[data-design=light] .language-area{margin:0 28px 20px;border-radius:13px;padding:18px 22px}.lower-grid,html[data-design=dark] .lower-grid,html[data-design=light] .lower-grid{grid-template-columns:1fr;height:auto}.lower-section,html[data-design=dark] .lower-section,html[data-design=light] .lower-section{height:auto;padding:20px 0}.lower-grid>.lower-item,.lower-grid>.lower-item:first-child,html[data-design=dark] .lower-grid>.dark-only-faq{padding:10px 28px 20px}.lower-grid>.lower-item:nth-child(2){display:none!important}html[data-design=dark] .hero-trust{display:flex;flex-wrap:wrap;gap:14px;max-width:none;margin:22px 0 0}html[data-design=dark] .hero-trust div{width:110px;flex:auto}html[data-design=light] .hero-trust{gap:12px}.callout,html[data-design=dark] .callout,html[data-design=light] .callout{height:auto;padding:23px 0}}
+@media(max-width:680px){.top,.top-inner{height:59px}.wrap{width:calc(100% - 30px)}.mark img{width:31px;height:31px}.mark strong{font-size:18px}.languages a{font-size:10px;padding:4px}.style-toggle{font-size:10px}html[data-design=dark] .hero h1,html[data-design=light] .hero h1{font-size:clamp(34px,8vw,47px)}html[data-design=dark] .hero-description,html[data-design=light] .hero-description{font-size:13px}.hero-visual{margin-top:22px!important}.dashboard-bezel{border-radius:13px 13px 3px 3px;border-width:4px}.mock-disc{font-size:8px;right:2px;bottom:-13px}.split-panels>div{padding:20px 15px}.features-grid{grid-template-columns:repeat(2,1fr);gap:8px}.feature-card,.feature-card:nth-child(n){height:auto;min-height:83px}.language-area,html[data-design=light] .language-area{margin:0 15px 16px}.lower-grid>.lower-item,.lower-grid>.lower-item:first-child,html[data-design=dark] .lower-grid>.dark-only-faq{padding:12px 16px}.lower-grid>.lower-item:nth-child(2){display:none}.lower-item h2{font-size:21px}.lower-grid .product-platforms{display:grid!important;grid-template-columns:repeat(2,1fr)}html[data-design=dark] .platform-chip{width:auto}.callout-inner{display:block}.callout-inner>div:last-child{margin-top:15px}.hero-trust{display:none!important}html[data-design=light] .medicine-scene{display:none}html[data-design=dark] .hero::after,html[data-design=light] .hero::after{background-image:none}.hero::after{opacity:0!important}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
