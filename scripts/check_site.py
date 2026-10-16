@@ -111,7 +111,12 @@ require('id="bg"' not in home, "Desktop must not use a full-page raster screensh
 require('class="zip-desktop"' in home, "Missing native desktop content")
 require(home.count('class="zd-feature"') == 8, "Desktop must have eight HTML feature cards")
 require('class="zd-chart-card"' in home, "Desktop must include native SVG chart")
-require('class="zd-afghan-showcase"' in home, "Light desktop must include native Afghan-pharmacy showcase")
+require('class="zd-platform-showcase"' in home, "Light desktop must have native platform cards")
+require('class="zd-operations"' not in home, "Duplicated desktop offline/FAQ section must be absent")
+require(home.count('id="faq"') == 1, "FAQ must appear only once")
+require('light-premium.css' in home, "Light premium stylesheet not linked")
+
+require('class="zd-afghan-unified"' in home, "Light desktop must include merged native Afghan/offline section")
 require('class="zd-proof"' in home, "Light desktop must include selectable hero bullet points")
 require((ROOT / "assets/images/hero/light-right-from-zip.webp").is_file(), "Optimized ZIP visual fallback is missing")
 for new_photo in ["darmaltoon-light-hero.webp", "afghanistan-bottom.webp"]:
