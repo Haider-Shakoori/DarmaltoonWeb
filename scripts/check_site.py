@@ -70,7 +70,7 @@ for name, (lang, direction) in LANGS.items():
     require(parser.direction == direction, f"{name}: incorrect text direction")
     require(bool(parser.title.strip()) and len(parser.title.strip()) < 85, f"{name}: title missing/too long")
     require(60 < len(parser.meta.get("description", "")) < 350, f"{name}: meta description missing/invalid")
-    require(parser.headings.count("h1") == 1, f"{name}: expected one h1")
+    require(parser.headings.count("h1") == (2 if name == "index.html" else 1), f"{name}: expected responsive home h1 and desktop screen-reader h1 on landing")
     expected = "https://web.darmaltoon.com/" + name.replace("index.html", "")
     canonical = [link.get("href") for link in parser.links if link.get("rel") == "canonical"]
     require(canonical == [expected], f"{name}: incorrect canonical {canonical}")
@@ -98,10 +98,17 @@ for name, (lang, direction) in LANGS.items():
         require(resolved.exists(), f"{name}: missing local asset/link: {href}")
     for image in parser.images:
         require("alt" in image, f"{name}: image missing alt text")
-    require(len(data.encode("utf-8")) < 28_000, f"{name}: homepage larger than 28 KB")
+    require(len(data.encode("utf-8")) < (40_000 if name == "index.html" else 28_000), f"{name}: webpage size budget exceeded")
 for path, limit in [("assets/css/showcase.css", 30_000), ("assets/js/showcase.js", 3_000), ("assets/images/brand/darmaltoon-official.svg", 6_000)]:
     f = ROOT / path
     require(f.exists() and f.stat().st_size < limit, f"{path}: missing or over budget ({limit} bytes)")
+# The approved ZIP retains its desktop canvas, but mobile content must be genuine HTML.
+home = (ROOT / "index.html").read_text(encoding="utf-8")
+for token in ['class="zip-native"', 'class="zn-feature"', 'class="zn-plot"', 'id="native-platforms"', 'id="native-dashboard"']:
+    require(token in home, f"Missing native mobile UI requirement: {token}")
+require('class="mobile-original"' not in home, "Old cropped-artwork mobile fallback must not return")
+native_css = ROOT / "assets/css/native-mobile.css"
+require(native_css.exists() and native_css.stat().st_size < 15_000, "Native mobile CSS missing or over 15KB")
 for required in ["robots.txt", "sitemap.xml", "llms.txt"]:
     require((ROOT/required).is_file(), f"Missing discovery file: {required}")
 sitemap = ROOT/"sitemap.xml"
@@ -115,4 +122,4 @@ if ERRORS:
     print("FAIL: " + str(len(ERRORS)) + " website checks")
     for error in ERRORS: print(" - " + error)
     sys.exit(1)
-print("PASS: 7 crawlable localized pages, metadata, hreflang, internal links, SEO files, and size budgets")
+print("PASS: 7 crawlable localized pages, responsive native mobile, metadata, hreflang, assets, and size budgets")
