@@ -8,3 +8,7 @@ html[dir=rtl] .mobile-site{font-family:Tahoma,"Noto Naskh Arabic",Arial,sans-ser
 @media(max-width:980px){#desktop-shell{display:none}.mobile-site{display:block}.below{display:block}.info-section{padding:38px 0}.wrap{width:calc(100% - 32px)}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.split{grid-template-columns:1fr;gap:20px}.footer-wrap{align-items:flex-start;flex-direction:column}}
 @media(max-width:600px){.grid{grid-template-columns:1fr}.info-card{padding:19px}.email-form{grid-template-columns:1fr}.info-section h2{font-size:27px}.mobile-hero{padding:32px 17px 24px}.footer nav{flex-wrap:wrap}.mobile-bar{padding:9px 12px}.mobile-logo{font-size:15px}.mobile-logo img{width:28px;height:28px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* Keep the selector outside the actual laptop so the supplied artwork remains unobscured. */
+.desktop-theme-switch{left:310px;right:auto;top:59px}
+/* Do not assert existing pharmacy customers before any have joined. */
+.claim-correction{position:absolute;z-index:2;left:327px;top:511px;width:151px;height:44px;padding:5px 5px 0 7px;background:rgba(236,249,255,.96);border-radius:4px;color:#3a597e;font:700 11px/1.3 Inter,"Segoe UI",Arial,sans-serif}
