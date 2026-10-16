@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /?theme=
+Sitemap: https://web.darmaltoon.com/sitemap.xml

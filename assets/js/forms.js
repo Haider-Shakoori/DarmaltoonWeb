@@ -64,6 +64,20 @@
     return data;
   }
 
+  function showNotConfigured(box) {
+    if (!box) return;
+    const lang = document.documentElement.getAttribute("lang");
+    box.textContent = lang === "ps"
+      ? "دا فورم لا نه دی نښلول شوی؛ ستاسو معلومات نه دي استول شوي. مهرباني وکړئ وروسته بیا هڅه وکړئ."
+      : lang === "fa"
+      ? "این فورم هنوز وصل نشده است؛ اطلاعات شما ارسال نشده است. لطفاً بعداً دوباره تلاش کنید."
+      : "This form is not connected yet. Your details have NOT been sent. Please check back later.";
+    box.hidden = false;
+    box.setAttribute("role", "alert");
+    box.classList.add("form-unavailable");
+    box.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
   function initDemoForm() {
     const form = document.getElementById("demoForm");
     if (!form) return;
@@ -88,16 +102,8 @@
         return;
       }
 
-      const payload = collectFormData(form);
-
-      // TODO: Connect demo request to backend endpoint.
-      console.info("[Darmaltoon] Demo form payload (not submitted):", payload);
-
-      if (success) {
-        success.hidden = false;
-        success.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
-      form.reset();
+      // No submission endpoint is configured. Never imply that the lead was delivered.
+      showNotConfigured(success);
     });
   }
 
@@ -125,16 +131,8 @@
         return;
       }
 
-      const payload = collectFormData(form);
-
-      // TODO: Connect contact form to backend endpoint.
-      console.info("[Darmaltoon] Contact form payload (not submitted):", payload);
-
-      if (success) {
-        success.hidden = false;
-        success.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
-      form.reset();
+      // No submission endpoint is configured. Never imply that a message was sent.
+      showNotConfigured(success);
     });
   }
 
