@@ -158,3 +158,98 @@
  .zip-desktop[data-theme=light] .zd-hero::after{content:"";position:absolute;z-index:-1;pointer-events:none;left:0;bottom:0;width:340px;height:145px;opacity:.4;background:radial-gradient(ellipse at 10% 100%,#80baf278,transparent 70%)}
 }
 @media(min-width:901px) and (max-width:1100px){.zd-right{gap:7px}.zd-theme-compare{font-size:9px;padding:5px 6px}}
+
+/* The user-supplied bright pharmacy / laptop artwork is visual only: all text stays HTML. */
+@media(min-width:901px){
+ .zip-desktop[data-theme=light] .zd-hero{height:clamp(545px,45.1vw,672px);background:#e9f7ff}
+ .zip-desktop[data-theme=light] .zd-hero::before{
+  background-image:linear-gradient(90deg,rgba(247,252,255,.92),rgba(244,251,255,.8) 22%,transparent 48%),url('/assets/images/hero/darmaltoon-light-hero.webp'),url('/assets/images/hero/light-right-from-zip.webp'),url('/assets/images/hero/pharmacy-interior.webp');
+  background-size:cover,100% 100%,69% 100%,cover;
+  background-position:center,center,right center,center;
+  background-repeat:no-repeat;
+ }
+ .zip-desktop[data-theme=light] .zd-hero::after{display:block;content:'';position:absolute;left:0;bottom:0;width:32%;height:25%;z-index:0;pointer-events:none;background:url('/assets/images/hero/light-bottles-from-zip.webp') left bottom/contain no-repeat;opacity:.92}
+ .zip-desktop[data-theme=light] .zd-hero-grid{display:grid;grid-template-columns:minmax(370px,35.5%) 1fr}
+ .zip-desktop[data-theme=light] .zd-copy{max-width:450px;align-self:start;padding-top:clamp(45px,5vw,78px)}
+ .zip-desktop[data-theme=light] .zd-copy h1{font-size:clamp(36px,3.45vw,54px);line-height:1.08;margin:16px 0 12px;letter-spacing:-.057em;color:#061b43}
+ .zip-desktop[data-theme=light] .zd-copy h1 em{color:#1867f5}
+ .zip-desktop[data-theme=light] .zd-lede{font-size:14px;max-width:420px;color:#3b5479;line-height:1.53}
+ .zip-desktop[data-theme=light] .zd-laptop-holder{display:none!important}
+ .zip-desktop[data-theme=light] .zd-trust{display:flex;gap:13px;max-width:430px;margin-top:16px}
+ .zip-desktop[data-theme=light] .zd-trust-item{flex-direction:row;gap:4px;align-items:center}
+ .zip-desktop[data-theme=light] .zd-trust-icon{height:21px;width:21px;flex:none;background:transparent;border:0;margin:0;font-size:16px;color:#2d80c9}
+ .zip-desktop[data-theme=light] .zd-trust-item b{font-size:9px;color:#526b89}
+ .zip-desktop[data-theme=light] .zd-trust-item small{display:none}
+ .zip-desktop[data-theme=light] .zd-proof{margin:16px 0 0;list-style:none;padding:0;display:grid;gap:10px;color:#304d74}
+ .zip-desktop[data-theme=light] .zd-proof li{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600}
+ .zip-desktop[data-theme=light] .zd-proof li::before{content:'✓';width:21px;height:21px;display:grid;place-items:center;border-radius:50%;background:#16b88b;color:white;font-size:12px;font-weight:900;flex:none}
+ .zip-desktop[data-theme=light] .zd-actions{margin-top:20px}
+ .zip-desktop[data-theme=light] .zd-actions .zd-btn{height:47px;font-size:12px}
+}
+/* Afghan skyline banner: no text is baked into the image. */
+.zd-afghan-showcase{display:none}
+@media(min-width:901px){
+ .zip-desktop[data-theme=light] .zd-afghan-showcase{display:block;min-height:270px;position:relative;isolation:isolate;background:#f4faff;border-top:1px solid #e4effb;border-bottom:1px solid #dceafa}
+ .zip-desktop[data-theme=light] .zd-afghan-showcase::before{content:'';position:absolute;inset:0;z-index:-1;background-image:linear-gradient(90deg,rgba(246,251,255,.32),rgba(246,251,255,.12)),url('/assets/images/hero/afghanistan-bottom.webp'),url('/assets/images/hero/pharmacy-light.svg');background-size:cover,100% 100%,cover;background-position:center,center,center;background-repeat:no-repeat}
+ .zip-desktop[data-theme=light] .zd-afghan-content{display:grid;grid-template-columns:35% 1fr;gap:26px;padding:35px 0 27px;align-items:center;min-height:270px}
+ .zip-desktop[data-theme=light] .zd-afghan-content h2{font-size:25px;margin:11px 0 9px;font-weight:900;line-height:1.12;letter-spacing:-.035em}
+ .zip-desktop[data-theme=light] .zd-afghan-content p{font-size:12px;line-height:1.65;color:#526b8e;max-width:420px}
+ .zip-desktop[data-theme=light] .zd-afghan-highlights{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding-top:15px}
+ .zip-desktop[data-theme=light] .zd-afghan-highlights>div{text-align:center;display:flex;flex-direction:column;align-items:center;gap:5px}
+ .zip-desktop[data-theme=light] .zd-afghan-highlights span{width:37px;height:37px;display:grid;place-items:center;border-radius:50%;background:#e7f4ff;color:#1378ef;font-size:21px}
+ .zip-desktop[data-theme=light] .zd-afghan-highlights strong{font-size:11px;line-height:1.25}
+ .zip-desktop[data-theme=light] .zd-afghan-highlights small{font-size:10px;line-height:1.35;color:#6a829d}
+}
+@media(min-width:901px) and (max-width:1200px){
+ .zip-desktop[data-theme=light] .zd-hero-grid{grid-template-columns:39% 1fr}
+ .zip-desktop[data-theme=light] .zd-copy{padding-top:34px}
+ .zip-desktop[data-theme=light] .zd-copy h1{font-size:clamp(34px,3.55vw,44px)}
+ .zip-desktop[data-theme=light] .zd-proof{gap:5px}
+ .zip-desktop[data-theme=light] .zd-trust{flex-wrap:wrap}
+ .zip-desktop[data-theme=light] .zd-afghan-content{grid-template-columns:34% 1fr}
+ .zip-desktop[data-theme=light] .zd-afghan-highlights{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:900px){.zip-desktop .zd-afghan-showcase{display:none!important}}
+/* Preserve readable native copy alongside decorative reference-like laptop artwork */
+@media(min-width:901px){
+ .zip-desktop[data-theme=light] .zd-hero-grid{grid-template-columns:42% 58%}
+ .zip-desktop[data-theme=light] .zd-copy{max-width:550px;padding-top:clamp(28px,3.3vw,54px)}
+ .zip-desktop[data-theme=light] .zd-copy h1{font-size:clamp(36px,3.15vw,48px);max-width:550px;letter-spacing:-.05em}
+ .zip-desktop[data-theme=light] .zd-hero::before{
+  background-image:linear-gradient(90deg,rgba(239,249,255,.95),rgba(241,249,255,.91) 25%,rgba(241,249,255,.55) 34%,transparent 45%),url('/assets/images/hero/darmaltoon-light-hero.webp'),url('/assets/images/hero/light-right-from-zip.webp'),url('/assets/images/hero/pharmacy-interior.webp');
+  background-size:cover,100% 100%,69% 100%,cover;
+  background-position:center,center,right center,center;
+ }
+ .zip-desktop[data-theme=light] .zd-hero::after{width:32%;height:16%;opacity:.84}
+}
+@media(min-width:901px) and (max-width:1200px){.zip-desktop[data-theme=light] .zd-hero-grid{grid-template-columns:43% 57%}.zip-desktop[data-theme=light] .zd-copy h1{font-size:clamp(33px,3.55vw,44px)}}
+
+/* Crisp vector-like product props instead of duplicated text baked into the earlier ZIP image. */
+.zd-product-props{display:none}
+@media(min-width:901px){
+ .zip-desktop[data-theme=light] .zd-hero::after{display:none!important}
+ .zip-desktop[data-theme=light] .zd-product-props{position:absolute;z-index:2;left:22px;bottom:2px;width:360px;height:104px;display:block;pointer-events:none}
+ .zd-bottle{position:absolute;left:14px;bottom:2px;height:80px;width:83px;border-radius:9px 9px 7px 7px;border:1px solid #c1d5e6;background:linear-gradient(100deg,#d3e7fb,#ffffff 28%,#e3f5ff 77%,#b0d1eb);box-shadow:0 5px 16px #387abb2b}
+ .zd-bottle::before{content:'';position:absolute;top:-14px;left:-1px;right:-1px;height:18px;border-radius:7px 7px 3px 3px;background:repeating-linear-gradient(90deg,#fff,#fff 4px,#d7e6f1 5px,#d7e6f1 7px);border:1px solid #cedce9}
+ .zd-bottle i{position:absolute;left:14px;right:14px;top:21px;height:46px;display:grid;place-items:center;background:linear-gradient(110deg,#1284f2,#16c3dc);font-size:33px;font-weight:900;font-style:normal;color:#fff;border-radius:5px}
+ .zd-carton{position:absolute;left:111px;bottom:4px;height:91px;width:174px;background:linear-gradient(125deg,#fcffff,#d6ebff);border:1px solid #cae0f0;border-radius:3px;box-shadow:0 7px 15px #4073aa25;padding:17px 12px}
+ .zd-carton b{font-size:16px;color:#1665db;display:block;letter-spacing:-.045em;line-height:1}
+ .zd-carton small{font-size:9px;color:#5592c5;display:block;margin-top:8px;line-height:1.3}
+ .zd-pill-decor{position:absolute;width:29px;height:11px;border-radius:13px;bottom:3px;background:linear-gradient(90deg,#f4fcff 0%,#f4fcff 46%,#20ade6 47%,#20ade6 100%);border:1px solid #9ac4e6;transform:rotate(-22deg)}
+ .zd-pill-decor-1{left:0}.zd-pill-decor-2{left:79px;transform:rotate(22deg)}
+ .zip-desktop[data-theme=light] .zd-afghan-showcase::before{background-image:linear-gradient(90deg,rgba(247,252,255,.7),rgba(247,252,255,.37)),url('/assets/images/hero/afghanistan-bottom.webp'),url('/assets/images/hero/pharmacy-light.svg');background-size:cover,100% 100%,cover;background-position:center,center,center}
+}
+@media(min-width:901px) and (max-width:1200px){.zip-desktop[data-theme=light] .zd-product-props{transform:scale(.8);transform-origin:bottom left}}
+/* Current deploy contains the prepared ZIP artwork; swap to uploaded new reference assets when available. */
+@media(min-width:901px){
+ .zip-desktop[data-theme=light] .zd-hero::before{
+  background-image:linear-gradient(90deg,rgba(239,249,255,.96),rgba(241,249,255,.88) 25%,rgba(241,249,255,.46) 35%,transparent 45%),url('/assets/images/hero/light-right-from-zip.webp'),url('/assets/images/hero/pharmacy-interior.webp');
+  background-size:cover,69% 100%,cover;
+  background-position:center,right center,center;
+ }
+ .zip-desktop[data-theme=light] .zd-afghan-showcase::before{
+  background-image:linear-gradient(90deg,rgba(249,253,255,.87),rgba(246,251,255,.66)),url('/assets/images/hero/herat-mosque.webp'),url('/assets/images/hero/pharmacy-light.svg');
+  background-size:cover,auto 100%,cover;
+  background-position:center,right bottom,center bottom;
+ }
+}
