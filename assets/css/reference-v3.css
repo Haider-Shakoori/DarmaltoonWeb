@@ -71,7 +71,7 @@ html[data-design=light] .dashboard-bezel{background:#e7f4ff;border-color:#142943
 .dashboard-bezel .real-dashboard{display:block;width:100%;height:100%;object-fit:fill}
 html[data-design=dark] .dashboard-bezel{height:431px}
 html[data-design=light] .dashboard-bezel{height:552px}
-html[data-design=dark] .real-dashboard{filter:brightness(.77) saturate(1.13)}
+html[data-design=dark] .real-dashboard{filter:invert(.93) hue-rotate(180deg) saturate(1.5) brightness(.93)}
 html[data-design=light] .real-dashboard{filter:saturate(1.06)}
 .dashboard-foot{height:20px;background:linear-gradient(#617d96 0%,#e6edf4 50%,#4a637b 86%,#102c40 100%);box-shadow:0 8px 11px rgba(0,13,27,.28);margin-inline:-18px;border-radius:0 0 65% 65%}
 html[data-design=light] .dashboard-foot{height:17px;background:linear-gradient(#b9d6ef,#d6e7fa 35%,#466789 70%,#1a3653)}
@@ -185,8 +185,8 @@ html[data-design=dark] .hero::after{
  background:linear-gradient(90deg,rgba(1,10,25,.75),rgba(1,12,27,.35) 44%,rgba(1,7,17,.18)),linear-gradient(0deg,rgba(0,4,12,.69),transparent 72%),url("/assets/images/hero/herat-skyline.webp") center 40%/cover no-repeat
 }
 /* Detailed live HTML dashboard remains accessible until the prepared source screenshot is published. */
-.dashboard-bezel .real-dashboard{display:none!important}
-.dashboard-bezel .pharmacy-ui{display:grid!important;height:100%;min-height:0}
+.dashboard-bezel .real-dashboard{display:block!important}
+.dashboard-bezel .pharmacy-ui{display:none!important;height:100%;min-height:0}
 html[data-design=dark] .app-sidebar{background:#061727;color:#d4eafa;border-color:#0b324b}
 html[data-design=dark] .app-surface{background:#071c2c}
 html[data-design=dark] .mock-stats{grid-template-columns:repeat(5,minmax(0,1fr))}
