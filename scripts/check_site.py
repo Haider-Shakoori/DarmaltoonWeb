@@ -111,6 +111,8 @@ require('id="bg"' not in home, "Desktop must not use a full-page raster screensh
 require('class="zip-desktop"' in home, "Missing native desktop content")
 require(home.count('class="zd-feature"') == 8, "Desktop must have eight HTML feature cards")
 require('class="zd-chart-card"' in home, "Desktop must include native SVG chart")
+require((ROOT / "assets/images/brand/darmaltoon-merged-wordmark.png").is_file(), "Merged approved PNG must be present")
+require(home.count('class="merged-brand-wordmark"') == 2, "Combined PNG must replace both desktop and mobile brand text")
 require('class="zd-platform-showcase"' in home, "Light desktop must have native platform cards")
 require('class="zd-operations"' not in home, "Duplicated desktop offline/FAQ section must be absent")
 require(home.count('id="faq"') == 1, "FAQ must appear only once")
