@@ -259,3 +259,32 @@ html[data-design=dark] .hero::after{
  .mobile-links{inset-inline-end:0}
  html[data-design=dark] .hero::after{background-image:none}
 }
+
+/* Mask the real Afghan mosque photograph into the mountain scene, avoiding hard rectangular photo edges. */
+.hero-architecture{display:none;pointer-events:none}
+html[data-design=dark] .hero-architecture{
+ display:block;position:absolute;z-index:0;top:30px;left:30%;width:315px;height:394px;
+ background:url("/assets/images/hero/herat-mosque.webp") center 32%/cover no-repeat;
+ -webkit-mask-image:radial-gradient(ellipse 75% 63% at 50% 51%,#000 21%,rgba(0,0,0,.8) 43%,transparent 94%);
+ mask-image:radial-gradient(ellipse 75% 63% at 50% 51%,#000 21%,rgba(0,0,0,.8) 43%,transparent 94%);
+ filter:brightness(.53) sepia(.22) saturate(1.7);opacity:.88;
+}
+html[data-design=dark] .hero::after{
+ background:
+ linear-gradient(90deg,rgba(1,10,24,.5),rgba(2,12,23,.04) 45%,rgba(1,10,24,.2)),
+ url("/assets/images/hero/afghan-night.svg") center/cover no-repeat
+}
+html[data-design=dark] .language-area{background:linear-gradient(90deg,#04111b,rgba(4,17,27,.9) 75%,rgba(2,14,25,.76))!important}
+html[data-design=dark] .language-area::after{
+ content:"";position:absolute;right:0;top:0;width:230px;height:100%;
+ background:url("/assets/images/hero/herat-mosque.webp") center/cover no-repeat;
+ -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 47%,#000 100%);
+ mask-image:linear-gradient(90deg,transparent 0%,#000 47%,#000 100%);
+ filter:brightness(.48) sepia(.3) saturate(1.5);opacity:.9;pointer-events:none
+}
+html[data-design=dark] .language-area>*{position:relative;z-index:1}
+html[data-design=light] .callout{background:linear-gradient(95deg,rgba(246,251,255,.87),rgba(223,242,255,.77)),url("/assets/images/hero/pharmacy-light.svg") center bottom/cover no-repeat}
+@media(max-width:1010px){
+ html[data-design=dark] .hero-architecture{top:70px;right:0;left:auto;width:42%;height:310px;opacity:.55}
+}
+@media(max-width:680px){html[data-design=dark] .hero-architecture{display:none}}
