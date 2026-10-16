@@ -98,7 +98,7 @@ for name, (lang, direction) in LANGS.items():
         require(resolved.exists(), f"{name}: missing local asset/link: {href}")
     for image in parser.images:
         require("alt" in image, f"{name}: image missing alt text")
-    require(len(data.encode("utf-8")) < (40_000 if name == "index.html" else 28_000), f"{name}: webpage size budget exceeded")
+    require(len(data.encode("utf-8")) < (48_000 if name == "index.html" else 28_000), f"{name}: webpage size budget exceeded")
 for path, limit in [("assets/css/showcase.css", 30_000), ("assets/js/showcase.js", 3_000), ("assets/images/brand/darmaltoon-official.svg", 6_000)]:
     f = ROOT / path
     require(f.exists() and f.stat().st_size < limit, f"{path}: missing or over budget ({limit} bytes)")
@@ -107,6 +107,10 @@ home = (ROOT / "index.html").read_text(encoding="utf-8")
 for token in ['class="zip-native"', 'class="zn-feature"', 'class="zn-plot"', 'id="native-platforms"', 'id="native-dashboard"']:
     require(token in home, f"Missing native mobile UI requirement: {token}")
 require('class="mobile-original"' not in home, "Old cropped-artwork mobile fallback must not return")
+require('id="bg"' not in home, "Desktop must not use a full-page raster screenshot")
+require('class="zip-desktop"' in home, "Missing native desktop content")
+require(home.count('class="zd-feature"') == 8, "Desktop must have eight HTML feature cards")
+require('class="zd-chart-card"' in home, "Desktop must include native SVG chart")
 native_css = ROOT / "assets/css/native-mobile.css"
 require(native_css.exists() and native_css.stat().st_size < 15_000, "Native mobile CSS missing or over 15KB")
 for required in ["robots.txt", "sitemap.xml", "llms.txt"]:
