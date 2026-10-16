@@ -59,3 +59,33 @@ html{scroll-behavior:smooth}body{overflow-x:hidden!important;min-height:100vh}
 }
 @media(max-width:450px){.m-top{padding:12px 15px}.m-brand{font-size:19px}.m-lang{gap:2px}.m-hero{padding:27px 16px}.more .f4{grid-template-columns:1fr}.more .fm{padding:18px!important}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+
+/* v2 phone composition: crop the user's EXACT approved ZIP artwork, do not show generic mobile fallback */
+.mobile-original{display:none}
+@media(max-width:900px){
+  .mobile-site{display:none!important}
+  .mobile-original{display:block;background:var(--bg0);color:var(--tx);max-width:640px;margin-inline:auto;padding:0 0 22px;isolation:isolate}
+  .zip-mobile-hero{position:relative}
+  .zip-mobile-hero>img,.zip-mobile-dashboard img,.zip-mobile-panel img{display:block;width:100%;height:auto}
+  .zip-mobile-hero a.mobile-hit{position:absolute;display:block;z-index:3;border-radius:7px}
+  .zip-mobile-hero a.mobile-hit:focus-visible{outline:3px solid #15e5f5;outline-offset:3px;background:#14c9e622}
+  .mobile-hit-brand{left:8%;top:0;width:32%;height:9%}
+  .mobile-hit-demo{left:10.4%;width:30.8%;height:9%}
+  .mobile-hit-feature{left:43.3%;width:26%;height:9%}
+  .mobile-original[data-art-theme=dark] .mobile-hit-demo{top:64.3%}
+  .mobile-original[data-art-theme=dark] .mobile-hit-feature{top:64.3%}
+  .mobile-original[data-art-theme=light] .mobile-hit-demo{top:76.2%}
+  .mobile-original[data-art-theme=light] .mobile-hit-feature{top:76.2%;left:48%;width:31%}
+  .zip-mobile-lang{display:flex;justify-content:center;align-items:center;gap:12px;padding:9px 8px;background:var(--cd);border-block:1px solid var(--bd);font-size:12px}
+  .zip-mobile-lang a{padding:5px 7px;text-decoration:none;font-weight:750;color:var(--bt);border-radius:5px}
+  .zip-mobile-lang a:focus-visible{outline:2px solid var(--bt)}
+  .zip-mobile-dashboard{margin:0;overflow:hidden}
+  .zip-mobile-dashboard img{display:block}
+  .zip-mobile-panel{margin:0}
+  .zip-mobile-pages{display:flex;align-items:center;gap:7px;justify-content:center;flex-wrap:wrap;padding:13px 12px 9px;border-top:1px solid var(--bd)}
+  .zip-mobile-pages a{padding:9px 13px;border:1px solid var(--bd);border-radius:8px;color:var(--tx);text-decoration:none;font-weight:700;font-size:12px;background:var(--cd)}
+  .zip-mobile-caption{padding:4px 16px 14px;font-size:10px!important;line-height:1.4;text-align:center;color:var(--mt)}
+  .zip-mobile-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  .more .sec{scroll-margin-top:25px}
+}
