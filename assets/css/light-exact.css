@@ -1,0 +1,76 @@
+/* Darmaltoon exact supplied light-theme imagery. The dashboard/laptop art is decorative;
+   every headline, paragraph, CTA, feature card and language option stays native HTML. */
+@media (min-width:901px) {
+  .zip-desktop[data-theme="light"] .zd-hero {
+    background:#edf8ff;
+  }
+  .zip-desktop[data-theme="light"] .zd-hero::before {
+    background-image:
+      linear-gradient(90deg,rgba(247,252,255,.77) 0%,rgba(247,252,255,.51) 20%,rgba(247,252,255,.13) 37%,rgba(247,252,255,0) 52%),
+      url('/assets/images/hero/darmaltoon-light-hero.webp');
+    background-size:cover,cover;
+    background-position:center center,center center;
+    background-repeat:no-repeat;
+  }
+  .zip-desktop[data-theme="light"] .zd-hero::after,
+  .zip-desktop[data-theme="light"] .zd-product-props {
+    display:none!important;
+  }
+  .zip-desktop[data-theme="light"] .zd-hero-grid {
+    grid-template-columns:42% 58%;
+  }
+  .zip-desktop[data-theme="light"] .zd-copy {
+    max-width:540px;
+    padding-top:clamp(28px,3.3vw,54px);
+  }
+  .zip-desktop[data-theme="light"] .zd-copy h1 {
+    font-size:clamp(36px,3.15vw,48px);
+    line-height:1.09;
+    letter-spacing:-.052em;
+    max-width:520px;
+  }
+  .zip-desktop[data-theme="light"] .zd-afghan-showcase::before {
+    background-image:
+      linear-gradient(180deg,rgba(248,252,255,.43) 0%,rgba(248,252,255,.24) 50%,rgba(248,252,255,.05) 100%),
+      url('/assets/images/hero/afghanistan-bottom.webp');
+    background-size:cover,100% 100%;
+    background-position:center,center;
+    background-repeat:no-repeat;
+  }
+}
+@media (min-width:901px) and (max-width:1200px) {
+  .zip-desktop[data-theme="light"] .zd-hero-grid {grid-template-columns:44% 56%}
+  .zip-desktop[data-theme="light"] .zd-copy h1 {font-size:clamp(33px,3.55vw,44px)}
+}
+/* Mobile layout remains native text, with an optional small panorama below the language cards. */
+@media (max-width:900px) {
+  .zip-native[data-theme="light"] .zn-afghan-panorama {
+    margin:18px -17px -27px;
+    border:0;
+    background:#f2faff;
+  }
+  .zip-native[data-theme="light"] .zn-afghan-panorama img {
+    display:block;
+    width:100%;
+    height:auto;
+  }
+}
+
+/* Narrow laptops: soften the artwork behind native text without cropping it out. */
+@media (min-width:901px) and (max-width:1200px) {
+  .zip-desktop[data-theme="light"] .zd-hero::before {
+    background-image:
+      linear-gradient(90deg,rgba(246,251,255,.98) 0%,rgba(246,251,255,.97) 26%,rgba(246,251,255,.83) 40%,rgba(246,251,255,.25) 60%,transparent 72%),
+      url('/assets/images/hero/darmaltoon-light-hero.webp');
+  }
+  .zip-desktop[data-theme="light"] .zd-copy h1 {
+    font-size:clamp(32px,3.45vw,41px);
+    max-width:430px;
+  }
+  .zip-desktop[data-theme="light"] .zd-copy {
+    max-width:440px;
+  }
+  .zip-desktop[data-theme="light"] .zd-lede {
+    max-width:400px;
+  }
+}
