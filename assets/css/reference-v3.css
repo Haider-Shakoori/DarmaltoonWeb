@@ -230,3 +230,32 @@ html[data-design=light] .mini-device-pair{display:flex}
 /* Prevent duplicate lower cards on dark and squashed narrow columns. */
 html[data-design=light] .lower-grid .afg-story{width:100%;overflow:visible}
 html[data-design=dark] .lower-grid .dark-only-faq{width:100%}
+
+/* Final reference viewport adjustments (measured at 1448x1086). */
+@media(min-width:1011px){
+ html[data-design=light] .hero h1{font-size:39px;line-height:1.095;letter-spacing:-.045em}
+ html[data-design=light] .hero-copy{max-width:460px}
+ html[data-design=light] .hero-description{max-width:415px}
+ html[data-design=light] .medicine-scene{z-index:1}
+ html[data-design=light] .hero-trust,html[data-design=light] .main-actions{position:relative;z-index:4}
+}
+html[data-design=dark] .hero::after{
+ background:
+ linear-gradient(90deg,rgba(0,10,22,.56),rgba(0,9,21,.2) 46%,rgba(0,5,18,.2)),
+ url("/assets/images/hero/herat-mosque.webp") 40% 37%/215px auto no-repeat,
+ url("/assets/images/hero/afghan-night.svg") center/cover no-repeat
+}
+@media(max-width:680px){
+ .top-inner{gap:4px}
+ .mark{gap:5px}
+ .mark strong{font-size:15px}
+ .mark img{width:27px;height:29px}
+ .top-right{gap:3px;min-width:0}
+ .languages{gap:0}
+ .languages a{padding:3px;font-size:9px}
+ .style-toggle{font-size:0;width:30px;min-width:30px;height:29px;padding:0}
+ .style-toggle::after{content:"◐";font-size:15px}
+ .mobile-menu summary{padding:4px 6px}
+ .mobile-links{inset-inline-end:0}
+ html[data-design=dark] .hero::after{background-image:none}
+}
