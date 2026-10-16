@@ -1,0 +1,22 @@
+/* Darmaltoon latest approved pharmacy hero artwork.
+   The photo contains only the decorative product/dashboard preview; copy, CTA,
+   navigation, languages and feature cards remain live selectable HTML. */
+@media(min-width:901px) {
+  .zip-desktop[data-theme="light"] .zd-hero::before {
+    background-image:
+      linear-gradient(90deg,rgba(247,252,255,.19) 0%,rgba(247,252,255,.06) 22%,transparent 45%),
+      url('/assets/images/hero/darmaltoon-light-dashboard-hd.webp');
+    background-size:cover,cover;
+    background-position:center,center;
+    background-repeat:no-repeat;
+  }
+  @supports (background-image: image-set(url("/assets/images/hero/darmaltoon-light-dashboard-hd.avif") type("image/avif"))) {
+    .zip-desktop[data-theme="light"] .zd-hero::before {
+      background-image:
+        linear-gradient(90deg,rgba(247,252,255,.19) 0%,rgba(247,252,255,.06) 22%,transparent 45%),
+        image-set(url('/assets/images/hero/darmaltoon-light-dashboard-hd.avif') type('image/avif'),url('/assets/images/hero/darmaltoon-light-dashboard-hd.webp') type('image/webp'));
+    }
+  }
+  .zip-desktop[data-theme="light"] .zd-hero::after,
+  .zip-desktop[data-theme="light"] .zd-product-props {display:none!important}
+}
