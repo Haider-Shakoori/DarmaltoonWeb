@@ -1,0 +1,12 @@
+(function(){"use strict";
+var root=document.documentElement,store="darmaltoon.zip.theme",desired=new URLSearchParams(location.search).get("theme"),saved="";
+try{saved=localStorage.getItem(store)||""}catch(e){}
+function setTheme(t,updateUrl){root.dataset.theme=t;try{localStorage.setItem(store,t)}catch(e){}document.querySelectorAll("[data-theme-toggle]").forEach(function(b){b.textContent=t==="dark"?"☀ Light":"☾ Dark";b.setAttribute("aria-pressed",String(t==="dark"))});if(updateUrl){var u=new URL(location.href);u.searchParams.set("theme",t);history.replaceState(null,"",u.pathname+u.search+u.hash)}}
+setTheme(desired==="dark"||desired==="light"?desired:(saved==="dark"?"dark":"light"),false);
+function resizeStage(){var s=document.getElementById("desktop-shell"),a=document.getElementById("stage");if(!s||!a)return;var k=Math.min(1,innerWidth/1448);a.style.transform="scale("+k+")";s.style.height=1086*k+"px"}
+resizeStage();window.addEventListener("resize",resizeStage,{passive:true});
+document.addEventListener("DOMContentLoaded",function(){resizeStage();document.querySelectorAll("[data-theme-toggle]").forEach(function(b){b.addEventListener("click",function(){setTheme(root.dataset.theme==="dark"?"light":"dark",true)})});
+document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener("click",function(e){var id=a.getAttribute("href").slice(1);if(!id)return;var el=document.getElementById(id);if(!el)return;e.preventDefault();el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})})});
+var form=document.getElementById("demo-email");if(form)form.addEventListener("submit",function(e){e.preventDefault();if(!form.reportValidity())return;var fd=new FormData(form);var msg=["Name: "+(fd.get("name")||""),"Pharmacy: "+(fd.get("pharmacy")||""),"Phone: "+(fd.get("phone")||""),"Email: "+(fd.get("email")||""),"Language: "+(fd.get("language")||""),"Message: "+(fd.get("message")||"")].join("\n");var a="mailto:info@businessos.af?subject="+encodeURIComponent("Darmaltoon demo request")+"&body="+encodeURIComponent(msg);location.href=a;var note=document.getElementById("mail-note");if(note)note.textContent="Your email app should open. Please send the message there; no request has been submitted automatically."});
+});
+})();
