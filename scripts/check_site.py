@@ -111,6 +111,13 @@ require('id="bg"' not in home, "Desktop must not use a full-page raster screensh
 require('class="zip-desktop"' in home, "Missing native desktop content")
 require(home.count('class="zd-feature"') == 8, "Desktop must have eight HTML feature cards")
 require('class="zd-chart-card"' in home, "Desktop must include native SVG chart")
+require('class="zd-afghan-showcase"' in home, "Light desktop must include native Afghan-pharmacy showcase")
+require('class="zd-proof"' in home, "Light desktop must include selectable hero bullet points")
+require((ROOT / "assets/images/hero/light-right-from-zip.webp").is_file(), "Optimized ZIP visual fallback is missing")
+for new_photo in ["darmaltoon-light-hero.webp", "afghanistan-bottom.webp"]:
+    require((ROOT / "assets/images/hero" / new_photo).is_file(), f"Missing exact user-supplied asset: {new_photo}")
+require('light-exact.css' in home, "Light page must load exact image reference stylesheet")
+require('zn-afghan-panorama' in home, "Light mobile page must show native panorama image")
 native_css = ROOT / "assets/css/native-mobile.css"
 require(native_css.exists() and native_css.stat().st_size < 15_000, "Native mobile CSS missing or over 15KB")
 for required in ["robots.txt", "sitemap.xml", "llms.txt"]:
