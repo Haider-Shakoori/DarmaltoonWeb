@@ -125,6 +125,41 @@ for new_photo in ["darmaltoon-light-hero.webp", "afghanistan-bottom.webp"]:
     require((ROOT / "assets/images/hero" / new_photo).is_file(), f"Missing exact user-supplied asset: {new_photo}")
 require('light-exact.css' in home, "Light page must load exact image reference stylesheet")
 require('zn-afghan-panorama' in home, "Light mobile page must show native panorama image")
+# Secondary marketing pages must stay fast, genuinely crawlable and contactable.
+SECONDARY = ["features.html", "pharmadesktop.html", "about.html", "demo.html", "contact.html"]
+for page_name in SECONDARY:
+    page = ROOT / page_name
+    source = page.read_text(encoding="utf-8")
+    parser = SiteParser()
+    parser.feed(source)
+    require(parser.headings.count("h1") == 1, f"{page_name}: expected one semantic h1")
+    require("subpages-premium.css" in source, f"{page_name}: premium stylesheet not loaded")
+    require("index.html#why" not in source, f"{page_name}: broken old home anchor")
+    require("{{" not in source, f"{page_name}: unresolved contact placeholder")
+    require("info@businessos.af" in source, f"{page_name}: verified email missing")
+    require("darmaltoon-merged-wordmark.png" in source, f"{page_name}: branded PNG missing")
+    require(len(source.encode("utf-8")) < 36_000, f"{page_name}: secondary HTML exceeds 36 KB")
+    canon = [link.get("href") for link in parser.links if link.get("rel") == "canonical"]
+    require(canon == ["https://web.darmaltoon.com/" + page_name], f"{page_name}: incorrect canonical")
+    for link in parser.links:
+        href = link.get("href", "")
+        if not href or href.startswith(("#", "data:", "tel:", "mailto:", "//")): continue
+        uri = urlsplit(href)
+        if uri.scheme in ("http", "https"): continue
+        path = uri.path
+        if not path: continue
+        dest = ROOT / path.lstrip("/") if path.startswith("/") else page.parent / path
+        if path.endswith("/"): dest /= "index.html"
+        require(dest.exists(), f"{page_name}: missing local resource {href}")
+    for img in parser.images: require("alt" in img, f"{page_name}: image needs alt")
+require((ROOT/"assets/css/subpages-premium.css").stat().st_size < 18_000,
+        "Secondary styling exceeds 18 KB")
+script = (ROOT/"assets/js/forms.js").read_text(encoding="utf-8")
+require("mailto:info@businessos.af" in script, "Forms must prepare a real email draft")
+require("showNotConfigured" not in script, "Unusable old form interception must be removed")
+require((ROOT/"features.html").read_text().count("<svg") >= 16, "Feature icons should use inline SVGs")
+require((ROOT/"pharmadesktop.html").read_text().count('class="pd-shot pd-preview"') >= 10,
+        "Desktop feature mockups must be real HTML rather than repeated images")
 native_css = ROOT / "assets/css/native-mobile.css"
 require(native_css.exists() and native_css.stat().st_size < 15_000, "Native mobile CSS missing or over 15KB")
 for required in ["robots.txt", "sitemap.xml", "llms.txt"]:

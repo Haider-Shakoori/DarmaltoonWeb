@@ -64,18 +64,52 @@
     return data;
   }
 
-  function showNotConfigured(box) {
-    if (!box) return;
+  // No form backend is configured. This uses the visitor's own email app,
+  // never claiming a lead has been sent or storing sensitive form data here.
+  function prepareEmailDraft(form, box, kind) {
+    const data = collectFormData(form);
+    const get = (key) => String(data[key] || "").trim().slice(0, 550);
+    const name = get("fullName");
+    const subject = kind === "demo"
+      ? "Darmaltoon demo request — " + (get("pharmacyName") || "Pharmacy")
+      : "Darmaltoon enquiry — " + (get("subject") || "New message");
+    const fields = kind === "demo"
+      ? [["Name",name],["Pharmacy",get("pharmacyName")],["Phone",get("phone")],
+         ["WhatsApp",get("whatsapp")],["Email",get("email")],["Province",get("province")],
+         ["City",get("city")],["Computers",get("computers")],
+         ["Preferred language",get("preferredLanguage")],["Preferred contact",get("preferredContact")],
+         ["Message",get("message")]]
+      : [["Name",name],["Pharmacy / company",get("company")],["Phone",get("phone")],
+         ["Email",get("email")],["Subject",get("subject")],["Enquiry type",get("inquiryType")],
+         ["Message",get("message")]];
+    const body = fields.filter(pair => pair[1]).map(pair => pair[0] + ": " + pair[1])
+      .concat(["","Prepared through the Darmaltoon website. Please press Send in your email app."])
+      .join("\n");
+    const url = "mailto:info@businessos.af?subject=" + encodeURIComponent(subject)
+      + "&body=" + encodeURIComponent(body);
     const lang = document.documentElement.getAttribute("lang");
-    box.textContent = lang === "ps"
-      ? "دا فورم لا نه دی نښلول شوی؛ ستاسو معلومات نه دي استول شوي. مهرباني وکړئ وروسته بیا هڅه وکړئ."
-      : lang === "fa"
-      ? "این فورم هنوز وصل نشده است؛ اطلاعات شما ارسال نشده است. لطفاً بعداً دوباره تلاش کنید."
-      : "This form is not connected yet. Your details have NOT been sent. Please check back later.";
-    box.hidden = false;
-    box.setAttribute("role", "alert");
-    box.classList.add("form-unavailable");
-    box.scrollIntoView({ behavior: "smooth", block: "center" });
+    const messages = {
+      en:"Your email application should open with this draft. Nothing has been sent yet.",
+      fa:"برنامه ایمیل با پیش‌نویس باز می‌شود. تا زمانی که ارسال نکنید، هیچ چیزی فرستاده نشده است.",
+      ps:"ستاسو د ایمیل پروګرام باید له مسودې سره پرانیستل شي. تر اوسه هېڅ پیغام نه دی استول شوی."
+    };
+    if (box) {
+      box.hidden = false;
+      box.classList.remove("form-unavailable");
+      box.classList.add("form-draft");
+      box.setAttribute("role","status");
+      box.replaceChildren();
+      const text = document.createElement("span");
+      text.textContent = messages[lang] || messages.en;
+      box.append(text," ");
+      const link = document.createElement("a");
+      link.href = url;
+      link.textContent = lang === "fa" ? "باز کردن دوباره پیش‌نویس ایمیل"
+        : lang === "ps" ? "د ایمیل مسوده بیا پرانیزئ"
+        : "Open email draft again";
+      box.append(link);
+    }
+    window.location.href = url;
   }
 
   function initDemoForm() {
@@ -103,7 +137,7 @@
       }
 
       // No submission endpoint is configured. Never imply that the lead was delivered.
-      showNotConfigured(success);
+      prepareEmailDraft(form, success, "demo");
     });
   }
 
@@ -132,7 +166,7 @@
       }
 
       // No submission endpoint is configured. Never imply that a message was sent.
-      showNotConfigured(success);
+      prepareEmailDraft(form, success, "contact");
     });
   }
 
