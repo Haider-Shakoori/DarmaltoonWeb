@@ -24,24 +24,38 @@
 - The site has accessible skip links, descriptive image alt text, native
   summary/details FAQ controls and keyboard-focus outlines.
 
-## Limitations / follow-up
-- No ranking, traffic growth, Core Web Vitals field data or rich-result eligibility
-  is implied by this code audit. Confirm in Google Search Console, Google Rich
-  Results Test, PageSpeed Insights and Bing Webmaster Tools after deployment.
-- Submit/refresh the sitemap in search tools and monitor indexing, coverage,
-  regional search queries, search appearance and 404 redirects.
-- Confirm all Dari/Pashto translations with native speakers before paid marketing.
-- Publish a privacy/retention policy, especially because leads now contain
-  personally supplied contact details; establish a regular deletion schedule.
-- Test mailbox delivery of lead notifications. Private SQLite storage is the
-  canonical record if mail transport is unavailable.
-- Audit real Android feature parity, plan availability and pricing before making
-  absolute public claims; availability caveats currently remain in site copy.
-- Grow genuine pharmacy case studies and testimonials only once permissioned
-  customers exist; do not create fabricated testimonials.
-- Broaden localized informational/long-tail pharmacy help pages based on
-  actual Search Console queries rather than keyword stuffing.
+## Remaining operational follow-up
+- Public indexing and rankings are not guaranteed by markup or this QA. Review
+  Google Search Console and Bing Webmaster Tools, inspect sitemap coverage, and
+  monitor actual queries and Core Web Vitals after search engines crawl the site.
+- Validate Dari/Pashto marketing translations with native speakers.
+- Trilingual privacy notices are **already published**. Establish an approved
+  lead retention/deletion schedule and private data access procedure.
+- Verify receipt of an actual lead email at info@businessos.af from the mailbox.
+  The SQLite database is the durable canonical lead record; server-side
+  mail() queueing does **not** guarantee mailbox delivery.
+- Confirm Android feature availability, licensing and exact plan entitlements
+  with the product team before making stronger public claims.
+- Collect genuine, permissioned customer case studies only after clients exist.
+- Build localized informational pages based on real search query data, not
+  fabricated reviews, claims or keyword stuffing.
 
+## Live verification — 17 October 2026
+- English, Dari, Pashto landing pages, three privacy notices, robots.txt,
+  sitemap.xml and llms.txt responded with HTTP 200.
+- Exact SHA-256 checksums of the two localized HTML pages, RTL stylesheet and
+  RTL JavaScript on cPanel match the currently checked-in Git worktree.
+- Headless Chromium covered localized pages at 320, 390, 768, 1024 and 1440px.
+  No horizontal overflow, missing visible images or JavaScript errors.
+  Light/dark switching and mobile menu both functioned.
+- Each localized page has one semantic H1, eight native feature cards,
+  three platform cards and five crawlable FAQ entries.
+- Secure lead endpoint: GET returned 405; an invalid same-origin POST returned
+  422 without saving a lead; a cross-origin POST returned 403.
+- PHP PDO SQLite extension present; the private leads directory and database
+  were verified outside document root with restrictive permissions.
+- Updated current-design UI regression test and main SEO check both pass.
+- No sample lead was added to production during this audit.
 
 ## Privacy and RTL follow-up
 - Trilingual crawlable privacy notices and localized consent links in forms/footers.
