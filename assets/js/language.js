@@ -19,6 +19,12 @@
     return "en";
   }
 
+  function getRequestedLang() {
+    // Query-language links are non-canonical navigation conveniences, not indexed duplicates.
+    const explicit = new URLSearchParams(window.location.search).get("lang");
+    return explicit && SUPPORTED.includes(explicit) ? explicit : null;
+  }
+
   function applyTranslations(lang) {
     const dict = getTranslations()[lang] || getTranslations().en || {};
     const fallback = getTranslations().en || {};
@@ -70,7 +76,7 @@
 
   function init() {
     bindSwitchers();
-    setLanguage(getStoredLang());
+    setLanguage(getRequestedLang() || getStoredLang());
   }
 
   if (document.readyState === "loading") {

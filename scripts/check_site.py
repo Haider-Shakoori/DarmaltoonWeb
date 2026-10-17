@@ -4,6 +4,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlsplit
 import re
+import json
 import sys
 import xml.etree.ElementTree as ET
 
@@ -160,6 +161,35 @@ require("showNotConfigured" not in script, "Unusable old form interception must 
 require((ROOT/"features.html").read_text().count("<svg") >= 16, "Feature icons should use inline SVGs")
 require((ROOT/"pharmadesktop.html").read_text().count('class="pd-shot pd-preview"') >= 10,
         "Desktop feature mockups must be real HTML rather than repeated images")
+# Premium localized homepages: no screenshot-only sections or manufactured proof.
+for lc in ("fa", "ps"):
+    source = (ROOT/lc/"index.html").read_text(encoding="utf-8")
+    page = SiteParser();page.feed(source)
+    require('rtl-premium.css' in source, f"{lc}: premium RTL stylesheet missing")
+    require('rtl-premium.js' in source, f"{lc}: theme/mobile behavior missing")
+    require(source.count('class="rtl-feature"') == 8, f"{lc}: require 8 native HTML feature cards")
+    require(source.count('class="rtl-faq-item"') == 5, f"{lc}: require one FAQ section of 5 answers")
+    require(source.count('id="faq"') == 1, f"{lc}: duplicate FAQ section")
+    require('data-dark-src="/assets/images/design/dark-dashboard.webp"' in source, f"{lc}: theme-specific image missing")
+    require(f'/demo.html?lang={lc}' in source, f"{lc}: demo link must preserve chosen language")
+    require('class="rtl-logo"' in source, f"{lc}: merged wordmark missing")
+    require(source.count('<main') == 1, f"{lc}: semantic main landmark missing")
+    require(source.count('<h1') == 1, f"{lc}: heading duplication")
+    require('{{' not in source, f"{lc}: unresolved placeholder")
+    require('aggregateRating' not in source and 'Review' not in source, f"{lc}: fabricated ratings/reviews")
+    graph_match = re.search(r'<script type="application/ld\+json">(.*?)</script>', source, flags=re.S)
+    if graph_match:
+        try:
+            graph=json.loads(graph_match.group(1))
+            types=[node.get("@type") for node in graph.get("@graph",[])]
+            require("FAQPage" in types and "SoftwareApplication" in types and "WebPage" in types,
+                    f"{lc}: need SoftwareApplication, FAQPage, WebPage schema")
+        except json.JSONDecodeError: ERRORS.append(f"{lc}: invalid JSON-LD")
+    else: ERRORS.append(f"{lc}: missing crawlable JSON-LD")
+require((ROOT/"assets/css/rtl-premium.css").is_file() and
+        (ROOT/"assets/css/rtl-premium.css").stat().st_size < 19_000, "Premium RTL CSS >19KB")
+require((ROOT/"assets/js/rtl-premium.js").is_file() and
+        (ROOT/"assets/js/rtl-premium.js").stat().st_size < 3_000, "Premium RTL JS >3KB")
 native_css = ROOT / "assets/css/native-mobile.css"
 require(native_css.exists() and native_css.stat().st_size < 15_000, "Native mobile CSS missing or over 15KB")
 for required in ["robots.txt", "sitemap.xml", "llms.txt"]:
