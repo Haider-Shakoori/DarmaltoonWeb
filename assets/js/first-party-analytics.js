@@ -1,6 +1,9 @@
-/* Darmaltoon privacy-minimal first-party traffic analytics (no cookies or IDs). */
+/* Darmaltoon first-party analytics: anonymous browser/session estimates, privacy opt-outs. */
 (() => {
   'use strict';
+  // Owner browser exclusion is also enforced by the server; never send owner events.
+  if ((document.cookie || '').split(';').some(v => v.trim() === 'dt_analytics_exclude=1')) return;
+  if (typeof localStorage !== 'undefined' && localStorage.getItem('dt_analytics_optout') === '1') return;
   // Respect the browser's expressed tracking preferences.
   if (navigator.globalPrivacyControl === true || navigator.doNotTrack === '1'
       || window.doNotTrack === '1') return;
@@ -61,18 +64,41 @@
   } else if (source === 'direct' && params.has('utm_source')) {
     source = 'campaign';
   }
+  const makeId = () => {
+    try {
+      const bytes = new Uint8Array(16);
+      crypto.getRandomValues(bytes);
+      return [...bytes].map(b => b.toString(16).padStart(2,'0')).join('');
+    } catch { return ''; }
+  };
+  const now = Date.now();
+  let visitorId = '', sessionId = '';
+  try {
+    const old = JSON.parse(localStorage.getItem('dt_visitor_v1') || 'null');
+    visitorId = old && /^[a-f0-9]{32}$/.test(old.id) && old.expires > now ? old.id : makeId();
+    if (visitorId) localStorage.setItem('dt_visitor_v1', JSON.stringify({id:visitorId,expires:now+30*86400000}));
+    const prior = JSON.parse(sessionStorage.getItem('dt_session_v1') || 'null');
+    sessionId = prior && /^[a-f0-9]{32}$/.test(prior.id) && now-prior.active < 30*60000 ? prior.id : makeId();
+    if (sessionId) sessionStorage.setItem('dt_session_v1', JSON.stringify({id:sessionId,active:now}));
+  } catch { /* storage blocked: continue only aggregated counters */ }
+  // Campaign terms are explicitly supplied UTMs, NOT Google organic search queries.
+  const utmTerm = (params.get('utm_term') || '').slice(0,90).replace(/[^a-zA-Z0-9 _-]/g,'').trim();
   const send = (event) => {
-    const payload = JSON.stringify({event,path,language,source,referrer,campaign,device});
+    const payload = JSON.stringify({event,path,language,source,referrer,campaign,device,visitorId,sessionId,utmTerm});
     try {
       const blob = new Blob([payload], {type:'application/json'});
       if (navigator.sendBeacon && navigator.sendBeacon('/api/analytics.php',blob)) return;
     } catch { /* fall back */ }
     fetch('/api/analytics.php',{
       method:'POST',headers:{'Content-Type':'application/json'},
-      body:payload,credentials:'omit',keepalive:true
+      body:payload,credentials:'same-origin',keepalive:true
     }).catch(()=>{});
   };
   send('page_view');
+  // Simple engagement signal, not a precise time-on-page measurement.
+  let engaged = false;
+  const markEngaged = () => { if (!engaged && document.visibilityState !== 'hidden') { engaged = true; send('engaged'); } };
+  if (typeof setTimeout === 'function') setTimeout(markEngaged, 12000);
   document.addEventListener('click', (event)=>{
     const a = event.target.closest?.('a[href]');
     if (!a) return;
