@@ -216,6 +216,25 @@ for rel, lang, direction in [("privacy.html","en","ltr"),("fa/privacy.html","fa-
     require("<loc>"+canonical+"</loc>" in (ROOT/"sitemap.xml").read_text(),f"{rel}: sitemap")
 for name in ("index.html","demo.html","contact.html","fa/index.html","ps/index.html"):
     require("privacy.html" in (ROOT/name).read_text(),f"{name}: privacy link")
+# First-party, privacy-preserving analytics should be active across the website.
+INSTRUMENTED = [
+    "index.html","dark.html","about.html","features.html",
+    "pharmadesktop.html","demo.html","contact.html",
+    "fa/index.html","ps/index.html","fa/features.html",
+    "ps/features.html","fa/pharmadesktop.html","ps/pharmadesktop.html",
+]
+for name in INSTRUMENTED:
+    require("first-party-analytics.js" in (ROOT/name).read_text(encoding="utf-8"),
+            f"{name}: first-party analytics instrumentation missing")
+for name in ["api/analytics-store.php","api/analytics.php","admin/analytics.php"]:
+    require((ROOT/name).is_file(), f"First-party analytics file missing: {name}")
+analytics_js=(ROOT/"assets/js/first-party-analytics.js").read_text(encoding="utf-8")
+for marker in ["globalPrivacyControl","doNotTrack","sendBeacon","page_view","referrer"]:
+    require(marker in analytics_js, f"Privacy or attribution marker missing: {marker}")
+for name in ["privacy.html","fa/privacy.html","ps/privacy.html"]:
+    notice=(ROOT/name).read_text(encoding="utf-8")
+    require("Global Privacy Control" in notice and "Do Not Track" in notice,
+            f"{name}: analytics privacy notice missing")
 native_css = ROOT / "assets/css/native-mobile.css"
 require(native_css.exists() and native_css.stat().st_size < 15_000, "Native mobile CSS missing or over 15KB")
 for required in ["robots.txt", "sitemap.xml", "llms.txt"]:

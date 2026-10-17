@@ -128,6 +128,19 @@ try {
     $id = (int)$db->lastInsertId();
     $db->commit();
 
+    // Aggregate conversion only after durable lead storage; never send PII
+    // to the separate marketing analytics database.
+    try {
+        if (($_SERVER['HTTP_SEC_GPC'] ?? '') === '1' || ($_SERVER['HTTP_DNT'] ?? '') === '1') throw new RuntimeException('Privacy opt-out');
+        require_once __DIR__.'/analytics-store.php';
+        dal_analytics_record(
+          $kind==='demo'?'demo_received':'contact_received',
+          $kind==='demo'?'/demo.html':'/contact.html', $lang,
+          'server','', 'server');
+    } catch (Throwable $ignored) {
+        error_log('Darmaltoon conversion counter temporarily unavailable');
+    }
+
     // Best-effort notification. Storage is the canonical record: mail() success only
     // confirms local queueing, never final email delivery.
     $subject = '[Darmaltoon] New ' . $kind . ' request #' . $id;
