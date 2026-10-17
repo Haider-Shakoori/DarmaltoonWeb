@@ -63,6 +63,8 @@
     applyDirection(lang);
     applyTranslations(lang);
     setActiveButtons(lang);
+    const privacy = {en:"/privacy.html",fa:"/fa/privacy.html",ps:"/ps/privacy.html"};
+    document.querySelectorAll("[data-privacy-link]").forEach(a => a.setAttribute("href",privacy[lang]));
     document.dispatchEvent(new CustomEvent("darmaltoon:langchange", { detail: { lang } }));
   }
 

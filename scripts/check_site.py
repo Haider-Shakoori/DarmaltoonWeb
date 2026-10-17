@@ -202,6 +202,20 @@ for js_path in ("assets/js/forms.js", "assets/js/light-demo-mailto.js"):
     require("/api/lead.php" in source, f"{js_path}: missing lead endpoint integration")
 require('href="/demo.html" class="zn-button primary"' in home,
         "Mobile demo CTA must lead to visible form")
+# Crawlable trilingual privacy notices and contact links.
+for rel, lang, direction in [("privacy.html","en","ltr"),("fa/privacy.html","fa-AF","rtl"),("ps/privacy.html","ps-AF","rtl")]:
+    source=(ROOT/rel).read_text(encoding="utf-8")
+    page=SiteParser();page.feed(source)
+    require(page.lang==lang and page.direction==direction,f"{rel}: language/direction")
+    require(page.headings.count("h1")==1,f"{rel}: one h1")
+    canonical="https://web.darmaltoon.com/"+rel
+    require(any(x.get("href")==canonical and x.get("rel")=="canonical" for x in page.links),f"{rel}: canonical")
+    require("application/ld+json" in source,f"{rel}: JSON-LD")
+    require("info@businessos.af" in source,f"{rel}: contact")
+    require("privacy-pages.css" in source,f"{rel}: stylesheet")
+    require("<loc>"+canonical+"</loc>" in (ROOT/"sitemap.xml").read_text(),f"{rel}: sitemap")
+for name in ("index.html","demo.html","contact.html","fa/index.html","ps/index.html"):
+    require("privacy.html" in (ROOT/name).read_text(),f"{name}: privacy link")
 native_css = ROOT / "assets/css/native-mobile.css"
 require(native_css.exists() and native_css.stat().st_size < 15_000, "Native mobile CSS missing or over 15KB")
 for required in ["robots.txt", "sitemap.xml", "llms.txt"]:

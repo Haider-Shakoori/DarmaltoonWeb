@@ -41,3 +41,10 @@
   customers exist; do not create fabricated testimonials.
 - Broaden localized informational/long-tail pharmacy help pages based on
   actual Search Console queries rather than keyword stuffing.
+
+
+## Privacy and RTL follow-up
+- Trilingual crawlable privacy notices and localized consent links in forms/footers.
+- Reciprocal canonical and hreflang on privacy pages and new sitemap entries.
+- The mobile light RTL background now favors readable text over faded dashboard lettering.
+- No automatic lead-deletion interval is yet defined. Operational retention policy is still pending approval.
