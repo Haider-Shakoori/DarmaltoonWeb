@@ -5,6 +5,11 @@
 
 window.DARMALTOON_I18N = {
   en: {
+    "launch.label": "Darmaltoon Standard Annual — limited founding offer",
+    "launch.title": "First 10 paying pharmacies: AFN 5,000 first year",
+    "launch.body": "After the first 10 confirmed paying pharmacies, the first-year price becomes AFN 7,000. All Standard customers renew for AFN 5,000 per year. A 7-day trial is available through the separate approval process.",
+    "launch.note": "Submitting this demo enquiry does not reserve a founding-customer place or activate a trial. Final eligibility is confirmed when your first payment is verified. One location, 1 Windows PC and up to 2 Android devices, subject to onboarding checks.",
+
     "extra.privacyNote": "We use the details you submit to respond to your enquiry.",
     "extra.privacyLink": "Read our privacy notice",
     "extra.sendDemo": "Submit Demo Request",
@@ -299,6 +304,11 @@ window.DARMALTOON_I18N = {
   },
 
   fa: {
+    "launch.label": "پیشنهاد آغاز کار بستهٔ استاندارد درملتون",
+    "launch.title": "۱۰ دواخانه اول: ۵٬۰۰۰ افغانی برای سال نخست",
+    "launch.body": "پس از تأیید پرداخت ده مشتری نخست، قیمت سال اول به ۷٬۰۰۰ افغانی افزایش می‌یابد. تمدید سالانه برای همه مشتریان استاندارد ۵٬۰۰۰ افغانی است. آزمایش هفت‌روزه با تأیید جداگانه امکان‌پذیر است.",
+    "launch.note": "ارسال درخواست نمایش، تخفیف ده مشتری اول را رزرو نمی‌کند و آزمایش را فعال نمی‌سازد. شرایط هنگام تأیید پرداخت نخست مشخص می‌شود. یک دواخانه، یک کمپیوتر ویندوز و حداکثر دو دستگاه اندروید، مشروط به بررسی هنگام راه‌اندازی.",
+
     "extra.privacyNote": "از اطلاعات شما برای پاسخ به درخواست‌تان استفاده می‌کنیم.",
     "extra.privacyLink": "اطلاعیه حریم خصوصی را بخوانید",
     "extra.sendDemo": "ثبت درخواست نمایش",
@@ -593,6 +603,11 @@ window.DARMALTOON_I18N = {
   },
 
   ps: {
+    "launch.label": "د درملتون سټنډرډ کلنۍ بستې ځانګړی وړاندیز",
+    "launch.title": "لومړني ۱۰ تادیه کوونکي درملتونونه: لومړی کال ۵٬۰۰۰ افغانۍ",
+    "launch.body": "له لومړنیو لسو تایید شوو تادیه کوونکو وروسته د لومړي کال بیه ۷٬۰۰۰ افغانۍ ده. د ټولو سټنډرډ پېرودونکو کلنۍ تمدید ۵٬۰۰۰ افغانۍ دی. اووه ورځنۍ وړیا ازموینه د جلا تایید له لارې شونې ده.",
+    "launch.note": "د نندارې غوښتنه تخفیفي ځای نه خوندي کوي او ازموینه نه فعالوي. شرایط د لومړۍ تادیې د تایید پر مهال ټاکل کیږي. یو درملتون، یو وینډوز کمپیوټر او تر دوو انډرایډ وسایلو پورې، د نصب د تایید په شرط.",
+
     "extra.privacyNote": "ستاسو معلومات ستاسو د غوښتنې د ځواب لپاره کاروو.",
     "extra.privacyLink": "د محرمیت خبرتیا ولولئ",
     "extra.sendDemo": "د نندارې غوښتنه ثبت کړئ",
