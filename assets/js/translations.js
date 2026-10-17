@@ -5,6 +5,8 @@
 
 window.DARMALTOON_I18N = {
   en: {
+    "extra.privacyNote": "We use the details you submit to respond to your enquiry.",
+    "extra.privacyLink": "Read our privacy notice",
     "extra.sendDemo": "Submit Demo Request",
     "extra.sendRequest": "Submit Enquiry",
     "extra.leadConsent": "I agree to be contacted in response to my enquiry.",
@@ -297,6 +299,8 @@ window.DARMALTOON_I18N = {
   },
 
   fa: {
+    "extra.privacyNote": "از اطلاعات شما برای پاسخ به درخواست‌تان استفاده می‌کنیم.",
+    "extra.privacyLink": "اطلاعیه حریم خصوصی را بخوانید",
     "extra.sendDemo": "ثبت درخواست نمایش",
     "extra.sendRequest": "ارسال درخواست",
     "extra.leadConsent": "موافقم که برای پاسخ به پرسشم با من تماس گرفته شود.",
@@ -589,6 +593,8 @@ window.DARMALTOON_I18N = {
   },
 
   ps: {
+    "extra.privacyNote": "ستاسو معلومات ستاسو د غوښتنې د ځواب لپاره کاروو.",
+    "extra.privacyLink": "د محرمیت خبرتیا ولولئ",
     "extra.sendDemo": "د نندارې غوښتنه ثبت کړئ",
     "extra.sendRequest": "غوښتنه ولېږئ",
     "extra.leadConsent": "زه منم چې زما د پوښتنې د ځواب لپاره اړیکه راسره ونیول شي.",

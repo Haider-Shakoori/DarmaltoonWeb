@@ -2,7 +2,7 @@
 
 ## Data flow
 - Homepage, Demo and Contact POST JSON to /api/lead.php on the same origin.
-- PHP 8.4+ validates input, consent and origin; includes a hidden honeypot and
+- PHP 8.1+ validates input, consent and origin; includes a hidden honeypot and
   hashed-IP rate limits (45s minimum, 5/hour, 16/day).
 - Valid requests are durably stored in SQLite **outside document root**,
   /home/darmaltoon/.darmaltoon-leads/leads.sqlite.
