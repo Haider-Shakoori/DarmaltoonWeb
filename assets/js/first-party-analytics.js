@@ -8,7 +8,11 @@
     '/', '/about.html', '/features.html', '/pharmadesktop.html',
     '/demo.html', '/contact.html', '/privacy.html', '/fa/', '/ps/',
     '/fa/features.html', '/ps/features.html', '/fa/pharmadesktop.html',
-    '/ps/pharmadesktop.html', '/fa/privacy.html', '/ps/privacy.html'
+    '/ps/pharmadesktop.html', '/fa/privacy.html', '/ps/privacy.html',
+    '/guides/', '/fa/guides/', '/ps/guides/',
+    '/guides/pharmacy-inventory.html', '/fa/guides/pharmacy-inventory.html', '/ps/guides/pharmacy-inventory.html',
+    '/guides/expiry-tracking.html', '/fa/guides/expiry-tracking.html', '/ps/guides/expiry-tracking.html',
+    '/guides/offline-pharmacy-software.html', '/fa/guides/offline-pharmacy-software.html', '/ps/guides/offline-pharmacy-software.html'
   ]);
   const path = location.pathname;
   if (!known.has(path)) return;
@@ -21,6 +25,14 @@
   let source = 'direct';
   let referrer = 'none';
   const providers = [
+    // Identifiable AI assistant referral hostnames; not proof of an answer mentioning us.
+    ['chatgpt', /(^|\.)(chatgpt\.com|chat\.openai\.com)$/],
+    ['perplexity', /(^|\.)perplexity\.ai$/],
+    ['gemini', /^gemini\.google\.com$/],
+    ['copilot', /^(copilot\.microsoft\.com|copilot\.com)$/],
+    ['claude', /(^|\.)claude\.ai$/],
+    ['youcom', /(^|\.)you\.com$/],
+    ['poe', /(^|\.)poe\.com$/],
     ['google', /(^|\.)google\.[a-z.]+$/],['bing', /(^|\.)bing\.com$/],
     ['duckduckgo', /(^|\.)duckduckgo\.com$/],['yahoo', /(^|\.)yahoo\.[a-z.]+$/],
     ['yandex', /(^|\.)yandex\.[a-z.]+$/],['facebook', /(^|\.)facebook\.com$/],
@@ -29,16 +41,25 @@
     ['linkedin', /(^|\.)linkedin\.com$/],['x', /(^|\.)((twitter|x)\.com)$/],
     ['telegram', /(^|\.)((t\.me|telegram\.org))$/]
   ];
-  if (params.has('utm_source')) source = 'campaign';
-  else if (document.referrer) {
+  const aiProviders = ['chatgpt','perplexity','gemini','copilot','claude','youcom','poe'];
+  const utmSource = (params.get('utm_source') || '').toLowerCase();
+  const utmProvider = aiProviders.includes(utmSource) ? utmSource : 'none';
+  if (document.referrer) {
     try {
       const host = new URL(document.referrer).hostname.toLowerCase();
       if (host === location.hostname) source = 'internal';
       else {
         referrer = providers.find(x=>x[1].test(host))?.[0] || 'other';
-        source = ['google','bing','duckduckgo','yahoo','yandex'].includes(referrer) ? 'organic' : 'referral';
+        source = aiProviders.includes(referrer) ? 'ai_referral' : ['google','bing','duckduckgo','yahoo','yandex'].includes(referrer) ? 'organic' : 'referral';
       }
     } catch { /* ignore invalid referrer */ }
+  }
+  // Explicit AI campaign attribution is a declared source, not independent evidence of an AI mention.
+  if (source !== 'ai_referral' && utmProvider !== 'none') {
+    source = 'ai_referral';
+    referrer = utmProvider;
+  } else if (source === 'direct' && params.has('utm_source')) {
+    source = 'campaign';
   }
   const send = (event) => {
     const payload = JSON.stringify({event,path,language,source,referrer,campaign,device});

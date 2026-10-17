@@ -27,7 +27,7 @@ if (!is_file($passFile)) {
 $hash=trim((string)file_get_contents($passFile));
 $csrf=$_SESSION['csrf'] ?? bin2hex(random_bytes(20));
 $_SESSION['csrf']=$csrf;
-if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
+if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST' && (isset($_POST['password']) || isset($_POST['logout']))) {
     if (!hash_equals($csrf,(string)($_POST['csrf'] ?? ''))) {
         http_response_code(403);exit('Invalid session');
     }
@@ -61,6 +61,46 @@ if (!$authenticated) {
 $_SESSION['last_activity']=time();
 require_once dirname(__DIR__).'/api/analytics-store.php';
 try {$db=dal_analytics_db();}catch(Throwable $e){http_response_code(503);exit('Metrics storage unavailable');}
+// Private, explicitly human-checked AI answer observations. Never auto-invent a mention.
+$db->exec('CREATE TABLE IF NOT EXISTS ai_mention_checks (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  checked_at TEXT NOT NULL,
+  engine TEXT NOT NULL,
+  question TEXT NOT NULL,
+  result TEXT NOT NULL,
+  evidence_url TEXT NOT NULL DEFAULT ""
+)');
+$aiEngines=['ChatGPT','Perplexity','Gemini','Copilot','Claude','Other'];
+$aiResults=['mentioned_with_link','mentioned_without_link','not_mentioned','unclear'];
+if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST' && isset($_POST['save_ai_check'])) {
+    if (!hash_equals($csrf,(string)($_POST['csrf'] ?? ''))) { http_response_code(403);exit('Invalid session'); }
+    $engine=(string)($_POST['engine'] ?? '');
+    $question=trim((string)($_POST['question'] ?? ''));
+    $result=(string)($_POST['result'] ?? '');
+    $evidence=trim((string)($_POST['evidence_url'] ?? ''));
+    if (!in_array($engine,$aiEngines,true) || !in_array($result,$aiResults,true) ||
+        strlen($question)<12 || strlen($question)>500 ||
+        strlen($evidence)>500 || ($evidence!=='' && (!filter_var($evidence,FILTER_VALIDATE_URL) || strncmp($evidence,'https://',8)!==0))) {
+        $ai_error='Enter an engine, a 12–250 character question, a result, and an optional HTTPS evidence URL.';
+    } else {
+        $q=$db->prepare('INSERT INTO ai_mention_checks (checked_at,engine,question,result,evidence_url) VALUES (?,?,?,?,?)');
+        $q->execute([gmdate('Y-m-d H:i:s'),$engine,$question,$result,$evidence]);
+        header('Location: /admin/analytics.php#ai-visibility');exit;
+    }
+}
+// Aggregate retention: no visitor identities; prune older manually recorded observations.
+$db->prepare('DELETE FROM ai_mention_checks WHERE checked_at < ?')->execute([gmdate('Y-m-d H:i:s',time()-400*86400)]);
+$aiChecks=$db->query('SELECT checked_at,engine,question,result,evidence_url FROM ai_mention_checks ORDER BY id DESC LIMIT 35')->fetchAll();
+$aiMentionCounts=[];
+foreach ($db->query("SELECT result, COUNT(*) AS n FROM ai_mention_checks GROUP BY result")->fetchAll() as $r) $aiMentionCounts[$r['result']]=(int)$r['n'];
+$aiReferralProviders=['chatgpt','perplexity','gemini','copilot','claude','youcom','poe'];
+$aiReferralTotal=0;
+$aiStmt=$db->prepare("SELECT COALESCE(SUM(count),0) FROM daily_metrics WHERE day>=:since AND event='page_view' AND source='ai_referral'");
+$aiStmt->execute([':since'=>gmdate('Y-m-d',time()-29*86400)]);
+$aiReferralTotal=(int)$aiStmt->fetchColumn();
+$aiRefBreakdown=$db->prepare("SELECT referrer AS label,SUM(count) AS total FROM daily_metrics WHERE day>=:since AND event='page_view' AND source='ai_referral' GROUP BY referrer ORDER BY total DESC");
+$aiRefBreakdown->execute([':since'=>gmdate('Y-m-d',time()-29*86400)]);
+$aiBreakdown=$aiRefBreakdown->fetchAll();
 $since=gmdate('Y-m-d',time()-29*86400);
 function metrics(PDO $db,string $where,string $group): array {
     global $since;
@@ -77,7 +117,8 @@ $blocks=[
  'Daily traffic'=>metrics($db,"AND event='page_view'",'day'),
  'Page views by path'=>metrics($db,"AND event='page_view'",'path'),
  'Traffic sources'=>metrics($db,"AND event='page_view'",'source'),
- 'Referring providers'=>metrics($db,"AND event='page_view' AND source IN ('organic','referral')",'referrer'),
+ 'Referring providers'=>metrics($db,"AND event='page_view' AND source IN ('organic','referral','ai_referral')",'referrer'),
+ 'AI assistant referrals'=>metrics($db,"AND event='page_view' AND source='ai_referral'",'referrer'),
  'Campaigns'=>metrics($db,"AND event='page_view' AND campaign!=''",'campaign'),
  'Languages'=>metrics($db,"AND event='page_view'",'language'),
  'Device widths'=>metrics($db,"AND event='page_view'",'device'),
@@ -87,7 +128,7 @@ page_start('First-party analytics');
 echo '<div class="wrap"><div class="head"><div><span class="tag">DARMALTOON · FIRST-PARTY ANALYTICS</span><h1>Marketing overview</h1><p class="intro">Last 30 days (UTC). Privacy-friendly aggregate counts; no cookies, visitor identities or raw IPs.</p></div><form method="post"><input type="hidden" name="csrf" value="'.e($csrf).'"><button class="logout" type="submit" name="logout" value="1">Sign out</button></form></div>';
 echo '<div class="cards">';
 foreach([
-  ['Page views',$views],['Demo requests received',$totals['demo_received']??0],
+  ['Page views',$views],['AI-attributed visits',$aiReferralTotal],['Demo requests received',$totals['demo_received']??0],
   ['Contact requests received',$totals['contact_received']??0],
   ['Lead conversion rate',$views?number_format($leads/$views*100,2).'%':'—']
 ] as [$title,$number]){
@@ -104,4 +145,17 @@ foreach($blocks as $title=>$rows){
     if (!$rows) echo '<tr><td colspan="2">No data yet</td></tr>';
     echo '</tbody></table></div></section>';
 }
-echo '</div><p class="notice">Page views are not unique visitors or Google Search impressions. Traffic sources and campaign labels are aggregate totals. Google search queries and impressions require verified Search Console access.</p></div></body></html>';
+echo '</div><section class="panel" id="ai-visibility" style="margin-top:22px"><span class="tag">AI SEARCH VISIBILITY · OBSERVABLE SIGNALS</span><h2>AI referrals and verified mention checks</h2>';
+echo '<p class="intro">AI-attributed page views from identifiable referrer domains or explicit UTM sources (last 30 days): <strong>'.e((string)$aiReferralTotal).'</strong>. Direct visits, stripped referrers, bot crawls, answer views without clicks, and Google AI results cannot be reliably identified here. These numbers do not count AI recommendations.</p>';
+echo '<p class="intro">Manually checked answers recorded: '.e((string)count($aiChecks)).' shown (most recent 35). Confirmed brand mentions with citations: '.e((string)($aiMentionCounts['mentioned_with_link']??0)).'. Without a link: '.e((string)($aiMentionCounts['mentioned_without_link']??0)).'. Missing: '.e((string)($aiMentionCounts['not_mentioned']??0)).'. The log contains only observations manually entered below.</p>';
+if (isset($ai_error)) echo '<p class="error">'.e($ai_error).'</p>';
+echo '<form method="post" style="max-width:730px"><input type="hidden" name="csrf" value="'.e($csrf).'"><label for="engine">Assistant checked</label><select id="engine" name="engine" required style="padding:10px;margin:8px 0 14px;width:100%;border:1px solid #b5cfea;border-radius:8px">';
+foreach ($aiEngines as $engine) echo '<option value="'.e($engine).'">'.e($engine).'</option>';
+echo '</select><label for="question">Exact prompt/query tested (no personal data)</label><input id="question" name="question" required minlength="12" maxlength="250" placeholder="Which pharmacy inventory software supports offline work?"><label for="result">Observed response</label><select id="result" name="result" required style="padding:10px;margin:8px 0 14px;width:100%;border:1px solid #b5cfea;border-radius:8px">';
+foreach (['mentioned_with_link'=>'Mentioned with Darmaltoon link','mentioned_without_link'=>'Mentioned without link','not_mentioned'=>'Not mentioned','unclear'=>'Unclear'] as $k=>$label) echo '<option value="'.e($k).'">'.e($label).'</option>';
+echo '</select><label for="evidence_url">Evidence link (optional HTTPS URL)</label><input id="evidence_url" name="evidence_url" type="url" maxlength="500" placeholder="https://..."><button type="submit" name="save_ai_check" value="1">Record observed result</button></form>';
+echo '<div class="table-scroll" style="margin-top:18px"><table><thead><tr><th>Checked (UTC)</th><th>Assistant</th><th>Exact prompt</th><th>Observed</th></tr></thead><tbody>';
+foreach($aiChecks as $check) echo '<tr><td>'.e($check['checked_at']).'</td><td>'.e($check['engine']).'</td><td>'.e($check['question']).'</td><td>'.e(str_replace('_',' ',$check['result'])).'</td></tr>';
+if (!$aiChecks) echo '<tr><td colspan="4">No manually audited AI responses yet</td></tr>';
+echo '</tbody></table></div></section>';
+echo '</div><p class="notice">Page views are not unique visitors or Google Search impressions. AI referrals and campaign labels are aggregate totals, not proof of assistant answers mentioning Darmaltoon. Manual checks record only direct operator observations. Traffic sources and campaign labels are aggregate totals. Google search queries and impressions require verified Search Console access.</p></div></body></html>';
