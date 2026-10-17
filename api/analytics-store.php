@@ -59,7 +59,7 @@ function dal_analytics_db(): PDO {
 function dal_analytics_record(string $event, string $path, string $lang, string $source, string $campaign, string $device, string $referrer='none', string $visitorId='', string $sessionId='', string $utmTerm=''): void {
     if (($_COOKIE['dt_analytics_exclude'] ?? '') === '1') return;
     $events = ['page_view','engaged','demo_click','contact_click','whatsapp_click','email_click',
-       'demo_received','contact_received'];
+       'demo_received','contact_received','trial_requested'];
     if (!in_array($event, $events, true)) return;
     // Known site paths only. Query strings and fragments are never stored.
     $known = ['/','/about.html','/features.html',

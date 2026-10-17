@@ -22,3 +22,13 @@ jobs:
         run: python scripts/check_seo_aio.py
       - name: AI referral classifier regression
         run: node scripts/check_ai_referrals.js
+      - name: Validate the unified demo/trial form and safe server-side intake
+        run: python scripts/check_unified_trial.py
+      - name: PHP syntax checks for the website and private sync scripts
+        run: |
+          find api scripts -type f -name '*.php' -print0 | xargs -0 -n1 php -l
+      - name: JavaScript syntax checks for form and live-offer UI
+        run: |
+          node --check assets/js/forms.js
+          node --check assets/js/founding-offer.js
+          node --check assets/js/translations.js
