@@ -22,13 +22,6 @@
       if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'})}
     });
   }
-  const form=document.getElementById('df');
-  if(form)form.addEventListener('submit',function(e){
-    e.preventDefault();
-    const box=document.getElementById('ok');
-    if(!box)return;
-    box.style.display='block';box.setAttribute('role','status');
-    box.innerHTML='The online request form is not connected yet; your details have <strong>not</strong> been sent. Please email <a href="mailto:info@businessos.af">info@businessos.af</a> to arrange a demo.';
-    box.scrollIntoView({behavior:'smooth',block:'nearest'});
-  });
+  // The active homepage form handler lives in light-demo-mailto.js.
+  // Do not register a second outdated submit listener here.
 })();

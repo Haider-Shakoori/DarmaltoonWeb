@@ -83,7 +83,7 @@
     const body = fields.filter(pair => pair[1]).map(pair => pair[0] + ": " + pair[1])
       .concat(["","Prepared through the Darmaltoon website. Please press Send in your email app."])
       .join("\n");
-    const url = "mailto:info@businessos.af?subject=" + encodeURIComponent(subject)
+    const url = "mailto:info@darmaltoon.com?subject=" + encodeURIComponent(subject)
       + "&body=" + encodeURIComponent(body);
     const lang = document.documentElement.getAttribute("lang");
     const messages = {

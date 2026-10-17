@@ -150,12 +150,12 @@ try {
       'Details: '.json_encode($optional, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
       'Timestamp UTC: '.gmdate('c',$now)];
     $headers = [
-        'From: Darmaltoon <noreply@darmaltoon.com>',
+        'From: Darmaltoon <info@darmaltoon.com>',
         'MIME-Version: 1.0',
         'Content-Type: text/plain; charset=UTF-8'
     ];
     if ($email !== '') $headers[] = 'Reply-To: ' . $email;
-    $queued = @mail('info@businessos.af', $subject, implode("\n", $lines), implode("\r\n", $headers));
+    $queued = @mail('info@darmaltoon.com', $subject, implode("\n", $lines), implode("\r\n", $headers));
     $q = $db->prepare('UPDATE leads SET notification_attempted=1,notification_queued=:queued WHERE id=:id');
     $q->execute([':queued'=>$queued ? 1 : 0, ':id'=>$id]);
     reply(201, ['ok'=>true, 'received'=>true,

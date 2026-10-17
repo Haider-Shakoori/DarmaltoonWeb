@@ -29,7 +29,7 @@ Rotate with the same command plus --rotate.
 Lead forms POST to /api/lead.php. Consent, honeypot, origin checks,
 size validation, input validation and keyed-IP-hash throttling apply.
 Requests are saved before a successful response. cPanel mail() attempts
-a notification to info@businessos.af with a noreply@darmaltoon.com
+a notification to info@darmaltoon.com with a noreply@darmaltoon.com
 sender. A true mail() return indicates local queue acceptance only,
 not verified inbox delivery. Private delivery flags record that distinction.
 Optional cPanel cron (every 15 minutes) to retry local mail queue failures:
