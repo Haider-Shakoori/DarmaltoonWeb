@@ -243,3 +243,6 @@ body.subpage .footer-bottom{border-top:1px solid #2c4363;margin-top:35px;padding
  body.subpage .header-actions{gap:3px}
 }
 @media(prefers-reduced-motion:reduce){body.subpage *{scroll-behavior:auto!important;transition:none!important}}
+/* Honeypot is for automated form spam only; it is not a user-facing field. */
+body.subpage .lead-honeypot {position:absolute!important;left:-10000px!important;top:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+body.subpage .form-card button[disabled]{opacity:.55;cursor:wait;transform:none}

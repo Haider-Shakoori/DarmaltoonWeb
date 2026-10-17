@@ -5,6 +5,11 @@
 
 window.DARMALTOON_I18N = {
   en: {
+    "extra.sendDemo": "Submit Demo Request",
+    "extra.sendRequest": "Submit Enquiry",
+    "extra.leadConsent": "I agree to be contacted in response to my enquiry.",
+    "extra.directCopy": "Submit online or contact us directly. If online submission fails, a prepared email draft is available.",
+
     "extra.platformEyebrow": "CHOOSE YOUR WORKFLOW",
     "extra.platformTitle": "From the sales counter to your browser.",
     "extra.platformCopy": "Explore web access, offline-capable Windows operation and available Android workflows.",
@@ -24,7 +29,7 @@ window.DARMALTOON_I18N = {
     "extra.flexible": "Connected or offline",
     "extra.flexibleCopy": "Discuss a desktop or web setup for your connectivity.",
     "extra.directTitle": "Prefer to speak directly?",
-    "extra.directCopy": "Contact us on WhatsApp or email. The form opens an email draft, not an automatic submission.",
+    "extra.directCopy": "Submit online or contact us directly. If online submission fails, a prepared email draft is available.",
     "extra.emailDemo": "Open Email Draft",
     "extra.emailContact": "Open Email Draft",
 
@@ -292,6 +297,11 @@ window.DARMALTOON_I18N = {
   },
 
   fa: {
+    "extra.sendDemo": "ثبت درخواست نمایش",
+    "extra.sendRequest": "ارسال درخواست",
+    "extra.leadConsent": "موافقم که برای پاسخ به پرسشم با من تماس گرفته شود.",
+    "extra.directCopy": "درخواست خود را آنلاین ثبت کنید یا مستقیم تماس بگیرید. اگر ارسال آنلاین ممکن نبود، پیش‌نویس ایمیل در دسترس است.",
+
     "extra.platformEyebrow": "روش کاری خود را انتخاب کنید",
     "extra.platformTitle": "از پیشخوان فروش تا مرورگر شما.",
     "extra.platformCopy": "دسترسی وب، ویندوز بدون اینترنت و امکانات موجود اندروید را بررسی کنید.",
@@ -311,7 +321,7 @@ window.DARMALTOON_I18N = {
     "extra.flexible": "آنلاین یا آفلاین",
     "extra.flexibleCopy": "برای انتخاب نسخه وب یا ویندوز با ما مشورت کنید.",
     "extra.directTitle": "می‌خواهید مستقیم تماس بگیرید؟",
-    "extra.directCopy": "از طریق واتساپ یا ایمیل تماس بگیرید. فورم فقط پیش‌نویس ایمیل باز می‌کند.",
+    "extra.directCopy": "درخواست خود را آنلاین ثبت کنید یا مستقیم تماس بگیرید. اگر ارسال آنلاین ممکن نبود، پیش‌نویس ایمیل در دسترس است.",
     "extra.emailDemo": "باز کردن پیش‌نویس ایمیل",
     "extra.emailContact": "باز کردن پیش‌نویس ایمیل",
 
@@ -579,6 +589,11 @@ window.DARMALTOON_I18N = {
   },
 
   ps: {
+    "extra.sendDemo": "د نندارې غوښتنه ثبت کړئ",
+    "extra.sendRequest": "غوښتنه ولېږئ",
+    "extra.leadConsent": "زه منم چې زما د پوښتنې د ځواب لپاره اړیکه راسره ونیول شي.",
+    "extra.directCopy": "خپله غوښتنه آنلاین ثبت کړئ یا مستقیم اړیکه ونیسئ. که آنلاین لېږل ممکن نه وي، د ایمیل مسوده شته.",
+
     "extra.platformEyebrow": "خپل کاري طرز وټاکئ",
     "extra.platformTitle": "له پلور ځایه تر براوزر پورې.",
     "extra.platformCopy": "د وېب، بې‌انټرنېټه وینډوز او شته اندروېډ امکانات وپېژنئ.",
@@ -598,7 +613,7 @@ window.DARMALTOON_I18N = {
     "extra.flexible": "آنلاین یا آفلاین",
     "extra.flexibleCopy": "د مناسب وېب یا وینډوز لپاره اړیکه ونیسئ.",
     "extra.directTitle": "مستقیمه اړیکه غواړئ؟",
-    "extra.directCopy": "په واټساپ یا ایمیل اړیکه ونیسئ. فورمه یوازې د ایمیل مسوده پرانیزي.",
+    "extra.directCopy": "خپله غوښتنه آنلاین ثبت کړئ یا مستقیم اړیکه ونیسئ. که آنلاین لېږل ممکن نه وي، د ایمیل مسوده شته.",
     "extra.emailDemo": "د ایمیل مسوده پرانیزئ",
     "extra.emailContact": "د ایمیل مسوده پرانیزئ",
 
