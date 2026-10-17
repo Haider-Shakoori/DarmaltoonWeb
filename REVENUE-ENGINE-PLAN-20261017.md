@@ -1,6 +1,6 @@
 # Darmaltoon revenue engine — launch blueprint (draft)
 Date: 2026-10-17
-Status: Commercial hypotheses and implementation plan, **NOT approved public pricing**.
+Status: Owner-confirmed launch price and one-pharmacy scope; implementation readiness and public publication still require verification.
 Scope: Afghanistan pharmacy-management market. Marketing site: `DarmaltoonWeb`; SaaS backend: `Pharmacy`; Windows application: `PharmaDesktop`.
 
 ## Principle
@@ -13,13 +13,14 @@ Start from 0 verified paying pharmacies. First goal is 10 paying installations, 
 - Known gap: public marketing leads are not currently evidenced as connected to a managed sales pipeline, demo outcome, quote, payment receipt, onboarding and renewals.
 
 ## Confirmed launch prices (owner decision, 2026-10-17)
-- **AFN 5,000 for the first 12 months of a standard pharmacy license.**
-- **AFN 3,000 for each subsequent 12-month renewal.**
+- **AFN 5,000 for the first 12 months of a standard license for one pharmacy location (one branch).**
+- **AFN 3,000 for each subsequent 12-month renewal for the same pharmacy location.**
 - Year 1 and annual renewal are *not* monthly subscriptions. Do not market the above as monthly.
 - Renewal represents a 40% discount relative to year 1. No separate onboarding/setup component has been promised or priced.
-- Commercial scope still to be confirmed: number of branches, Windows terminals/users and Android devices; eligibility for optional sync/hosting, installation/training, support hours and data migration; policies for fully disconnected renewal/activation, grace/recovery, cancellations/refunds and renewal price changes. Clearly specify what is included before publishing or taking payments.
-- Multi-branch installations, extra devices, premium support and integrations may need separately quoted pricing; **not yet approved**.
+- **One pharmacy location / one branch per standard license is confirmed.** One pharmacy does NOT necessarily mean one computer, one user or one billing counter. Windows terminals, users, Android devices and local LAN entitlements remain unconfirmed and must not be assumed unlimited. Eligibility for optional sync/hosting, installation/training, support hours and data migration; policies for fully disconnected renewal/activation, grace/recovery, cancellations/refunds and renewal price changes also require confirmation. Clearly specify what is included before publishing or taking payments.
+- Additional pharmacy locations / branches require their own license or a separately approved commercial arrangement; exact multi-location price and policy are **not yet approved**. Extra devices, premium support and integrations may need separately quoted pricing.
 - Keep safety-critical controls (expiry integrity, audited stock movement, Daily Closing and export of customer data) available in the base licensed product.
+- Ensure central SaaS plan/licensing enforces `max_branches = 1` for this offer, and prevent accidental reuse of the same standard license across separate pharmacy locations; preserve legitimate multiple counters within one pharmacy subject to later device policy.
 - Confirm commercial invoices/receipts and verified collected payments, not plans or uncollected invoices, are counted as revenue.
 - These are owner-set launch prices, not validated willingness-to-pay or a claim of current production availability.
 
