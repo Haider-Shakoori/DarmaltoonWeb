@@ -42,7 +42,7 @@ function val(array $data, string $field, int $limit=200): string {
     return trim(mb_substr(preg_replace('/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/u', '', $v) ?? '', 0, $limit));
 }
 $kind = val($data, 'kind', 15);
-if (!in_array($kind, ['demo', 'contact'], true)) reply(422, ['ok' => false, 'message' => 'Invalid request type']);
+if (!in_array($kind, ['demo', 'contact', 'trial'], true)) reply(422, ['ok' => false, 'message' => 'Invalid request type']);
 $name = val($data, 'name', 100);
 $phone = val($data, 'phone', 40);
 $email = val($data, 'email', 200);
@@ -53,6 +53,7 @@ if (!in_array($lang, ['en', 'fa', 'ps'], true)) $lang = 'en';
 if (mb_strlen($name) < 2 || mb_strlen($name) > 100) reply(422, ['ok' => false, 'message' => 'Valid name required']);
 if (mb_strlen($phone) < 6 || mb_strlen($phone) > 40 || !preg_match('/^[+0-9 ()-]{6,40}$/', $phone)) reply(422, ['ok' => false, 'message' => 'Valid phone required']);
 if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) reply(422, ['ok' => false, 'message' => 'Invalid email']);
+if ($kind === 'trial' && ($email === '' || $pharmacy === '')) reply(422, ['ok' => false, 'message' => 'Email and pharmacy are required for a trial request']);
 if ($kind === 'contact' && ($email === '' || mb_strlen($message) < 3)) reply(422, ['ok' => false, 'message' => 'Email and message required']);
 if (($data['consent'] ?? false) !== true) reply(422, ['ok' => false, 'message' => 'Consent required']);
 
@@ -134,8 +135,8 @@ try {
         if (($_SERVER['HTTP_SEC_GPC'] ?? '') === '1' || ($_SERVER['HTTP_DNT'] ?? '') === '1') throw new RuntimeException('Privacy opt-out');
         require_once __DIR__.'/analytics-store.php';
         dal_analytics_record(
-          $kind==='demo'?'demo_received':'contact_received',
-          $kind==='demo'?'/demo.html':'/contact.html', $lang,
+          $kind==='demo'?'demo_received':($kind==='trial'?'trial_requested':'contact_received'),
+          $kind==='contact'?'/contact.html':'/demo.html', $lang,
           'server','', 'server');
     } catch (Throwable $ignored) {
         error_log('Darmaltoon conversion counter temporarily unavailable');
