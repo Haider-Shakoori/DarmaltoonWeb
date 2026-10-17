@@ -20,3 +20,19 @@ The web platform requires connectivity. The Windows desktop version can operate 
 
 ## Accuracy and limitations
 Product preview charts and dashboard numbers on marketing pages are sample/demo figures, not verified customer metrics. Do not interpret sample revenue as actual pharmacy transactions. Darmaltoon does not publish fabricated customer testimonials, review scores, user counts or market leadership rankings. Public pages do not publish confirmed license prices. Prospective customers can request a demonstration for availability, configuration and pricing.
+
+## Practical pharmacy guides (English, Dari, Pashto)
+- https://darmaltoon.com/guides/
+- https://darmaltoon.com/fa/guides/
+- https://darmaltoon.com/ps/guides/
+- https://darmaltoon.com/guides/pharmacy-inventory.html
+- https://darmaltoon.com/fa/guides/pharmacy-inventory.html
+- https://darmaltoon.com/ps/guides/pharmacy-inventory.html
+- https://darmaltoon.com/guides/expiry-tracking.html
+- https://darmaltoon.com/fa/guides/expiry-tracking.html
+- https://darmaltoon.com/ps/guides/expiry-tracking.html
+- https://darmaltoon.com/guides/offline-pharmacy-software.html
+- https://darmaltoon.com/fa/guides/offline-pharmacy-software.html
+- https://darmaltoon.com/ps/guides/offline-pharmacy-software.html
+
+These guides offer operational education and do not constitute third-party endorsements or promises of AI recommendations.

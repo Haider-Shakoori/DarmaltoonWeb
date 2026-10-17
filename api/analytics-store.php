@@ -41,13 +41,17 @@ function dal_analytics_record(string $event, string $path, string $lang, string 
        '/pharmadesktop.html','/demo.html','/contact.html','/privacy.html',
        '/fa/','/ps/','/fa/features.html','/ps/features.html',
        '/fa/pharmadesktop.html','/ps/pharmadesktop.html',
-       '/fa/privacy.html','/ps/privacy.html'];
+       '/fa/privacy.html','/ps/privacy.html',
+       '/guides/','/fa/guides/','/ps/guides/',
+       '/guides/pharmacy-inventory.html','/fa/guides/pharmacy-inventory.html','/ps/guides/pharmacy-inventory.html',
+       '/guides/expiry-tracking.html','/fa/guides/expiry-tracking.html','/ps/guides/expiry-tracking.html',
+       '/guides/offline-pharmacy-software.html','/fa/guides/offline-pharmacy-software.html','/ps/guides/offline-pharmacy-software.html'];
     if (!in_array($path, $known, true)) return;
     if (!in_array($lang,['en','fa','ps'], true)) $lang='en';
     if (!in_array($device,['mobile','tablet','desktop','server'], true)) $device='server';
-    if (!in_array($source,['direct','organic','referral','campaign','internal','server'],true)) $source='direct';
+    if (!in_array($source,['direct','organic','referral','ai_referral','campaign','internal','server'],true)) $source='direct';
     if (!preg_match('/^[A-Za-z0-9_-]{0,48}$/D',$campaign)) $campaign='';
-    if (!in_array($referrer, ['none','google','bing','duckduckgo','yahoo','yandex','facebook','instagram','whatsapp','tiktok','youtube','linkedin','x','telegram','other'],true)) $referrer='other';
+    if (!in_array($referrer, ['none','google','bing','duckduckgo','yahoo','yandex','facebook','instagram','whatsapp','tiktok','youtube','linkedin','x','telegram','chatgpt','perplexity','gemini','copilot','claude','youcom','poe','other'],true)) $referrer='other';
     $db = dal_analytics_db();
     $q = $db->prepare('INSERT INTO daily_metrics
         (day,event,path,language,source,referrer,campaign,device,count)

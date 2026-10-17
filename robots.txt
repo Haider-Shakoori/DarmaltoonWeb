@@ -3,3 +3,9 @@ Allow: /
 Disallow: /?theme=
 Disallow: /api/
 Sitemap: https://darmaltoon.com/sitemap.xml
+
+# Allow ChatGPT search discovery of public educational pages.
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
