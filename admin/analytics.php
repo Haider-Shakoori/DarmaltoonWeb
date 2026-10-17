@@ -59,6 +59,27 @@ if (!$authenticated) {
     exit;
 }
 $_SESSION['last_activity']=time();
+// A verified analytics administrator can opt this browser out of public traffic
+// counts. The HttpOnly cookie is read by /api/analytics.php server-side.
+if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST' && isset($_POST['owner_tracking'])) {
+    if (!hash_equals($csrf,(string)($_POST['csrf'] ?? ''))) {
+        http_response_code(403); exit('Invalid session');
+    }
+    $exclude = $_POST['owner_tracking'] === 'exclude';
+    if (!$exclude && $_POST['owner_tracking'] !== 'include') {
+        http_response_code(400); exit('Invalid tracking preference');
+    }
+    setcookie('dt_analytics_exclude', $exclude ? '1' : '', [
+        'expires' => $exclude ? time()+365*86400 : time()-3600,
+        'path' => '/',
+        'domain' => 'darmaltoon.com',
+        'secure' => true,
+        'httponly' => true,
+        'samesite' => 'Lax',
+    ]);
+    header('Location: /admin/analytics.php'); exit;
+}
+$ownerExcluded = ($_COOKIE['dt_analytics_exclude'] ?? '') === '1';
 require_once dirname(__DIR__).'/api/analytics-store.php';
 try {$db=dal_analytics_db();}catch(Throwable $e){http_response_code(503);exit('Metrics storage unavailable');}
 // Private, explicitly human-checked AI answer observations. Never auto-invent a mention.
@@ -126,6 +147,7 @@ $blocks=[
 ];
 page_start('First-party analytics');
 echo '<div class="wrap"><div class="head"><div><span class="tag">DARMALTOON · FIRST-PARTY ANALYTICS</span><h1>Marketing overview</h1><p class="intro">Last 30 days (UTC). Privacy-friendly aggregate counts; no cookies, visitor identities or raw IPs.</p></div><form method="post"><input type="hidden" name="csrf" value="'.e($csrf).'"><button class="logout" type="submit" name="logout" value="1">Sign out</button></form></div>';
+echo '<section class="panel" style="margin-top:18px"><h2>Exclude my browser</h2><p class="intro">Prevent visits from this browser from counting in first-party analytics, including Dari and Pashto pages. Sign in on each additional browser/device to exclude it separately. Previous recorded visits remain in historical totals.</p><p class="intro">Current browser: <strong>'.($ownerExcluded ? 'Excluded from tracking' : 'Tracking enabled').'</strong></p><form method="post"><input type="hidden" name="csrf" value="'.e($csrf).'"><button type="submit" name="owner_tracking" value="'.($ownerExcluded ? 'include' : 'exclude').'">'.($ownerExcluded ? 'Resume tracking on this browser' : 'Exclude this browser from analytics').'</button></form></section>';
 echo '<div class="cards">';
 foreach([
   ['Page views',$views],['AI-attributed visits',$aiReferralTotal],['Demo requests received',$totals['demo_received']??0],
