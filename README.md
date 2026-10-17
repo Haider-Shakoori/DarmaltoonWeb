@@ -1,65 +1,25 @@
-# Darmaltoon — Public Marketing Website
+# Darmaltoon — Public Pharmacy Management Website
 
-The public marketing website for **Darmaltoon**, modern pharmacy-management software designed primarily for pharmacies in Afghanistan.
+The public marketing website is https://darmaltoon.com/. The legacy host web.darmaltoon.com redirects to the primary domain.
 
-This repository contains the public-facing static website only. It does not contain the Darmaltoon SaaS platform, admin panel, pharmacy backend, authentication, licensing backend, or database.
+## Presentation
+- Premium **light-only** design; no dark-mode switch or dark homepage.
+- Responsive native HTML/CSS for desktop/mobile, with real crawlable text rather than screenshot-only navigation.
+- English homepage `/`, Dari `/fa/`, and Pashto `/ps/` with RTL support on localized pages.
+- Retired `/dark.html` permanently redirects to `/` and is excluded from the sitemap.
+- Marketing heading: **Modern Pharmacy Management, Made Simple.**
 
-## Pages
+## Functional scope
+- Product, Features, About, Demo, Contact and multilingual privacy pages.
+- Lead forms use `/api/lead.php`, consent/validation, private SQLite storage outside web root, and notifications to `info@darmaltoon.com`.
+- Privacy-conscious aggregate analytics with a password-protected owner dashboard.
+- Canonical/hreflang metadata, structured data, sitemap and robot rules point to the apex domain.
+- Sample dashboard visuals are illustrations, not real patient records or verified customer counts.
 
-- Home
-- Features
-- PharmaDesktop
-- Demo Request
-- About
-- Contact
-- 404
+## Release checks
+Run `python3 scripts/check_site.py` and `python3 scripts/check_approved_ui.py`, `php -l` on PHP files, and `node --check` on JavaScript files. Verify public redirects, content and API origin checks. Deploy only after backing up both the public document root and separate private leads data. Do not commit secrets, mailboxes, server settings, or private databases.
 
-## Frontend
+This repository is the public marketing site, **not** the pharmacy web application or native Windows application.
 
-- HTML5
-- Custom CSS
-- Vanilla JavaScript
-- English, Dari and Pashto localization
-- LTR/RTL support
-- Responsive layouts
-- Frontend-only demo/contact form validation
-
-## Project Structure
-
-darmaltoon/
-- index.html
-- features.html
-- pharmadesktop.html
-- demo.html
-- contact.html
-- about.html
-- 404.html
-- assets/css/main.css
-- assets/css/responsive.css
-- assets/css/rtl.css
-- assets/js/translations.js
-- assets/js/language.js
-- assets/js/app.js
-- assets/js/forms.js
-- assets/images/brand/
-- assets/images/screenshots/
-
-## Local Review
-
-Open index.html directly in a browser or serve the repository with any simple static web server.
-
-## Forms
-
-The demo and contact forms currently validate in the browser only. Backend submission endpoints will be connected later.
-
-## Localization
-
-Translations are stored in assets/js/translations.js. The active language is persisted in localStorage. Dari and Pashto switch the document to RTL.
-
-## Screenshot Assets
-
-The website expects PharmaDesktop screenshots under assets/images/screenshots/. The real application screenshots can be added without changing the page structure.
-
-## Next Phase
-
-After the static design is finalized, the contact and demo forms can be connected to the production Darmaltoon backend while preserving this frontend design.
+## Follow-up decisions
+Approval of lead-data retention rules, native-speaker copy review, and Google Search Console coverage/Core Web Vitals are separate operational tasks. Confirm Android/platform and subscription claims before public marketing expansion.

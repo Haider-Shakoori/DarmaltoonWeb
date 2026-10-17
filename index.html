@@ -1,424 +1,136 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Darmaltoon — Smarter Pharmacy Management Software</title>
-  <meta name="description" content="Darmaltoon is modern pharmacy-management software for pharmacies in Afghanistan. Manage sales, inventory, purchases, suppliers, reports and daily closing — in English, Dari and Pashto." />
-  <meta name="theme-color" content="#0b2545" />
-  <link rel="canonical" href="https://darmaltoon.com/" />
-  <meta property="og:title" content="Darmaltoon — Smarter Pharmacy Management" />
-  <meta property="og:description" content="Modern pharmacy-management software built for real pharmacy workflows." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://darmaltoon.com/" />
-  <meta property="og:image" content="assets/images/brand/og-image.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Darmaltoon — Smarter Pharmacy Management" />
-  <meta name="twitter:description" content="Modern pharmacy-management software built for real pharmacy workflows." />
-  <link rel="icon" href="assets/images/brand/favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/main.css" />
-  <link rel="stylesheet" href="assets/css/responsive.css" />
-  <link rel="stylesheet" href="assets/css/rtl.css" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Darmaltoon",
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Windows",
-    "description": "Pharmacy-management software for pharmacies in Afghanistan.",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-  }
-  </script>
-</head>
-<body>
-  <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
-
-  <!-- COMPONENT: HEADER -->
-  <header class="site-header" id="siteHeader">
-    <div class="container header-inner">
-      <a href="index.html" class="brand" aria-label="Darmaltoon home">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 32 32" width="32" height="32"><rect width="32" height="32" rx="9" fill="url(#g1)"/><path d="M9 21V11h5.2c3.1 0 5.3 2 5.3 5s-2.2 5-5.3 5H9Zm2.6-2.3h2.4c1.7 0 2.9-1.1 2.9-2.7s-1.2-2.7-2.9-2.7h-2.4v5.4Z" fill="#fff"/><circle cx="23" cy="12" r="2.4" fill="#7dd3fc"/><defs><linearGradient id="g1" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#0b2545"/><stop offset="1" stop-color="#0e7490"/></linearGradient></defs></svg>
-        </span>
-        <span class="brand-name">Darmaltoon</span>
-      </a>
-
-      <nav class="nav" aria-label="Primary">
-        <ul class="nav-list">
-          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-          <li><a href="features.html" data-i18n="nav.features">Features</a></li>
-          <li><a href="pharmadesktop.html" data-i18n="nav.pharmadesktop">PharmaDesktop</a></li>
-          <li><a href="#why" data-i18n="nav.why">Why Darmaltoon</a></li>
-          <li><a href="demo.html" data-i18n="nav.demo">Demo</a></li>
-          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
-        </ul>
-      </nav>
-
-      <div class="header-actions">
-        <div class="lang-switch" role="group" aria-label="Language">
-          <button class="lang-btn" data-lang="en" type="button">EN</button>
-          <button class="lang-btn" data-lang="fa" type="button">دری</button>
-          <button class="lang-btn" data-lang="ps" type="button">پښتو</button>
-        </div>
-        <a href="demo.html" class="btn btn-primary btn-sm" data-i18n="cta.requestDemo">Request Demo</a>
-        <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileNav">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-    <div class="mobile-nav" id="mobileNav" hidden>
-      <ul>
-        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-        <li><a href="features.html" data-i18n="nav.features">Features</a></li>
-        <li><a href="pharmadesktop.html" data-i18n="nav.pharmadesktop">PharmaDesktop</a></li>
-        <li><a href="#why" data-i18n="nav.why">Why Darmaltoon</a></li>
-        <li><a href="demo.html" data-i18n="nav.demo">Demo</a></li>
-        <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
-      </ul>
-      <a href="demo.html" class="btn btn-primary btn-block" data-i18n="cta.requestDemo">Request Demo</a>
-    </div>
-  </header>
-
-  <main id="main">
-
-    <!-- COMPONENT: HERO -->
-    <section class="hero">
-      <div class="hero-bg" aria-hidden="true"></div>
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <span class="eyebrow" data-i18n="hero.eyebrow">Pharmacy Management Software</span>
-          <h1 data-i18n="hero.title">Smarter pharmacy management starts with Darmaltoon.</h1>
-          <p class="lead" data-i18n="hero.subtitle">
-            Darmaltoon helps pharmacies manage daily operations — sales, inventory, purchases, suppliers, returns, expenses, reporting and daily closing — through one modern pharmacy-management system.
-          </p>
-          <div class="hero-cta">
-            <a href="demo.html" class="btn btn-primary" data-i18n="cta.requestDemo">Request a Demo</a>
-            <a href="features.html" class="btn btn-ghost" data-i18n="cta.exploreFeatures">Explore Features</a>
-          </div>
-          <div class="hero-points">
-            <span data-i18n="hero.point1">Built for pharmacies</span>
-            <span data-i18n="hero.point2">Multilingual</span>
-            <span data-i18n="hero.point3">Offline-friendly</span>
-          </div>
-        </div>
-
-        <div class="hero-visual" aria-hidden="true">
-          <div class="window-frame">
-            <div class="window-bar"><span></span><span></span><span></span></div>
-            <img src="assets/images/screenshots/dashboard.webp" alt="PharmaDesktop dashboard" width="1200" height="760" loading="eager" decoding="async" />
-          </div>
-          <div class="float-card fc-1">
-            <strong data-i18n="hero.card.sales">Sales</strong>
-            <span class="fc-bar"><i style="width:72%"></i></span>
-          </div>
-          <div class="float-card fc-2">
-            <strong data-i18n="hero.card.inventory">Inventory</strong>
-            <span class="fc-bar"><i style="width:54%"></i></span>
-          </div>
-          <div class="float-card fc-3">
-            <strong data-i18n="hero.card.closing">Daily Closing</strong>
-            <span class="fc-dot"></span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- COMPONENT: TRUST STRIP -->
-    <section class="trust-strip">
-      <div class="container trust-grid">
-        <div class="trust-item"><span class="ti-icon">💊</span><span data-i18n="trust.built">Built for pharmacies</span></div>
-        <div class="trust-item"><span class="ti-icon">⚡</span><span data-i18n="trust.fast">Fast performance</span></div>
-        <div class="trust-item"><span class="ti-icon">📴</span><span data-i18n="trust.offline">Offline-friendly</span></div>
-        <div class="trust-item"><span class="ti-icon">🌐</span><span data-i18n="trust.multi">Multilingual</span></div>
-        <div class="trust-item"><span class="ti-icon">✨</span><span data-i18n="trust.easy">Easy to use</span></div>
-        <div class="trust-item"><span class="ti-icon">📊</span><span data-i18n="trust.reports">Professional reporting</span></div>
-      </div>
-    </section>
-
-    <!-- COMPONENT: ABOUT -->
-    <section class="section" id="about">
-      <div class="container narrow center">
-        <span class="eyebrow" data-i18n="about.eyebrow">About Darmaltoon</span>
-        <h2 data-i18n="about.title">Everything your pharmacy needs in one system</h2>
-        <p class="lead" data-i18n="about.body">
-          Darmaltoon helps pharmacy owners and staff handle day-to-day business operations with a modern, desktop-based pharmacy-management experience. From selling medicine to tracking inventory, purchasing, suppliers, customers, returns, expenses and daily closing — Darmaltoon brings it together in one place.
-        </p>
-      </div>
-    </section>
-
-    <!-- COMPONENT: PHARMADESKTOP SHOWCASE -->
-    <section class="section section-alt" id="pharmadesktop">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow" data-i18n="pd.eyebrow">PharmaDesktop</span>
-          <h2 data-i18n="pd.title">Meet PharmaDesktop</h2>
-          <p class="lead" data-i18n="pd.subtitle">The Windows desktop application that powers Darmaltoon pharmacy operations.</p>
-        </div>
-
-        <div class="tabs" role="tablist" aria-label="PharmaDesktop screens" id="pdTabs">
-          <button role="tab" class="tab is-active" data-tab="dashboard" aria-selected="true" data-i18n="pd.tab.dashboard">Dashboard</button>
-          <button role="tab" class="tab" data-tab="sales" data-i18n="pd.tab.sales">Sales</button>
-          <button role="tab" class="tab" data-tab="inventory" data-i18n="pd.tab.inventory">Inventory</button>
-          <button role="tab" class="tab" data-tab="purchases" data-i18n="pd.tab.purchases">Purchases</button>
-          <button role="tab" class="tab" data-tab="customers" data-i18n="pd.tab.customers">Customers</button>
-          <button role="tab" class="tab" data-tab="suppliers" data-i18n="pd.tab.suppliers">Suppliers</button>
-          <button role="tab" class="tab" data-tab="returns" data-i18n="pd.tab.returns">Returns</button>
-          <button role="tab" class="tab" data-tab="expenses" data-i18n="pd.tab.expenses">Expenses</button>
-          <button role="tab" class="tab" data-tab="reports" data-i18n="pd.tab.reports">Reports</button>
-          <button role="tab" class="tab" data-tab="closing" data-i18n="pd.tab.closing">Daily Closing</button>
-        </div>
-
-        <div class="tab-panels">
-          <div class="tab-panel is-active" data-panel="dashboard">
-            <div class="tab-shot"><img src="assets/images/screenshots/dashboard.webp" alt="Dashboard screen" loading="lazy" decoding="async" /></div>
-            <div class="tab-info"><h3 data-i18n="pd.dashboard.title">Dashboard</h3><p data-i18n="pd.dashboard.body">A clear overview of pharmacy activity and key information at a glance.</p></div>
-          </div>
-          <div class="tab-panel" data-panel="sales">
-            <div class="tab-shot"><img src="assets/images/screenshots/sales.webp" alt="Sales screen" loading="lazy" decoding="async" /></div>
-            <div class="tab-info"><h3 data-i18n="pd.sales.title">Sales / POS</h3><p data-i18n="pd.sales.body">A fast pharmacy sales workflow designed for real counter speed.</p></div>
-          </div>
-          <div class="tab-panel" data-panel="inventory">
-            <div class="tab-shot"><img src="assets/images/screenshots/inventory.webp" alt="Inventory screen" loading="lazy" decoding="async" /></div>
-            <div class="tab-info"><h3 data-i18n="pd.inventory.title">Inventory</h3><p data-i18n="pd.inventory.body">Track medicine and product stock levels across your pharmacy.</p></div>
-          </div>
-          <div class="tab-panel" data-panel="purchases">
-            <div class="tab-shot"><img src="assets/images/screenshots/purchases.webp" alt="Purchases screen" loading="lazy" decoding="async" /></div>
-            <div class="tab-info"><h3 data-i18n="pd.purchases.title">Purchases</h3><p data-i18n="pd.purchases.body">Manage medicine purchasing and receiving into inventory.</p></div>
-          </div>
-          <div class="tab-panel" data-panel="customers">
-            <div class="tab-shot"><img src="assets/images/screenshots/customers.webp" alt="Customers screen" loading="lazy" decoding="async" /></div>
-            <div class="tab-info"><h3 data-i18n="pd.customers.title">Customers</h3><p data-i18n="pd.customers.body">Keep customer information organized and easy to reach.</p></div>
-          </div>
-          <div class="tab-panel" data-panel="suppliers">
-            <div class="tab-shot"><img src="assets/images/screenshots/suppliers.webp" alt="Suppliers screen" loading="lazy" decoding="async" /></div>
-            <div class="tab-info"><h3 data-i18n="pd.suppliers.title">Suppliers</h3><p data-i18n="pd.suppliers.body">Manage suppliers and their related pharmacy transactions.</p></div>
-          </div>
-          <div class="tab-panel" data-panel="returns">
-            <div class="tab-shot"><img src="assets/images/screenshots/returns.webp" alt="Returns screen" loading="lazy" decoding="async" /></div>
-            <div class="tab-info"><h3 data-i18n="pd.returns.title">Returns</h3><p data-i18n="pd.returns.body">Handle returns efficiently and keep records accurate.</p></div>
-          </div>
-          <div class="tab-panel" data-panel="expenses">
-            <div class="tab-shot"><img src="assets/images/screenshots/expenses.webp" alt="Expenses screen" loading="lazy" decoding="async" /></div>
-            <div class="tab-info"><h3 data-i18n="pd.expenses.title">Expenses</h3><p data-i18n="pd.expenses.body">Record and review operational pharmacy expenses.</p></div>
-          </div>
-          <div class="tab-panel" data-panel="reports">
-            <div class="tab-shot"><img src="assets/images/screenshots/reports.webp" alt="Reports screen" loading="lazy" decoding="async" /></div>
-            <div class="tab-info"><h3 data-i18n="pd.reports.title">Reports</h3><p data-i18n="pd.reports.body">Access useful operational and financial reporting.</p></div>
-          </div>
-          <div class="tab-panel" data-panel="closing">
-            <div class="tab-shot"><img src="assets/images/screenshots/closing.webp" alt="Daily closing screen" loading="lazy" decoding="async" /></div>
-            <div class="tab-info"><h3 data-i18n="pd.closing.title">Daily Closing</h3><p data-i18n="pd.closing.body">Review and close pharmacy activity at the end of the day.</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- COMPONENT: FEATURES PREVIEW -->
-    <section class="section" id="features">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow" data-i18n="feat.eyebrow">Features</span>
-          <h2 data-i18n="feat.title">Built around real pharmacy work</h2>
-          <p class="lead" data-i18n="feat.subtitle">A complete toolkit for daily pharmacy operations.</p>
-        </div>
-        <div class="feature-grid">
-          <article class="feature-card"><div class="fi">🧾</div><h3 data-i18n="feat.sales.title">Sales / POS</h3><p data-i18n="feat.sales.body">Fast pharmacy sales workflow.</p></article>
-          <article class="feature-card"><div class="fi">📦</div><h3 data-i18n="feat.inventory.title">Inventory</h3><p data-i18n="feat.inventory.body">Track medicine and product stock.</p></article>
-          <article class="feature-card"><div class="fi">💊</div><h3 data-i18n="feat.products.title">Products / Medicines</h3><p data-i18n="feat.products.body">Organize medicine information.</p></article>
-          <article class="feature-card"><div class="fi">🛒</div><h3 data-i18n="feat.purchases.title">Purchases</h3><p data-i18n="feat.purchases.body">Manage purchasing and receiving.</p></article>
-          <article class="feature-card"><div class="fi">🤝</div><h3 data-i18n="feat.suppliers.title">Suppliers</h3><p data-i18n="feat.suppliers.body">Manage supplier transactions.</p></article>
-          <article class="feature-card"><div class="fi">👥</div><h3 data-i18n="feat.customers.title">Customers</h3><p data-i18n="feat.customers.body">Maintain customer information.</p></article>
-          <article class="feature-card"><div class="fi">↩️</div><h3 data-i18n="feat.returns.title">Returns</h3><p data-i18n="feat.returns.body">Handle returns efficiently.</p></article>
-          <article class="feature-card"><div class="fi">💰</div><h3 data-i18n="feat.expenses.title">Expenses</h3><p data-i18n="feat.expenses.body">Record operational expenses.</p></article>
-          <article class="feature-card"><div class="fi">📊</div><h3 data-i18n="feat.reports.title">Reports</h3><p data-i18n="feat.reports.body">Operational and financial reporting.</p></article>
-          <article class="feature-card"><div class="fi">🌙</div><h3 data-i18n="feat.closing.title">Daily Closing</h3><p data-i18n="feat.closing.body">Close activity at end of day.</p></article>
-          <article class="feature-card"><div class="fi">🔔</div><h3 data-i18n="feat.notifications.title">Notifications</h3><p data-i18n="feat.notifications.body">Important operational alerts.</p></article>
-          <article class="feature-card"><div class="fi">🔐</div><h3 data-i18n="feat.users.title">Users &amp; Permissions</h3><p data-i18n="feat.users.body">Control employee access.</p></article>
-        </div>
-        <div class="center" style="margin-top:2.5rem">
-          <a href="features.html" class="btn btn-ghost" data-i18n="cta.seeAllFeatures">See all features</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- COMPONENT: WHY DARMALTOON -->
-    <section class="section section-alt" id="why">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow" data-i18n="why.eyebrow">Why Darmaltoon</span>
-          <h2 data-i18n="why.title">Designed for pharmacies, not adapted to them</h2>
-        </div>
-        <div class="why-grid">
-          <div class="why-card"><h3 data-i18n="why.1.title">Designed specifically for pharmacies</h3><p data-i18n="why.1.body">Not generic accounting software.</p></div>
-          <div class="why-card"><h3 data-i18n="why.2.title">Built for real pharmacy workflows</h3><p data-i18n="why.2.body">Sales, inventory, suppliers, purchases, returns and closing.</p></div>
-          <div class="why-card"><h3 data-i18n="why.3.title">Designed for local realities</h3><p data-i18n="why.3.body">Optimized for environments where connectivity may not always be reliable.</p></div>
-          <div class="why-card"><h3 data-i18n="why.4.title">Easy for staff</h3><p data-i18n="why.4.body">Clean and understandable interfaces.</p></div>
-          <div class="why-card"><h3 data-i18n="why.5.title">Multilingual</h3><p data-i18n="why.5.body">English, Dari and Pashto.</p></div>
-          <div class="why-card"><h3 data-i18n="why.6.title">Modern desktop experience</h3><p data-i18n="why.6.body">Fast professional application interface.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- COMPONENT: OFFLINE-FRIENDLY -->
-    <section class="section" id="offline">
-      <div class="container offline-grid">
-        <div>
-          <span class="eyebrow" data-i18n="off.eyebrow">Offline-friendly</span>
-          <h2 data-i18n="off.title">Your pharmacy should not stop when the internet does.</h2>
-          <p class="lead" data-i18n="off.body">
-            Darmaltoon’s desktop-focused approach is designed with unreliable connectivity in mind — keeping pharmacy workflows practical even when the internet is unstable.
-          </p>
-        </div>
-        <div class="offline-flow" aria-hidden="true">
-          <div class="flow-node">💻 <span data-i18n="off.node1">Pharmacy Computer</span></div>
-          <div class="flow-arrow">↓</div>
-          <div class="flow-node">🏥 <span data-i18n="off.node2">Local Pharmacy Operations</span></div>
-          <div class="flow-arrow">↓</div>
-          <div class="flow-node">🌐 <span data-i18n="off.node3">Internet Available</span></div>
-          <div class="flow-arrow">↓</div>
-          <div class="flow-node">🔄 <span data-i18n="off.node4">Synchronization / Online Services</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- COMPONENT: WORKFLOW -->
-    <section class="section section-alt">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow" data-i18n="wf.eyebrow">Workflow</span>
-          <h2 data-i18n="wf.title">A pharmacy workflow that makes sense</h2>
-        </div>
-        <ol class="workflow">
-          <li data-i18n="wf.1">Purchase</li>
-          <li data-i18n="wf.2">Receive Stock</li>
-          <li data-i18n="wf.3">Manage Inventory</li>
-          <li data-i18n="wf.4">Sell</li>
-          <li data-i18n="wf.5">Handle Returns</li>
-          <li data-i18n="wf.6">Daily Closing</li>
-          <li data-i18n="wf.7">Reports</li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- COMPONENT: REPORTING -->
-    <section class="section" id="reporting">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow" data-i18n="rep.eyebrow">Reporting</span>
-          <h2 data-i18n="rep.title">See your pharmacy clearly</h2>
-          <p class="lead" data-i18n="rep.subtitle">Placeholder report cards below illustrate the type of reporting Darmaltoon is designed to provide.</p>
-        </div>
-        <div class="report-grid">
-          <div class="report-card"><span data-i18n="rep.sales">Sales</span><div class="report-bar"><i style="width:68%"></i></div></div>
-          <div class="report-card"><span data-i18n="rep.inventory">Inventory</span><div class="report-bar"><i style="width:52%"></i></div></div>
-          <div class="report-card"><span data-i18n="rep.purchases">Purchases</span><div class="report-bar"><i style="width:44%"></i></div></div>
-          <div class="report-card"><span data-i18n="rep.expenses">Expenses</span><div class="report-bar"><i style="width:36%"></i></div></div>
-          <div class="report-card"><span data-i18n="rep.returns">Returns</span><div class="report-bar"><i style="width:22%"></i></div></div>
-          <div class="report-card"><span data-i18n="rep.customers">Customers</span><div class="report-bar"><i style="width:60%"></i></div></div>
-          <div class="report-card"><span data-i18n="rep.suppliers">Suppliers</span><div class="report-bar"><i style="width:40%"></i></div></div>
-          <div class="report-card"><span data-i18n="rep.closing">Daily Closing</span><div class="report-bar"><i style="width:76%"></i></div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- COMPONENT: FAQ -->
-    <section class="section section-alt" id="faq">
-      <div class="container narrow">
-        <div class="section-head">
-          <span class="eyebrow" data-i18n="faq.eyebrow">FAQ</span>
-          <h2 data-i18n="faq.title">Frequently asked questions</h2>
-        </div>
-        <div class="accordion" id="faqAccordion">
-          <details><summary data-i18n="faq.q1">What is Darmaltoon?</summary><p data-i18n="faq.a1">Darmaltoon is pharmacy-management software designed for pharmacies. It helps manage sales, inventory, purchases, suppliers, customers, returns, expenses, reporting and daily closing.</p></details>
-          <details><summary data-i18n="faq.q2">Who is Darmaltoon designed for?</summary><p data-i18n="faq.a2">It is designed for pharmacy owners, managers, pharmacists, growing pharmacies, multi-computer pharmacies and pharmacy chains.</p></details>
-          <details><summary data-i18n="faq.q3">What is PharmaDesktop?</summary><p data-i18n="faq.a3">PharmaDesktop is the Windows desktop application used for pharmacy operations within the Darmaltoon system.</p></details>
-          <details><summary data-i18n="faq.q4">Can Darmaltoon be used without reliable internet?</summary><p data-i18n="faq.a4">Darmaltoon’s desktop-focused approach is designed with unreliable connectivity in mind. Not every feature is guaranteed to work offline; capabilities depend on configuration.</p></details>
-          <details><summary data-i18n="faq.q5">Can more than one computer use the system?</summary><p data-i18n="faq.a5">Darmaltoon supports pharmacy environments using more than one computer where configured.</p></details>
-          <details><summary data-i18n="faq.q6">Which languages are supported?</summary><p data-i18n="faq.a6">English, Dari and Pashto.</p></details>
-          <details><summary data-i18n="faq.q7">Does Darmaltoon support inventory management?</summary><p data-i18n="faq.a7">Yes. Darmaltoon includes inventory features for tracking medicine and product stock.</p></details>
-          <details><summary data-i18n="faq.q8">Can I manage suppliers and customers?</summary><p data-i18n="faq.a8">Yes. Darmaltoon supports managing suppliers, customers and their related transactions.</p></details>
-          <details><summary data-i18n="faq.q9">Does the software include reporting?</summary><p data-i18n="faq.a9">Yes. Darmaltoon includes operational and financial reporting features.</p></details>
-          <details><summary data-i18n="faq.q10">How can I request a demo?</summary><p data-i18n="faq.a10">Use the Request Demo page to submit a demonstration request.</p></details>
-          <details><summary data-i18n="faq.q11">How do I contact Darmaltoon?</summary><p data-i18n="faq.a11">Use the Contact page to reach the team.</p></details>
-        </div>
-      </div>
-    </section>
-
-    <!-- COMPONENT: CTA -->
-    <section class="section cta-section">
-      <div class="container cta-card">
-        <h2 data-i18n="cta.title">See Darmaltoon in action</h2>
-        <p data-i18n="cta.body">Request a demonstration and see how Darmaltoon fits your pharmacy.</p>
-        <div class="cta-actions">
-          <a href="demo.html" class="btn btn-primary" data-i18n="cta.requestDemo">Request Demo</a>
-          <a href="contact.html" class="btn btn-ghost" data-i18n="cta.contactUs">Contact Us</a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- COMPONENT: FOOTER -->
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="brand">
-          <span class="brand-mark" aria-hidden="true">
-            <svg viewBox="0 0 32 32" width="28" height="28"><rect width="32" height="32" rx="9" fill="#0b2545"/><path d="M9 21V11h5.2c3.1 0 5.3 2 5.3 5s-2.2 5-5.3 5H9Zm2.6-2.3h2.4c1.7 0 2.9-1.1 2.9-2.7s-1.2-2.7-2.9-2.7h-2.4v5.4Z" fill="#fff"/></svg>
-          </span>
-          <span class="brand-name">Darmaltoon</span>
-        </a>
-        <p data-i18n="footer.tagline">Modern pharmacy-management software for real pharmacy environments.</p>
-        <p class="footer-eco" data-i18n="footer.ecosystem">Part of the BusinessOS ecosystem</p>
-      </div>
-      <div class="footer-col">
-        <h4 data-i18n="footer.col1">Darmaltoon</h4>
-        <ul>
-          <li><a href="about.html" data-i18n="nav.about">About</a></li>
-          <li><a href="#why" data-i18n="nav.why">Why Darmaltoon</a></li>
-          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4 data-i18n="footer.col2">Product</h4>
-        <ul>
-          <li><a href="pharmadesktop.html" data-i18n="nav.pharmadesktop">PharmaDesktop</a></li>
-          <li><a href="features.html" data-i18n="nav.features">Features</a></li>
-          <li><a href="demo.html" data-i18n="nav.demo">Demo</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4 data-i18n="footer.col3">Resources</h4>
-        <ul>
-          <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
-          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
-          <li><a href="contact.html" data-i18n="footer.support">Support</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4 data-i18n="footer.col4">Languages</h4>
-        <ul class="footer-lang">
-          <li><button data-lang="en" type="button">English</button></li>
-          <li><button data-lang="fa" type="button">دری</button></li>
-          <li><button data-lang="ps" type="button">پښتو</button></li>
-        </ul>
-      </div>
-    </div>
-    <div class="container footer-bottom">
-      <span>© <span id="year"></span> Darmaltoon</span>
-      <span class="footer-placeholder">Support: {{ SUPPORT_EMAIL }} · Phone: {{ PHONE_NUMBER }}</span>
-    </div>
-  </footer>
-
-  <button class="back-top" id="backTop" aria-label="Back to top" hidden>↑</button>
-
-  <script defer src="assets/js/translations.js"></script>
-  <script defer src="assets/js/language.js"></script>
-  <script defer src="assets/js/app.js"></script>
-  <script defer src="assets/js/forms.js"></script>
-</body>
-</html>
+<html lang="en" dir="ltr" data-design="light"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta name="twitter:card" content="summary_large_image"/><title>Pharmacy Management Software in Afghanistan | Darmaltoon</title><style>:root{--bg0:#eaf3fd;--bg:linear-gradient(#e4effc,#f5f9ff 50%,#eaf2fb);--tx:#0f1b3d;--mt:#51607f;--bt:#1d5eea;--btt:#fff;--bd:#d9e5f5;--cd:#fff;--cd2:#fff;--dbg:#f1f6ff;--sb:#fff;--dt:#0f1b3d;--ds:#6b7a99;--dc:#fff}*{box-sizing:border-box;margin:0;padding:0}html,body{overflow-x:hidden;background:var(--bg0)}body{font-family:Inter,-apple-system,"SF Pro Text","Segoe UI",Roboto,"Helvetica Neue",Arial,FreeSans,sans-serif;color:var(--tx);line-height:1.3}
+#s{position:absolute;left:0;top:0;width:1448px;height:1086px;transform-origin:0 0;overflow:hidden;background:var(--bg)}#s>*{position:absolute}
+.mark{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#1d5eea,#06b6d4);color:#fff;font-weight:800;font-size:18px}
+.lg1{display:flex;gap:8px;align-items:center;font-weight:800;font-size:24px}.btn{display:flex;align-items:center;justify-content:center;gap:8px;border-radius:9px;font-weight:600}.bp{background:var(--bt);color:var(--btt)}.bo{border:1px solid var(--bd);background:var(--cd)}
+.card{background:var(--cd);border:1px solid var(--bd);border-radius:12px}.ic{width:50px;height:50px;border-radius:11px;flex:none;display:grid;place-items:center;font-size:22px;color:#fff}
+.fc{display:flex;gap:12px;padding:12px;align-items:flex-start}.fc b{display:block;font-size:13.5px;margin-bottom:3px}.fc p{font-size:10.5px;color:var(--mt)}
+.lang{display:flex;gap:12px}.lang>div{flex:1;background:var(--cd2);border:1px solid var(--bd);border-radius:10px;padding:10px 6px;text-align:center;font-size:10.5px;color:var(--mt)}.lang b{display:block;font-size:15px;color:var(--tx)}.lang i{font-style:normal;font-size:24px;display:block}
+.dash{width:857px;display:grid;grid-template-columns:137px 1fr;font-size:9px;background:var(--dbg);color:var(--dt)}
+.dash aside{padding:12px 8px;background:var(--sb)}.dash .lg{font-weight:800;font-size:13px;display:flex;gap:6px;align-items:center;margin-bottom:12px}.dash .mark{width:20px;height:20px;font-size:11px;border-radius:5px}
+.dash li{list-style:none;height:25px;padding:0 8px;border-radius:6px;display:flex;gap:8px;align-items:center;color:var(--ds);white-space:nowrap}.dash li i{width:9px;height:9px;border:1.5px solid currentColor;border-radius:2px}.dash li.on{background:#2563eb;color:#fff}
+.dash main{padding:10px 8px;display:grid;grid-template-columns:1fr 190px;gap:9px;align-content:start;min-width:0}.col{display:grid;gap:9px;align-content:start;min-width:0}
+.top{display:flex;gap:7px;align-items:center}.srch{flex:1;padding:7px 10px;border-radius:7px;background:var(--dc);color:var(--ds)}.srch span{float:right}.chip{padding:7px 10px;border-radius:7px;background:var(--dc)}.chip.on{color:#16a34a;font-weight:700}
+.dash h4{font-size:15px}.wb{color:var(--ds);font-size:8px}.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+.kpi{display:flex;gap:8px;padding:9px;border-radius:9px;background:var(--dc);align-items:center;height:66px}.kpi b{width:30px;height:30px;border-radius:8px;flex:none}.kpi small{display:block;color:var(--ds);font-size:7.5px}.kpi strong{font-size:13px;display:block}.kpi em{font-style:normal;font-size:7px;color:var(--ds)}
+.pn{background:var(--dc);border-radius:9px;padding:9px;min-width:0}.pn h5{font-size:10.5px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}.two2{display:grid;grid-template-columns:1fr 1.1fr;gap:9px}
+.tabs{display:flex;gap:3px}.tabs i,.va{font-style:normal;font-size:7.5px;padding:3px 7px;border-radius:5px;background:var(--dbg)}.tabs .a{background:#2563eb;color:#fff}
+.ch{display:flex;gap:12px;align-items:center}.ch svg{flex:1;height:100px;min-width:0}.st small{display:block;color:var(--ds);font-size:8px}.st b{font-size:11.5px;display:block;margin-bottom:7px}
+table{width:100%;font-size:7.5px;border-collapse:collapse}th{text-align:left;color:var(--ds);font-weight:500}td,th{padding:4.5px 2px}u{text-decoration:none;background:#ef444422;color:#ef4444;padding:1px 5px;border-radius:3px}u.o{background:#f59e0b33;color:#d97706}u.g{background:#22c55e22;color:#16a34a}.r{color:#ef4444}
+.bar{height:5px;border-radius:3px;background:#8884;margin:5px 0}.bar i{display:block;width:95%;height:100%;background:#22c55e;border-radius:3px}.ft{display:grid;grid-template-columns:1fr 1fr;font-size:7.5px;color:var(--ds);margin-top:6px;gap:3px}.ft span:before{content:"● ";color:#22c55e}
+.qa{display:flex;justify-content:space-between;color:#fff;padding:7px 9px;border-radius:6px;margin-bottom:4px;font-size:8.5px;font-weight:600}.qa span{opacity:.8}.pn div>span{color:var(--ds)}.pn div>b{font-size:8px}
+.mask{-webkit-mask-image:linear-gradient(90deg,transparent,#000 25%);mask-image:linear-gradient(90deg,transparent,#000 25%)}.mask2{-webkit-mask-image:linear-gradient(90deg,transparent,#000 30%);mask-image:linear-gradient(90deg,transparent,#000 30%)}#s{background-size:1448px 1086px;background-repeat:no-repeat;background-color:var(--bg0)}
+.more{position:absolute;left:0;top:1086px;width:1448px;background:var(--bg0);font-size:14px}.more *{box-sizing:border-box}
+.sec{padding:76px 62px;display:flex;flex-direction:column;align-items:center}.alt{background:var(--cd)}.alt .bx{background:var(--bg0)}
+.tg{font-size:10px;font-weight:600;color:var(--bt);border:1px solid var(--bt);border-radius:10px;padding:3px 12px;margin-bottom:14px}
+.sh2{font-size:32px;font-weight:800;text-align:center;line-height:38px}.sp{color:var(--mt);margin:10px 0 40px;text-align:center;max-width:640px;line-height:21px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;width:100%}.bx{background:var(--cd);border:1px solid var(--bd);border-radius:14px;padding:26px}
+.bx h3{font-size:18px;margin-bottom:8px}.bx p{color:var(--mt);line-height:21px;font-size:13.5px}
+.num{width:42px;height:42px;border-radius:50%;background:var(--bt);color:var(--btt);display:grid;place-items:center;font-weight:800;margin-bottom:16px}
+.pr{position:relative}.pr .p{font-size:38px;font-weight:800;margin:10px 0 2px}.pr small{color:var(--mt);font-size:12px}.pr ul{list-style:none;margin:20px 0 26px}.pr li{padding:6px 0;font-size:13.5px;display:flex;gap:10px}.pr li:before{content:"✓";color:#22b35a;font-weight:700}
+.hot{border:2px solid var(--bt)}.hot:before{content:"Most popular";position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--bt);color:var(--btt);font-size:10px;font-weight:700;padding:3px 12px;border-radius:10px}
+.q{font-size:14.5px;line-height:23px;margin-bottom:20px}.who{display:flex;gap:12px;align-items:center}.who b{display:block;font-size:13px}.who span{font-size:12px;color:var(--mt)}.av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#1d5eea,#06b6d4);color:#fff;display:grid;place-items:center;font-weight:700;flex:none}
+.fq{width:900px}.fq details{border:1px solid var(--bd);border-radius:10px;padding:16px 20px;margin-bottom:10px;background:var(--bg0)}.fq summary{cursor:pointer;font-weight:600;display:flex;justify-content:space-between;list-style:none}.fq summary::-webkit-details-marker{display:none}.fq summary:after{content:"+";font-size:20px;line-height:18px}.fq details[open] summary:after{content:"–"}.fq details p{margin-top:12px;color:var(--mt);line-height:22px;font-size:13.5px}
+.dm{display:grid;grid-template-columns:1fr 540px;gap:60px;width:100%;align-items:center}.dm h2{font-size:34px;line-height:40px;font-weight:800;margin-bottom:12px}.dm ul{list-style:none;margin:24px 0}.dm li{display:flex;gap:10px;padding:6px 0}.dm li:before{content:"✓";width:22px;height:22px;border-radius:50%;background:#22b35a;color:#fff;display:grid;place-items:center;font-size:12px;flex:none}
+.fm{display:grid;grid-template-columns:1fr 1fr;gap:14px}.fm .w{grid-column:span 2}.fm label{font-size:12px;font-weight:600;display:block;margin-bottom:5px}.fm input,.fm select,.fm textarea{width:100%;padding:11px 12px;border-radius:8px;border:1px solid var(--bd);background:var(--bg0);color:var(--tx);font:inherit;font-size:13px}.fm button{height:46px;border:0;cursor:pointer;font:inherit;font-weight:700;font-size:14px}
+#ok{display:none;grid-column:span 2;padding:12px;border-radius:8px;background:#22b35a22;color:#22b35a;font-weight:600;text-align:center}
+.foot{background:var(--cd);border-top:1px solid var(--bd);padding:56px 62px 24px}.f4{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.3fr;gap:40px}.f4 h4{font-size:13px;margin-bottom:14px}.f4 a,.f4 p{display:block;color:var(--mt);font-size:13px;margin-bottom:9px;line-height:19px;cursor:pointer}.fb{margin-top:40px;padding-top:20px;border-top:1px solid var(--bd);display:flex;justify-content:space-between;color:var(--mt);font-size:12px}
+#s>.btn,#s>div[onclick]{cursor:pointer}.dash,.kpi strong,.kpi small,.kpi em{white-space:nowrap}.more{white-space:normal}.pn div:has(>b):not(.st){display:flex;justify-content:space-between;font-size:7.5px;padding:3px 0}.pn .st b{font-size:11.5px;margin-bottom:7px}.st{display:block!important}
+.kpi:nth-child(1){background:linear-gradient(110deg,var(--dc) 45%,#22c55e44)}.kpi:nth-child(2){background:linear-gradient(110deg,var(--dc) 45%,#3b82f644)}.kpi:nth-child(3){background:linear-gradient(110deg,var(--dc) 45%,#f59e0b44)}.kpi:nth-child(4){background:linear-gradient(110deg,var(--dc) 45%,#ef444444)}.kpi:nth-child(5){background:linear-gradient(110deg,var(--dc) 45%,#8b5cf644)}
+.fc b{white-space:nowrap}#s .card:not(.fc){white-space:nowrap}.qa span{opacity:1}#s>div[style*="left:405px;top:935px"],#s>div[style*="left:398px;top:996px"],#s>div[style*="left:475px;top:911px"],#s>div[style*="left:627px;top:928px"]{display:none}.yl{display:flex;flex-direction:column;justify-content:space-between;height:78px;font-size:6.5px;color:var(--ds)}.cv{flex:1;min-width:0}.cv svg{height:78px!important;width:100%;display:block}.xl{display:flex;justify-content:space-between;font-size:6px;color:var(--ds);margin-top:3px}
+.st b{margin:0 0 1px!important}.st small{margin-bottom:9px}.qa{padding:4px 9px;margin-bottom:3px}.pn div:has(>b):not(.st){padding:2px 0}#s>div[style*="left:69px;top:94px"]{white-space:nowrap;padding:7px 0!important;text-align:center;font-size:10px!important}.fc{gap:10px!important;padding:12px 10px!important}.fc b{font-size:12.5px!important}.dash{max-height:574px;overflow:hidden}#s>div[style*="left:405px;top:935px"],#s>div[style*="left:398px;top:996px"],#s>div[style*="left:475px;top:911px"],#s>div[style*="left:627px;top:928px"]{display:none!important}.dash li:nth-child(1) i{color:#fff}.dash li:nth-child(2) i{color:#22c55e}.dash li:nth-child(3) i{color:#8b5cf6}.dash li:nth-child(4) i{color:#f59e0b}.dash li:nth-child(5) i{color:#4f46e5}.dash li:nth-child(6) i{color:#14b8a6}.dash li:nth-child(7) i{color:#22c55e}.dash li:nth-child(8) i{color:#ef4444}.dash li:nth-child(9) i{color:#f59e0b}.dash li:nth-child(10) i{color:#2563eb}.dash li:nth-child(11) i{color:#10b981}.dash li:nth-child(12) i{color:#64748b}.dash li:nth-child(13) i{color:#6366f1}.dash li:nth-child(14) i{color:#2563eb}.dash li:nth-child(15) i{color:#10b981}.dash li:nth-child(16) i{color:#64748b}.dash li.on i{color:#fff!important}.hs{display:block;border-radius:8px;cursor:pointer;text-decoration:none}.hs:hover{background:rgba(29,94,234,.10)}.hs:focus-visible{outline:2px solid #1d5eea;outline-offset:2px}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}#bg{user-select:none;-webkit-user-drag:none}</style><meta content="Darmaltoon pharmacy management software: sales, medicine inventory, expiry tracking, purchases and reports, with web and offline-first Windows desktop workflows. English, Dari and Pashto." name="description"/><meta content="index,follow,max-image-preview:large" name="robots"/><meta content="Pharmacy Management Software in Afghanistan | Darmaltoon" property="og:title"/><meta content="Darmaltoon pharmacy management software: sales, medicine inventory, expiry tracking, purchases and reports, with web and offline-first Windows desktop workflows. English, Dari and Pashto." property="og:description"/><meta content="website" property="og:type"/><meta content="https://darmaltoon.com/" property="og:url"/><meta content="https://darmaltoon.com/assets/images/hero/darmaltoon-light-dashboard-hd.webp" property="og:image"/><link href="https://darmaltoon.com/" rel="canonical"/><link href="https://darmaltoon.com/" hreflang="en" rel="alternate"/><link href="https://darmaltoon.com/fa/" hreflang="fa-AF" rel="alternate"/><link href="https://darmaltoon.com/ps/" hreflang="ps-AF" rel="alternate"/><link href="https://darmaltoon.com/" hreflang="x-default" rel="alternate"/><link href="/assets/images/brand/darmaltoon-selected.png" rel="icon" type="image/png"/><link href="/assets/css/ui-enhancements.css?v=exact-mobile-v2" rel="stylesheet"/><script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Darmaltoon","applicationCategory":"BusinessApplication","operatingSystem":"Windows, Web, Android","url":"https://darmaltoon.com/","description":"Darmaltoon pharmacy management software: sales, medicine inventory, expiry tracking, purchases and reports, with web and offline-first Windows desktop workflows. English, Dari and Pashto.","inLanguage":["en","fa-AF","ps-AF"]}</script><link rel="stylesheet" href="/assets/css/native-mobile.css?v=20261016-mobile-native-v3"><link rel="stylesheet" href="/assets/css/native-desktop.css?v=20261016-lightphoto-v1"><link rel="stylesheet" href="/assets/css/light-exact.css?v=20261016-exact-2"><link rel="stylesheet" href="/assets/css/light-hd-hero.css?v=20261016-hd1"><link rel="stylesheet" href="/assets/css/light-premium.css?v=20261016-premium-3"><link rel="preload" as="image" href="/assets/images/hero/darmaltoon-light-dashboard-hd.avif" type="image/avif" media="(min-width:901px)"><link rel="stylesheet" href="/assets/css/brand-wordmark.css?v=20261016-newbrand1"><link rel="stylesheet" href="/assets/css/privacy-links.css?v=20261017-1"></head><body><div class="zip-native" data-theme="light">
+<header class="zn-header" aria-label="Darmaltoon mobile site navigation">
+ <a class="zn-brand" href="/" aria-label="Darmaltoon homepage"><img class="merged-brand-wordmark" src="/assets/images/brand/darmaltoon-merged-wordmark.png" width="230" height="48" alt="Darmaltoon" decoding="async"></a>
+ <nav class="zn-nav" aria-label="Language and menu"><div class="zn-languages"><a href="/" aria-current="page">EN</a><a href="/fa/" lang="fa-AF" aria-label="Dari language">دری</a><a href="/ps/" lang="ps-AF" aria-label="Pashto language">پښتو</a></div>
+ <details class="zn-menu"><summary aria-label="Open navigation menu">☰</summary><div class="zn-dropdown"><a href="#native-features">Features</a><a href="#native-platforms">Solutions</a><a href="#how">How it works</a><a href="#pricing">Plans</a><a href="#faq">FAQ</a><a href="#demo">Request a demo</a></div></details></nav>
+</header>
+<main id="native-main">
+<section class="zn-hero">
+ <span class="zn-pill">PHARMACY MANAGEMENT PLATFORM</span>
+ <h1>Run Your Pharmacy Smarter with <span>Darmaltoon</span></h1>
+ <p class="zn-lede">A complete, easy-to-use pharmacy management system for Afghanistan. Manage sales, medicines, inventory and reporting on the web or Windows desktop, with an Android selling companion experience.</p>
+ <div class="zn-actions"><a href="/demo.html" class="zn-button primary">Request a Demo →</a><a href="#native-features" class="zn-button">Explore Features ↗</a></div>
+ <div class="zn-benefits"><p><b>✓</b> Designed for modern pharmacies</p><p><b>✓</b> Online &amp; offline-capable desktop</p><p><b>✓</b> English, Dari &amp; Pashto</p><p><b>✓</b> Modern sales &amp; inventory</p></div>
+</section>
+<section class="zn-section" id="native-dashboard" aria-labelledby="zn-dashboard-heading">
+ <span class="zn-kicker">The real product experience</span><h2 id="zn-dashboard-heading">Your pharmacy at a glance</h2>
+ <p class="zn-desc">Explore the main elements of the Darmaltoon dashboard. The figures below are illustrative, not actual pharmacy transactions.</p>
+ <div class="zn-dashboard">
+ <div class="zn-dash-header"><strong>▣ Dashboard</strong><span class="zn-demo-tag">SAMPLE DATA</span></div>
+ <div class="zn-kpis">
+ <div class="zn-kpi" style="--accent:#1fbd86"><small>Sales today</small><strong>AFN 48,250</strong><em>126 example invoices</em></div>
+ <div class="zn-kpi" style="--accent:#147cff"><small>Purchases</small><strong>AFN 32,400</strong><em>8 example purchases</em></div>
+ <div class="zn-kpi" style="--accent:#ffb127"><small>Low-stock items</small><strong>14</strong><em>Reorder notifications</em></div>
+ <div class="zn-kpi" style="--accent:#f83c72"><small>Expiring soon</small><strong>9</strong><em>Within three months</em></div></div>
+ <div class="zn-plot"><h3>Sales overview</h3><svg viewBox="0 0 355 140" role="img" aria-label="Illustrative sales chart for seven days, with fluctuating sample figures"><path class="axis" d="M0 28 H355 M0 58 H355 M0 88 H355 M0 118 H355"/><polygon class="area" points="0,128 0,110 35,98 75,105 110,79 145,89 180,56 215,74 250,48 285,61 320,33 355,49 355,128"/><polyline class="line" points="0,110 35,98 75,105 110,79 145,89 180,56 215,74 250,48 285,61 320,33 355,49"/></svg><div class="zn-plot-labels"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div></div>
+ <div class="zn-dash-table"><h3>Medicine stock alerts</h3><table><thead><tr><th scope="col">Medicine</th><th scope="col">Stock</th><th scope="col">Minimum</th></tr></thead><tbody><tr><td>Amlodipine 5mg</td><td class="zn-low">2</td><td>30</td></tr><tr><td>Paracetamol 500mg</td><td class="zn-low">8</td><td>50</td></tr><tr><td>Amoxicillin 500mg</td><td class="zn-low">4</td><td>20</td></tr></tbody></table></div>
+ </div>
+ <p class="zn-sample">Preview data is fictional. Product functionality and Android availability depend on the configuration.</p>
+</section>
+<section class="zn-section" id="native-features" aria-labelledby="zn-features-heading"><span class="zn-kicker">Complete pharmacy management</span><h2 id="zn-features-heading">Powerful features for modern pharmacies</h2><p class="zn-desc">The essential modules are readable, searchable and accessible—not embedded in an image.</p><div class="zn-feature-grid"><article class="zn-feature"><div class="zn-icon" style="--color:#00a5b6" aria-hidden="true">▣</div><h3>Sales &amp; POS</h3><p>Sell medicines, issue receipts, and handle returns.</p></article>
+<article class="zn-feature"><div class="zn-icon" style="--color:#2b81fa" aria-hidden="true">⬡</div><h3>Medicine Inventory</h3><p>Track medicine quantities, batches and stock thresholds.</p></article>
+<article class="zn-feature"><div class="zn-icon" style="--color:#ee3d72" aria-hidden="true">◫</div><h3>Expiry Tracking</h3><p>See medicines nearing expiry and reduce wastage.</p></article>
+<article class="zn-feature"><div class="zn-icon" style="--color:#783bed" aria-hidden="true">▥</div><h3>Reports &amp; Analytics</h3><p>Understand sales, purchases and inventory activity.</p></article>
+<article class="zn-feature"><div class="zn-icon" style="--color:#ef981d" aria-hidden="true">♟</div><h3>Customer Records</h3><p>Keep customer information organized for faster service.</p></article>
+<article class="zn-feature"><div class="zn-icon" style="--color:#03a686" aria-hidden="true">▤</div><h3>Suppliers &amp; Purchases</h3><p>Record procurement and manage supplier information.</p></article>
+<article class="zn-feature"><div class="zn-icon" style="--color:#2568d2" aria-hidden="true">☁</div><h3>Backup &amp; Sync</h3><p>Use available backup and optional cloud synchronization.</p></article>
+<article class="zn-feature"><div class="zn-icon" style="--color:#7253b4" aria-hidden="true">⚙</div><h3>Roles &amp; Permissions</h3><p>Give staff access appropriate to their responsibilities.</p></article></div></section>
+<section class="zn-section" id="native-languages"><span class="zn-kicker">Trilingual support</span><h2>Built for Afghanistan, in your language</h2><p class="zn-desc">Choose a language for an easier pharmacy experience.</p><div class="zn-lang-grid"><a href="/" class="zn-lang-card"><span class="zn-flag">🇬🇧</span><b>English</b><small>English website</small></a><a href="/fa/" class="zn-lang-card" lang="fa-AF"><span class="zn-flag">🇦🇫</span><b>دری</b><small>زبان دری</small></a><a href="/ps/" class="zn-lang-card" lang="ps-AF"><span class="zn-flag">🇦🇫</span><b>پښتو</b><small>پښتو ژبه</small></a></div><figure class="zn-afghan-panorama" aria-label="Afghanistan skyline"><img src="/assets/images/hero/afghanistan-bottom.webp" alt="Illustrated Afghanistan skyline with blue-domed architecture and mountain scenery" loading="lazy" decoding="async" width="2048" height="282"></figure></section>
+<section class="zn-section" id="native-platforms"><span class="zn-kicker">Work anywhere</span><h2>Web, desktop &amp; mobile selling</h2><p class="zn-desc">Online and offline options for practical pharmacy workflows.</p><div class="zn-platform-grid"><article class="zn-platform"><div class="zn-icon" aria-hidden="true">☁</div><div><h3>Web-based pharmacy software</h3><p>Access the online pharmacy platform through your browser where it is configured.</p></div></article>
+<article class="zn-platform"><div class="zn-icon" aria-hidden="true">▣</div><div><h3>Windows desktop application</h3><p>Offline-first sales, stock, billing and daily-close workflows.</p></div></article>
+<article class="zn-platform"><div class="zn-icon" aria-hidden="true">▤</div><div><h3>Android selling companion</h3><p>Designed for convenient mobile selling. Confirm availability and features during your demo.</p></div></article></div></section>
+<section class="zn-cta"><span class="zn-kicker">Ready to get started?</span><h2>See Darmaltoon in action</h2><p>Review the actual software and choose the deployment model that suits your pharmacy.</p><a href="/demo.html" class="zn-button primary">Request a Demo →</a><nav class="zn-footer-nav" aria-label="Further information"><a href="/contact.html">Contact and support</a><a href="/assets/images/design/light.webp" target="_blank" rel="noopener">View full desktop design ↗</a></nav></section>
+</main>
+</div><div class="zip-desktop" data-theme="light">
+ <header class="zd-top" id="home"><div class="zd-container zd-top-inner"><a class="zd-brand" href="/" aria-label="Darmaltoon"><img class="merged-brand-wordmark" src="/assets/images/brand/darmaltoon-merged-wordmark.png" alt="Darmaltoon" width="223" height="47" decoding="async"></a><nav aria-label="Primary navigation" class="zd-primary"><a href="#home" aria-current="page">Home</a><a href="#feat" >Features</a><a href="#demo" >Demo</a><a href="#pricing" >Pricing</a><a href="#faq" >Support</a><a href="#footer" >Contact</a></nav><div class="zd-right"><nav class="zd-header-langs" aria-label="Languages"><a href="/">English</a><span>|</span><a href="/fa/">دری</a><span>|</span><a href="/ps/">پښتو</a></nav><a class="zd-header-cta" href="#demo">Request a Demo &nbsp; →</a></div></div></header>
+ <main class="zd-main">
+ <section class="zd-hero"><div class="zd-product-props" aria-hidden="true"><div class="zd-bottle"><span></span><i>+</i></div><div class="zd-carton"><b>Darmaltoon</b><small>For Healthier Communities</small></div><span class="zd-pill-decor zd-pill-decor-1"></span><span class="zd-pill-decor zd-pill-decor-2"></span></div><div class="zd-container zd-hero-grid"><div class="zd-copy"><span class="zd-pill">PHARMACY MANAGEMENT PLATFORM</span><h1>Run Your Pharmacy<br>Smarter with<br><em>Darmaltoon</em></h1><p class="zd-lede">An easy-to-use system that simplifies everyday pharmacy operations. Manage sales, inventory, customers, suppliers and more — all in one place.</p>
+<ul class="zd-proof"><li>Simple and modern interface</li><li>English, Dari and Pashto support</li><li>Designed for pharmacies in Afghanistan</li></ul><div class="zd-actions"><a class="zd-btn zd-btn-primary" href="#demo">Request a Demo &nbsp;→</a><a class="zd-btn zd-btn-secondary" href="#feat">◉ &nbsp; See Features</a></div><div class="zd-trust"><div class="zd-trust-item"><span class="zd-trust-icon">☁</span><b>Online & Offline</b><small>Work with an offline-capable desktop</small></div><div class="zd-trust-item"><span class="zd-trust-icon">♢</span><b>Secure & Reliable</b><small>Role-based access and backup options</small></div><div class="zd-trust-item"><span class="zd-trust-icon">⚙</span><b>Easy to Use</b><small>Simple modern workflows</small></div><div class="zd-trust-item"><span class="zd-trust-icon">◎</span><b>Trilingual Support</b><small>English, دری, پښتو</small></div></div></div><div class="zd-laptop-holder"><div class="zd-laptop" aria-label="Interactive-style Darmaltoon dashboard demonstration, reconstructed as crisp HTML with illustrative sample figures">
+ <div class="zd-device"><div class="zd-dashboard">
+ <aside class="zd-side"><div class="zd-side-brand"><img src="/assets/images/brand/darmaltoon-selected.png" alt="" width="23" height="23"><b>Darmaltoon</b></div><ul><li class="zd-on"><span aria-hidden="true">▣</span>Dashboard</li><li class=""><span aria-hidden="true">🛒</span>POS (New Sale)</li><li class=""><span aria-hidden="true">◈</span>Medicines</li><li class=""><span aria-hidden="true">⬡</span>Inventory</li><li class=""><span aria-hidden="true">▤</span>Purchases</li><li class=""><span aria-hidden="true">♙</span>Customers</li><li class=""><span aria-hidden="true">▥</span>Reports</li><li class=""><span aria-hidden="true">↶</span>Returns</li><li class=""><span aria-hidden="true">♧</span>Users</li><li class=""><span aria-hidden="true">♢</span>Roles &amp; Permissions</li><li class=""><span aria-hidden="true">▧</span>Backup</li><li class=""><span aria-hidden="true">⟳</span>Sync &amp; Updates</li><li class=""><span aria-hidden="true">⚙</span>Settings</li></ul></aside>
+ <div class="zd-workspace"><div class="zd-appbar"><span class="zd-appsearch">⌕ &nbsp; Search medicines, customers, invoices...</span><span class="zd-chip">⌂ &nbsp; Central Pharmacy</span><span class="zd-chip">🇬🇧 &nbsp; English</span><span class="zd-online">● Online</span></div>
+ <h2>Dashboard</h2><p class="zd-app-intro">Welcome back! &nbsp;|&nbsp; Example pharmacy dashboard</p>
+ <div class="zd-stats"><article class="zd-stat zd-stat-green"><small>Total Sales Today</small><strong>AFN 48,250</strong><span>126 invoices</span></article><article class="zd-stat zd-stat-blue"><small>Purchases Today</small><strong>AFN 32,400</strong><span>8 purchases</span></article><article class="zd-stat zd-stat-amber"><small>Low Stock Items</small><strong>14</strong><span>Reorder threshold</span></article><article class="zd-stat zd-stat-rose"><small>Expiring Soon</small><strong>9</strong><span>Within 3 months</span></article><article class="zd-stat zd-stat-purple"><small>Cash In Drawer</small><strong>AFN 125,600</strong><span>Demo balance</span></article></div>
+ <div class="zd-mainpanels"><section class="zd-chart-card"><div class="zd-panel-title"><h3>▥ &nbsp; Sales Overview</h3><span class="zd-tab">Today</span></div><svg viewBox="0 0 355 136" preserveAspectRatio="none" aria-label="Illustrative sales chart showing changing revenue across a sample week" role="img"><path class="zd-grid-line" d="M0 21H355M0 50H355M0 80H355M0 110H355"/><polygon class="zd-chart-fill" points="0,125 0,107 35,90 70,94 105,71 140,81 175,54 210,67 245,41 280,48 315,26 355,43 355,125"/><polyline class="zd-chart-line" points="0,107 35,90 70,94 105,71 140,81 175,54 210,67 245,41 280,48 315,26 355,43"/></svg><div class="zd-chartlabels"><span>12AM</span><span>4AM</span><span>8AM</span><span>12PM</span><span>4PM</span><span>8PM</span></div></section>
+ <section class="zd-quick"><h3>⚡ Quick Actions</h3><span class="zd-qblue">＋ &nbsp; New Sale (POS)</span><span class="zd-qgreen">▤ &nbsp; New Purchase</span><span class="zd-qorange">▣ &nbsp; Daily Closing</span><span class="zd-qpurple">☁ &nbsp; Backup Now</span><span class="zd-qpale">⟳ &nbsp; Sync Now</span></section></div>
+ <div class="zd-tables"><section class="zd-stocktable"><h3>⬡ &nbsp; Low Stock Items</h3><table><thead><tr><th>Medicine</th><th>Stock</th><th>Min</th></tr></thead><tbody><tr><td>Amlodipine 5mg</td><td class="zd-alert">2</td><td>30</td></tr><tr><td>Paracetamol 500mg</td><td class="zd-alert">8</td><td>50</td></tr><tr><td>Amoxicillin 500mg</td><td class="zd-alert">4</td><td>20</td></tr><tr><td>Omeprazole 20mg</td><td class="zd-alert">6</td><td>30</td></tr></tbody></table></section><section class="zd-stocktable"><h3>▣ &nbsp; Expiring Soon</h3><table><thead><tr><th>Medicine</th><th>Remaining</th></tr></thead><tbody><tr><td>Vitamin C 500mg</td><td>28 days</td></tr><tr><td>Amoxicillin 500mg</td><td>74 days</td></tr><tr><td>Cetirizine 10mg</td><td>103 days</td></tr><tr><td>Insulin 100IU</td><td>103 days</td></tr></tbody></table></section></div>
+ </div></div></div><div class="zd-laptop-lip" aria-hidden="true"></div><p class="zd-sample-label">Product UI illustration · All figures are sample data</p></div></div></div></section>
+ <section class="zd-features-area" id="feat"><div class="zd-feature-side"><div class="zd-heading"><h2>Powerful Features for Modern Pharmacies</h2><p>Everything you need to run your pharmacy efficiently, in one complete system.</p></div><div class="zd-features-grid"><article class="zd-feature"><span class="zd-feature-icon zd-color-cyan" aria-hidden="true">🛒</span><div><h3>Sales &amp; POS</h3><p>Fast and easy billing with medicine lookup, receipts and returns.</p></div></article><article class="zd-feature"><span class="zd-feature-icon zd-color-green" aria-hidden="true">⬡</span><div><h3>Inventory Management</h3><p>Manage quantities, batches and low-stock alerts.</p></div></article><article class="zd-feature"><span class="zd-feature-icon zd-color-red" aria-hidden="true">▣</span><div><h3>Expiry Tracking</h3><p>Stay informed of medicine expiry dates.</p></div></article><article class="zd-feature"><span class="zd-feature-icon zd-color-violet" aria-hidden="true">▤</span><div><h3>Purchase Management</h3><p>Manage suppliers, orders and purchasing records.</p></div></article><article class="zd-feature"><span class="zd-feature-icon zd-color-teal" aria-hidden="true">▥</span><div><h3>Reports &amp; Analytics</h3><p>See operational insights across sales and inventory.</p></div></article><article class="zd-feature"><span class="zd-feature-icon zd-color-purple" aria-hidden="true">●</span><div><h3>Customer Management</h3><p>Keep customer records and purchase history.</p></div></article><article class="zd-feature"><span class="zd-feature-icon zd-color-amber" aria-hidden="true">♙</span><div><h3>Multi-user Access</h3><p>Staff accounts with role-based permissions.</p></div></article><article class="zd-feature"><span class="zd-feature-icon zd-color-blue" aria-hidden="true">☁</span><div><h3>Cloud Sync &amp; Backup</h3><p>Optional synchronization and supported backups.</p></div></article></div></div><div class="zd-language-side"><span class="zd-pill">TRILINGUAL BY DESIGN</span><h2>Built for Afghanistan.<br>In Your Language.</h2><p>Darmaltoon is designed for modern pharmacies with English, Dari and Pashto user experiences.</p><div class="zd-langcards"><a class="zd-lang-card" href="/"><img src="/assets/images/flags/en.svg" alt="" width="27" height="18"><b>English</b><small>Switch to English</small></a><a class="zd-lang-card" href="/fa/"><img src="/assets/images/flags/af.svg" alt="" width="27" height="18"><b>دری</b><small>به دری تغییر دهید</small></a><a class="zd-lang-card" href="/ps/"><img src="/assets/images/flags/af.svg" alt="" width="27" height="18"><b>پښتو</b><small>په پښتو ژبه</small></a></div></div></section>
+ <section class="zd-afghan-unified" id="afghanistan" aria-labelledby="zd-afghan-unified-title">
+ <div class="zd-container zd-afghan-unified-inner">
+  <div class="zd-afghan-intro">
+   <span class="zd-pill">MADE FOR AFGHANISTAN</span>
+   <h2 id="zd-afghan-unified-title">Modern Pharmacy Management, Made Simple.<br><em>Online, Offline & Everywhere.</em></h2>
+   <p>From a neighborhood pharmacy to a growing team, Darmaltoon brings medicines, sales, inventory, and reports together. Work through a browser when connected, or use the Windows desktop experience for offline-first operations.</p>
+   <a class="zd-afghan-link" href="#demo">Find your pharmacy setup <span aria-hidden="true">↗</span></a>
+  </div>
+  <div class="zd-afghan-unified-grid" aria-label="Darmaltoon pharmacy benefits">
+   <article class="zd-afghan-tile"><span class="zd-afghan-symbol" aria-hidden="true">AF</span><div><h3>Made for Afghanistan</h3><p>Built around local pharmacy workflows.</p></div></article>
+   <article class="zd-afghan-tile"><span class="zd-afghan-symbol" aria-hidden="true">3</span><div><h3>Three Languages</h3><p>English, Dari and Pashto interfaces.</p></div></article>
+   <article class="zd-afghan-tile"><span class="zd-afghan-symbol" aria-hidden="true">PC</span><div><h3>Offline-first Desktop</h3><p>Keep selling when the internet is unavailable.</p></div></article>
+   <article class="zd-afghan-tile"><span class="zd-afghan-symbol" aria-hidden="true">WWW</span><div><h3>Web-based Access</h3><p>Manage pharmacy tasks through your browser.</p></div></article>
+   <article class="zd-afghan-tile"><span class="zd-afghan-symbol" aria-hidden="true">+</span><div><h3>Ready to Grow</h3><p>Discuss the right setup for your branches.</p></div></article>
+   <article class="zd-afghan-tile"><span class="zd-afghan-symbol" aria-hidden="true">☁</span><div><h3>Backup & Sync Options</h3><p>Available options depend on your configuration.</p></div></article>
+  </div>
+ </div>
+</section>
+<section class="zd-platform-showcase" id="platforms" aria-labelledby="zd-platform-heading">
+ <div class="zd-container">
+  <div class="zd-platform-heading"><div><span class="zd-pill">FLEXIBLE PHARMACY OPERATIONS</span><h2 id="zd-platform-heading">One pharmacy system. The way you work.</h2><p>Explore a setup that suits your team, your devices and your connectivity.</p></div><a class="zd-platform-link" href="#demo">Compare your options <span aria-hidden="true">→</span></a></div>
+  <div class="zd-platform-cards">
+   <article class="zd-platform-card"><div class="zd-platform-mark" aria-hidden="true">◎</div><span class="zd-platform-tag">ONLINE EXPERIENCE</span><h3>Web Platform</h3><p>Access pharmacy information through a modern browser when connected.</p><div class="zd-platform-footer"><span>Browser access</span><span aria-hidden="true">↗</span></div></article>
+   <article class="zd-platform-card zd-platform-featured"><div class="zd-platform-mark" aria-hidden="true">▣</div><span class="zd-platform-tag">OFFLINE-FIRST</span><h3>Windows Desktop</h3><p>Sell, manage stock and complete everyday tasks even without a continuous internet connection.</p><div class="zd-platform-footer"><span>Built for reliable local work</span><span aria-hidden="true">↗</span></div></article>
+   <article class="zd-platform-card"><div class="zd-platform-mark" aria-hidden="true">▤</div><span class="zd-platform-tag">MOBILE SELLING</span><h3>Android Companion</h3><p>Explore mobile-assisted selling workflows; confirm feature availability during your demo.</p><div class="zd-platform-footer"><span>Ask about mobile access</span><span aria-hidden="true">↗</span></div></article>
+  </div>
+  <p class="zd-platform-note">Online access, offline workflows, synchronization and Android capabilities vary by deployment and product availability.</p>
+ </div>
+</section>
+</main>
+ </div><div class="more"><section class="sec" id="how"><span class="tg">HOW IT WORKS</span><h2 class="sh2">From first demo to daily confidence</h2><p class="sp">Simple onboarding, clear workflows and help choosing the right deployment for your pharmacy.</p><div class="g3"><div class="bx"><div class="num">1</div><h3>Request a demo</h3><p>Tell us about your pharmacy and we will schedule a walkthrough in English, Dari or Pashto.</p></div><div class="bx"><div class="num">2</div><h3>Set up your pharmacy</h3><p>We help you add medicines, batches, suppliers and customers, and create staff accounts with the right permissions.</p></div><div class="bx"><div class="num">3</div><h3>Start selling</h3><p>Review your web, Windows desktop and Android selling options. Windows desktop workflows are offline-first; online access and synchronization depend on configuration.</p></div></div></section><section class="sec alt" id="pricing"><div class="premium-section-header"><span class="tg">OPTIONS THAT FIT</span><h2 class="sh2">Built for your pharmacy today.<br><span>Ready for tomorrow.</span></h2><p class="sp">Every pharmacy works differently. We'll help you select the right modules, installation and support arrangement before confirming pricing.</p></div>
+ <div class="g3 premium-options">
+  <article class="bx pr"><span class="premium-option-number">01 / INDEPENDENT</span><h3>Single Pharmacy</h3><p>A straightforward setup for daily selling and medicine inventory.</p><ul><li>Point of sale and receipts</li><li>Medicine and batch tracking</li><li>Expiry and low-stock visibility</li></ul><a class="btn bo" href="#demo">Discuss your setup →</a></article>
+  <article class="bx pr premium-option-featured"><span class="premium-option-number">02 / GROWING TEAM</span><span class="premium-option-highlight">FLEXIBLE TEAM SETUP</span><h3>Growing Pharmacy</h3><p>Explore staff permissions, operational reporting and optional synchronization.</p><ul><li>Staff roles and permissions</li><li>Sales and inventory insights</li><li>Backup and connectivity options</li></ul><a class="btn bp" href="#demo">Arrange a walkthrough →</a></article>
+  <article class="bx pr"><span class="premium-option-number">03 / MULTI-LOCATION</span><h3>Pharmacy Group</h3><p>Talk through your locations, deployment needs and onboarding requirements.</p><ul><li>Multi-location planning</li><li>Tailored workflow discussion</li><li>Onboarding and support scope</li></ul><a class="btn bo" href="#demo">Discuss your branches →</a></article>
+ </div>
+ <p class="premium-pricing-footnote">No public price or package entitlement has been confirmed. We'll provide details during consultation.</p>
+</section><section class="sec alt" id="faq"><span class="tg">FAQ</span><h2 class="sh2">Frequently asked questions</h2><p class="sp">Quick answers about Darmaltoon.</p><div class="fq"><details><summary>Is Darmaltoon suitable for small pharmacies?</summary><p>Darmaltoon is designed for small pharmacies as well as growing teams. Contact us to discuss which deployment and licensing option is suitable.</p></details><details><summary>Can I use it without an internet connection?</summary><p>The Windows desktop application supports offline-first workflows. Cloud synchronization and Android offline capabilities depend on the selected configuration and product availability.</p></details><details><summary>Which languages are supported?</summary><p>Darmaltoon offers English, Dari and Pashto interfaces. Confirm language coverage for your selected product modules.</p></details><details><summary>Is my data secure?</summary><p>Darmaltoon provides access-control and backup options. The exact backup and synchronization arrangements depend on deployment and licensing.</p></details><details><summary>Can multiple staff members use the system?</summary><p>Yes. Create staff accounts and give each person only the permissions they need.</p></details><details><summary>How do I get started?</summary><p>Request a free demo. We will walk you through the system and help you set up your pharmacy.</p></details></div></section><section class="sec" id="demo"><div class="dm"><div><span class="tg">READY TO SEE IT IN ACTION?</span><h2 style="margin-top:14px">Book a Free Demo Today</h2><p style="color:var(--mt);line-height:22px;max-width:440px">Get a personalized demo and see how Darmaltoon can simplify your pharmacy operations.</p><ul><li>No credit card required to request information</li><li>Personalized product walkthrough</li><li>Designed for modern pharmacies</li></ul><div class="premium-direct-contacts"><a href="https://wa.me/93707413263" target="_blank" rel="noopener noreferrer">Chat on WhatsApp ↗</a><a href="mailto:info@darmaltoon.com">Email us ↗</a></div></div><form class="bx fm" id="df" style="padding:28px"><div><label for="demo-field-0">Full name</label><input id="demo-field-0" name="full_name" placeholder="Your name" required=""/></div><div><label for="demo-field-1">Pharmacy name</label><input id="demo-field-1" name="pharmacy_name" placeholder="Pharmacy name"/></div><div><label for="demo-field-2">Phone</label><input id="demo-field-2" name="phone" placeholder="+93" required="" type="tel"/></div><div><label for="demo-field-3">Email</label><input id="demo-field-3" name="email" placeholder="you@example.com" type="email"/></div><div><label for="demo-field-4">Branches</label><select id="demo-field-4" name="branches"><option>1 branch</option><option>2–5 branches</option><option>6+ branches</option></select></div><div><label for="demo-field-5">Language</label><select id="demo-field-5" name="language"><option>English</option><option>دری</option><option>پښتو</option></select></div><div class="w"><label for="demo-field-6">Message</label><textarea id="demo-field-6" name="message" placeholder="Tell us about your pharmacy" rows="3"></textarea></div><div class="w lead-home-honeypot" aria-hidden="true"><label for="home-site">Website</label><input id="home-site" name="website" autocomplete="off" tabindex="-1"></div><div class="w lead-home-consent"><label><input type="checkbox" name="agree" required> I agree to be contacted about my Darmaltoon demo request.</label></div><p class="marketing-home-privacy">Your details will be used to handle your request. <a href="/privacy.html">Read our privacy notice</a>.</p><div id="ok" aria-live="polite">Your information is submitted only when you choose Request Demo.</div><div class="w"><button class="btn bp" style="width:100%">Request a Demo →</button></div><p class="form-note">We use your contact information only to respond to your request. If the online form is unavailable, you can email <a href="mailto:info@darmaltoon.com">info@darmaltoon.com</a> or contact us on <a href="https://wa.me/93707413263" target="_blank" rel="noopener noreferrer">WhatsApp</a>.</p></form></div></section><footer class="foot" id="footer"><div class="f4"><div><div class="lg1" style="margin-bottom:14px"><img class="merged-brand-footer" src="/assets/images/brand/darmaltoon-merged-wordmark.png" alt="Darmaltoon" width="256" height="53" loading="lazy" decoding="async"></div><p style="max-width:300px">A complete pharmacy management system designed for everyday pharmacy operations, in English, Dari and Pashto.</p></div><div><h4>Product</h4><a href="#feat">Features</a><a href="#pricing">Pricing</a><a href="#how">How it works</a><a href="#demo">Request a demo</a></div><div><h4>Explore</h4><a href="#afghanistan">Made for Afghanistan</a><a href="#platforms">Available platforms</a><a href="#faq">Support &amp; FAQ</a><a href="#demo">Contact us</a></div><div><h4>Contact</h4><p><a href="mailto:info@darmaltoon.com">info@darmaltoon.com</a></p><p>Kabul, Afghanistan</p><p><a href="https://wa.me/93707413263" target="_blank" rel="noopener noreferrer">WhatsApp: +93 70 741 3263</a></p><p>English · دری · پښتو</p></div></div><div class="fb"><span>© 2026 Darmaltoon. All rights reserved.</span><a href="/privacy.html">Privacy notice</a><span>Designed for modern pharmacies</span></div></footer></div><script defer="True" src="/assets/js/ui-enhancements.js?v=20261017-mail1"></script><script defer src="/assets/js/light-demo-mailto.js?v=20261017-mail1"></script><script defer src="/assets/js/first-party-analytics.js?v=20261017-a1"></script></body></html>

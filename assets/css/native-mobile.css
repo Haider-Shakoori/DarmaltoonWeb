@@ -1,0 +1,99 @@
+/* Darmaltoon native mobile UI: all headings, features, data and CTAs are HTML. */
+.zip-native{display:none}
+@media(max-width:900px){
+ body{overflow-x:hidden}
+ .mobile-original,.mobile-site{display:none!important}
+ .zip-native{display:block;max-width:720px;margin:0 auto;background:var(--bg0);color:var(--tx);font-size:14px;line-height:1.5}
+ .zn-header{display:flex;align-items:center;justify-content:space-between;gap:9px;min-height:64px;padding:11px 16px;background:var(--cd);border-bottom:1px solid var(--bd)}
+ .zn-brand{display:inline-flex;gap:8px;align-items:center;text-decoration:none;color:var(--tx);font-size:21px;letter-spacing:-.045em;font-weight:850;white-space:nowrap}
+ .zn-brand img{width:37px;height:37px;object-fit:contain}
+ .zn-nav{display:flex;align-items:center;gap:8px}
+ .zn-languages{display:flex;gap:2px;align-items:center}
+ .zn-languages a{font-weight:800;font-size:12px;text-decoration:none;padding:6px;color:var(--tx)}
+ .zn-languages a[aria-current]{color:var(--bt)}
+ .zn-menu{position:relative}
+ .zn-menu>summary{font-size:20px;border:1px solid var(--bd);border-radius:8px;display:grid;place-items:center;width:36px;height:34px;cursor:pointer;list-style:none}
+ .zn-menu>summary::-webkit-details-marker{display:none}
+ .zn-dropdown{position:absolute;right:0;top:43px;z-index:25;min-width:180px;display:grid;gap:3px;padding:9px;background:var(--cd);border:1px solid var(--bd);border-radius:10px;box-shadow:0 10px 24px #0004}
+ .zn-dropdown a{padding:10px 12px;text-decoration:none;color:var(--tx);font-weight:700;border-radius:7px}
+ .zn-dropdown a:focus-visible,.zn-dropdown a:hover{background:var(--bg0)}
+ .zn-hero{padding:32px 20px 25px;position:relative;isolation:isolate;background:var(--bg0);overflow:hidden}
+ .zn-hero::before{content:"";z-index:-2;position:absolute;inset:0;background:linear-gradient(90deg,rgba(244,251,255,.91),rgba(224,240,255,.71)),url('/assets/images/hero/pharmacy-interior.webp') center/cover no-repeat}
+ .zn-pill{display:inline-flex;padding:7px 11px;letter-spacing:.045em;font-size:10px;font-weight:850;color:var(--bt);background:var(--cd);border:1px solid var(--bd);border-radius:40px}
+ .zn-hero h1{font-size:clamp(34px,8.3vw,51px);font-weight:900;line-height:1.09;letter-spacing:-.05em;margin:21px 0 14px;max-width:540px}
+ .zn-hero h1 span{color:var(--bt);display:block}
+ .zn-lede{color:var(--mt);font-size:14px;line-height:1.62;max-width:570px}
+ .zn-actions{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 0}
+ .zn-button{display:inline-flex;justify-content:center;align-items:center;text-align:center;min-height:47px;border-radius:9px;padding:11px 16px;font-size:13px;font-weight:800;text-decoration:none;color:var(--tx);background:var(--cd);border:1px solid var(--bd)}
+ .zn-button.primary{background:var(--bt);border-color:transparent;color:var(--btt);box-shadow:0 5px 18px #0b84de33}
+ .zn-benefits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px 14px;margin-top:24px}
+ .zn-benefits p{display:flex;align-items:center;gap:7px;font-size:11px;line-height:1.32;color:var(--mt)}
+ .zn-benefits b{display:inline-grid;flex:none;place-items:center;width:21px;height:21px;border-radius:50%;background:#09ac7b;color:white;font-size:11px}
+ .zn-section{padding:27px 17px;border-bottom:1px solid var(--bd)}
+ .zn-kicker{font-size:10px;letter-spacing:.075em;font-weight:900;color:var(--bt);text-transform:uppercase}
+ .zn-section h2{font-size:23px;font-weight:870;line-height:1.2;letter-spacing:-.035em;margin:7px 0 6px}
+ .zn-section p.zn-desc{color:var(--mt);font-size:12px;line-height:1.5;margin:0 0 16px}
+ .zn-dashboard{background:var(--dbg);border:1px solid var(--bd);border-radius:14px;padding:12px;box-shadow:0 8px 27px #05173318;color:var(--dt);font-family:Inter,Arial,sans-serif;line-height:1.35}
+ .zn-dash-header{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:0 0 10px;border-bottom:1px solid var(--bd)}
+ .zn-dash-header strong{font-size:17px;letter-spacing:-.03em}
+ .zn-demo-tag{background:#0eb98f22;border:1px solid #0fa87955;color:#0c9f78;border-radius:5px;padding:4px 7px;font-weight:850;font-size:10px}
+ .zn-kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0}
+ .zn-kpi{background:var(--dc);border:1px solid var(--bd);border-radius:10px;padding:12px 10px;min-width:0;border-top:3px solid var(--accent)}
+ .zn-kpi small{display:block;font-size:10px;color:var(--ds)}
+ .zn-kpi strong{display:block;font-size:18px;font-weight:900;margin:5px 0;color:var(--dt);white-space:nowrap}
+ .zn-kpi em{font-style:normal;font-size:9px;color:var(--ds)}
+ .zn-plot,.zn-dash-table{padding:12px 10px;background:var(--dc);border:1px solid var(--bd);border-radius:10px;margin-top:8px}
+ .zn-plot h3,.zn-dash-table h3{font-size:13px;margin:0 0 10px}
+ .zn-plot svg{display:block;width:100%;height:146px}
+ .zn-plot .axis{stroke:var(--bd);stroke-width:1}
+ .zn-plot .line{fill:none;stroke:#0b9ef5;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+ .zn-plot .area{fill:#168ffb22}
+ .zn-plot-labels{display:flex;justify-content:space-between;color:var(--ds);font-size:9px}
+ .zn-dash-table table{width:100%;border-collapse:collapse;text-align:left;font-size:11px}
+ .zn-dash-table th{font-size:9px;color:var(--ds);font-weight:700;padding:7px 2px}
+ .zn-dash-table td{padding:8px 2px;border-top:1px solid var(--bd)}
+ .zn-low{color:#ee4664;font-weight:800}
+ .zn-sample{text-align:center;font-size:10px;color:var(--mt);margin:10px auto 0;line-height:1.5}
+ .zn-feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .zn-feature{padding:15px 12px;background:var(--cd);border:1px solid var(--bd);border-radius:11px;min-height:137px;box-shadow:0 4px 15px #00153b0a}
+ .zn-feature .zn-icon{display:grid;place-items:center;width:38px;height:38px;border-radius:9px;background:var(--color);color:white;font-size:20px;font-weight:850}
+ .zn-feature h3{font-size:12px;line-height:1.3;margin:10px 0 5px}
+ .zn-feature p{color:var(--mt);font-size:10.5px;line-height:1.48}
+ .zn-lang-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+ .zn-lang-card{border:1px solid var(--bd);border-radius:11px;background:var(--cd);padding:15px 6px;text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;text-decoration:none;color:var(--tx);min-height:95px}
+ .zn-lang-card .zn-flag{font-size:22px;line-height:1}
+ .zn-lang-card b{font-size:12px}.zn-lang-card small{font-size:9px;color:var(--mt);line-height:1.25}
+ .zn-platform-grid{display:grid;grid-template-columns:1fr;gap:10px}
+ .zn-platform{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--bd);border-radius:12px;padding:14px;background:var(--cd)}
+ .zn-platform .zn-icon{display:grid;place-items:center;flex:0 0 42px;height:42px;border-radius:11px;background:var(--bg0);color:var(--bt);font-size:20px}
+ .zn-platform h3{font-size:14px;margin:0 0 5px}.zn-platform p{font-size:11px;line-height:1.5;color:var(--mt)}
+ .zn-cta{text-align:center;padding:31px 18px;background:var(--bg0)}
+ .zn-cta h2{font-size:23px;line-height:1.2;margin:7px 0}
+ .zn-cta p{font-size:12px;line-height:1.55;color:var(--mt);margin:0 0 15px}
+ .zn-cta .zn-button{width:100%;max-width:330px}
+ .zip-native :focus-visible{outline:3px solid #09c5e7;outline-offset:3px}
+ .zn-footer-nav{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin-top:12px}
+ .zn-footer-nav a{font-size:11px;color:var(--bt);text-decoration:underline;padding:5px}
+ /* Decorative imagery may not conceal accessible text; no screenshots serve as text content. */
+ body:has(.zip-native[data-theme="dark"]) .zn-hero::before{background:linear-gradient(90deg,rgba(2,11,24,.78),rgba(1,11,22,.49)),url('/assets/images/hero/herat-skyline.webp') center/cover no-repeat}
+ body:has(.zip-native[data-theme="dark"]) .zn-hero{background:#041424}
+ body:has(.zip-native[data-theme="dark"]) .zn-hero h1 span{color:#0de5ed}
+ body:has(.zip-native[data-theme="dark"]) .zn-benefits b{background:#077f87;color:#eaffff}
+ body:has(.zip-native[data-theme="dark"]) .zn-lang-card{background:var(--cd)}
+ .more #feat{display:block}
+}
+@media(min-width:901px){.zip-native{display:none!important}}
+@media(max-width:370px){.zn-header{padding:9px 10px}.zn-brand{font-size:18px}.zn-brand img{width:31px;height:31px}.zn-languages a{font-size:11px;padding:3px}.zn-hero{padding:25px 15px}.zn-feature{padding:12px 9px;min-height:145px}.zn-section{padding:23px 13px}.zn-kpi strong{font-size:16px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* QA: preserve cinematic reference landscape and keep controls clear of dashboard content. */
+@media(max-width:900px){
+ .switch-theme{display:none!important}
+ body:has(.zip-native[data-theme="dark"]) .zn-hero::before{
+   background:linear-gradient(90deg,rgba(2,12,26,.69),rgba(2,13,25,.38)),url('/assets/images/hero/afghan-night.svg') center 46%/cover no-repeat;
+ }
+ .zn-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .zn-actions .zn-button{padding:10px 7px;font-size:12px;line-height:1.28;min-height:46px}
+ .zn-header{position:relative;z-index:30}
+}
+@media(max-width:355px){.zn-actions{grid-template-columns:1fr}.zn-header .zn-brand{font-size:16px}}
+@media(max-width:900px){html{scroll-behavior:auto!important}.zn-button{scroll-margin-top:16px}}
