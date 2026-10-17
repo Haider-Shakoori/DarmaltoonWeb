@@ -1,3 +1,7 @@
+# Retire the dark design and send old visitors to the light homepage.
+RewriteEngine On
+RewriteRule ^dark\.html$ / [R=301,L]
+
 # Static pages: efficient delivery on Apache/cPanel when modules are available
 Options -MultiViews
 <IfModule mod_deflate.c>

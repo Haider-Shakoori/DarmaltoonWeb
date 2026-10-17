@@ -2,15 +2,15 @@
 
 > Darmaltoon is a pharmacy management platform designed for pharmacy operations in Afghanistan, with a web platform, an offline-capable Windows desktop application, and Android companion selling workflows whose current availability must be confirmed.
 
-Official site: https://web.darmaltoon.com/
-Dari: https://web.darmaltoon.com/fa/
-Pashto: https://web.darmaltoon.com/ps/
-Feature overview: https://web.darmaltoon.com/features.html
-Windows Desktop: https://web.darmaltoon.com/pharmadesktop.html
-Dari features: https://web.darmaltoon.com/fa/features.html
-Pashto features: https://web.darmaltoon.com/ps/features.html
-Demo request: https://web.darmaltoon.com/demo.html
-Contact: https://web.darmaltoon.com/contact.html
+Official site: https://darmaltoon.com/
+Dari: https://darmaltoon.com/fa/
+Pashto: https://darmaltoon.com/ps/
+Feature overview: https://darmaltoon.com/features.html
+Windows Desktop: https://darmaltoon.com/pharmadesktop.html
+Dari features: https://darmaltoon.com/fa/features.html
+Pashto features: https://darmaltoon.com/ps/features.html
+Demo request: https://darmaltoon.com/demo.html
+Contact: https://darmaltoon.com/contact.html
 
 ## Relevant capabilities
 Pharmacy POS, medicine inventory, batch/expiry tracking, purchases, suppliers, customers, returns, expenses, daily closing, operational reports, role-based user access, optional cloud synchronization and backup, and multilingual user experience (English, Dari, Pashto).

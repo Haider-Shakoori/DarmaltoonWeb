@@ -3,7 +3,7 @@ declare(strict_types=1);
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
 header('X-Content-Type-Options: nosniff');
-header('Access-Control-Allow-Origin: https://web.darmaltoon.com');
+header('Access-Control-Allow-Origin: https://darmaltoon.com');
 header('Access-Control-Allow-Credentials: false');
 header('X-Robots-Tag: noindex');
 function dal_reply(int $code): never {
@@ -16,7 +16,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
     dal_reply(405);
 }
 $origin = (string)($_SERVER['HTTP_ORIGIN'] ?? '');
-if ($origin !== '' && !hash_equals('https://web.darmaltoon.com',rtrim($origin,'/'))) dal_reply(403);
+if ($origin !== '' && !hash_equals('https://darmaltoon.com',rtrim($origin,'/'))) dal_reply(403);
 if (!str_starts_with(strtolower((string)($_SERVER['CONTENT_TYPE'] ?? '')),'application/json')) dal_reply(415);
 if ((int)($_SERVER['CONTENT_LENGTH'] ?? 0) > 1024) dal_reply(413);
 $raw=file_get_contents('php://input',false,null,0,1025);

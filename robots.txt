@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /?theme=
 Disallow: /api/
-Sitemap: https://web.darmaltoon.com/sitemap.xml
+Sitemap: https://darmaltoon.com/sitemap.xml

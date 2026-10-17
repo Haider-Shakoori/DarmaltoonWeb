@@ -1,47 +1,25 @@
-# Darmaltoon — Public Pharmacy Software Website
+# Darmaltoon — Public Pharmacy Management Website
 
-Premium, lightweight, static marketing site for **Darmaltoon** pharmacy management software, designed for pharmacies in Afghanistan. The Windows desktop application and Laravel backend live in separate repositories; this website does not modify either system.
+The public marketing website is https://darmaltoon.com/. The legacy host web.darmaltoon.com redirects to the primary domain.
 
-## Architecture and low-bandwidth approach
+## Presentation
+- Premium **light-only** design; no dark-mode switch or dark homepage.
+- Responsive native HTML/CSS for desktop/mobile, with real crawlable text rather than screenshot-only navigation.
+- English homepage `/`, Dari `/fa/`, and Pashto `/ps/` with RTL support on localized pages.
+- Retired `/dark.html` permanently redirects to `/` and is excluded from the sitemap.
+- Marketing heading: **Modern Pharmacy Management, Made Simple.**
 
-- Static **HTML5**, modern **CSS3**, minimal **vanilla JavaScript**.
-- No frontend framework, app bundle, mandatory font download, or frontend API call to render the homepage.
-- One stylesheet and a tiny progressive-enhancement script power the homepage and light/dark design selector.
-- Apache/cPanel compression and caching rules are in `.htaccess`.
+## Functional scope
+- Product, Features, About, Demo, Contact and multilingual privacy pages.
+- Lead forms use `/api/lead.php`, consent/validation, private SQLite storage outside web root, and notifications to `info@darmaltoon.com`.
+- Privacy-conscious aggregate analytics with a password-protected owner dashboard.
+- Canonical/hreflang metadata, structured data, sitemap and robot rules point to the apex domain.
+- Sample dashboard visuals are illustrations, not real patient records or verified customer counts.
 
-## SEO, AI and localization
+## Release checks
+Run `python3 scripts/check_site.py` and `python3 scripts/check_approved_ui.py`, `php -l` on PHP files, and `node --check` on JavaScript files. Verify public redirects, content and API origin checks. Deploy only after backing up both the public document root and separate private leads data. Do not commit secrets, mailboxes, server settings, or private databases.
 
-The main site and product pages are **pre-rendered** for crawlers in three languages:
+This repository is the public marketing site, **not** the pharmacy web application or native Windows application.
 
-| Language | Homepage | Features | Desktop product |
-|---|---|---|---|
-| English | `/` | `/features.html` | `/pharmadesktop.html` |
-| Dari | `/fa/` | `/fa/features.html` | `/fa/pharmadesktop.html` |
-| Pashto | `/ps/` | `/ps/features.html` | `/ps/pharmadesktop.html` |
-
-- Each pre-rendered page has localized metadata, canonical URLs and `hreflang` relationships. Dari and Pashto use RTL.
-- `sitemap.xml`, `robots.txt`, `llms.txt` and structured data describe the public site.
-- Legacy demo, contact, about and 404 pages remain localized using the original language script.
-- No fake testimonials, invented clientele, search ranking claims or unsupported prices.
-
-## Preview locally
-
-Use a **local HTTP server** at the repository root. Because the new pages use site-root asset URLs, opening `index.html` with a `file://` link is not supported.
-
-```bash
-python3 -m http.server 8000
-```
-
-Then open `http://localhost:8000/`, switch the theme in the navigation bar, or use `http://localhost:8000/?theme=dark`. Also inspect `/fa/` and `/ps/`.
-
-The dashboard is an illustrative visual with sample numbers, not real customer data. Existing desktop screenshots were absent from the original repository, so an honest illustrative fallback remains until verified, privacy-cleared real screenshots can be added.
-
-## Release notes
-
-- `python3 scripts/check_site.py` runs static SEO, localization, internal-link and size tests in GitHub Actions.
-- Demo and contact forms have **no delivery backend yet**. They do not submit data and now explicitly warn visitors instead of giving a false success message. This must be connected before public marketing campaigns.
-- See [SEO-PERFORMANCE.md](SEO-PERFORMANCE.md) for the launch checklist.
-
-## Current branch
-
-`feat/seo-first-bilingual-showcase` — under review through a draft pull request, not merged or deployed.
+## Follow-up decisions
+Approval of lead-data retention rules, native-speaker copy review, and Google Search Console coverage/Core Web Vitals are separate operational tasks. Confirm Android/platform and subscription claims before public marketing expansion.

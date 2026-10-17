@@ -5,7 +5,7 @@
   if (navigator.globalPrivacyControl === true || navigator.doNotTrack === '1'
       || window.doNotTrack === '1') return;
   const known = new Set([
-    '/', '/dark.html', '/about.html', '/features.html', '/pharmadesktop.html',
+    '/', '/about.html', '/features.html', '/pharmadesktop.html',
     '/demo.html', '/contact.html', '/privacy.html', '/fa/', '/ps/',
     '/fa/features.html', '/ps/features.html', '/fa/pharmadesktop.html',
     '/ps/pharmadesktop.html', '/fa/privacy.html', '/ps/privacy.html'

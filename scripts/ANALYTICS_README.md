@@ -20,7 +20,7 @@ Private files outside the web root:
 Directories need 0700, private files 0600 permissions.
 
 Owner dashboard (no public reporting API):
-https://web.darmaltoon.com/admin/analytics.php
+https://darmaltoon.com/admin/analytics.php
 Disabled until owner sets password with cPanel Terminal:
 php /home/darmaltoon/darmaltoon-maintenance/setup_analytics_admin.php
 CLI prints a random one-time password; copy it into a password manager.

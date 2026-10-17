@@ -5,8 +5,7 @@
   titles, meta descriptions, canonical URLs, reciprocal hreflang signals
   (en, fa-AF, ps-AF, x-default) and structured data.
 - The static sitemap includes the public canonical landing, features, desktop,
-  demo, about and contact URLs. The separate dark theme canonicalizes to the
-  main English homepage rather than competing in search.
+  demo, about and contact URLs. The retired /dark.html URL redirects permanently to the light homepage and is absent from the sitemap.
 - Localized landing pages include one crawlable H1, eight native HTML feature
   cards, five matching FAQ entries, and SoftwareApplication/WebPage/FAQPage JSON-LD.
   Their content is not a full-page raster image.
@@ -31,7 +30,7 @@
 - Validate Dari/Pashto marketing translations with native speakers.
 - Trilingual privacy notices are **already published**. Establish an approved
   lead retention/deletion schedule and private data access procedure.
-- Verify receipt of an actual lead email at info@businessos.af from the mailbox.
+- Verify receipt of an actual lead email at info@darmaltoon.com from the mailbox.
   The SQLite database is the durable canonical lead record; server-side
   mail() queueing does **not** guarantee mailbox delivery.
 - Confirm Android feature availability, licensing and exact plan entitlements
@@ -62,3 +61,8 @@
 - Reciprocal canonical and hreflang on privacy pages and new sitemap entries.
 - The mobile light RTL background now favors readable text over faded dashboard lettering.
 - No automatic lead-deletion interval is yet defined. Operational retention policy is still pending approval.
+
+## Light-only domain stabilization — October 17, 2026
+- The approved light design is the only advertised theme. Dark selectors and the old dark page are retired.
+- Former marketing wording “Built for Afghan Pharmacies” is replaced with “Modern Pharmacy Management, Made Simple.”
+- Source canonicals, sitemap, hreflang and same-origin lead/analytics configuration use https://darmaltoon.com/.

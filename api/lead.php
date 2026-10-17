@@ -22,7 +22,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
     reply(405, ['ok' => false, 'message' => 'POST required']);
 }
 $origin = (string)($_SERVER['HTTP_ORIGIN'] ?? '');
-if ($origin !== '' && !hash_equals('https://web.darmaltoon.com', rtrim($origin, '/'))) {
+if ($origin !== '' && !hash_equals('https://darmaltoon.com', rtrim($origin, '/'))) {
     reply(403, ['ok' => false, 'message' => 'Origin not allowed']);
 }
 if (!str_starts_with(strtolower((string)($_SERVER['CONTENT_TYPE'] ?? '')), 'application/json')) {

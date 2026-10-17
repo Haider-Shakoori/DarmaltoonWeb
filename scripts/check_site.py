@@ -72,16 +72,16 @@ for name, (lang, direction) in LANGS.items():
     require(bool(parser.title.strip()) and len(parser.title.strip()) < 85, f"{name}: title missing/too long")
     require(60 < len(parser.meta.get("description", "")) < 350, f"{name}: meta description missing/invalid")
     require(parser.headings.count("h1") == (2 if name == "index.html" else 1), f"{name}: expected responsive home h1 and desktop screen-reader h1 on landing")
-    expected = "https://web.darmaltoon.com/" + name.replace("index.html", "")
+    expected = "https://darmaltoon.com/" + name.replace("index.html", "")
     canonical = [link.get("href") for link in parser.links if link.get("rel") == "canonical"]
     require(canonical == [expected], f"{name}: incorrect canonical {canonical}")
     alt = {link.get("hreflang"): link.get("href") for link in parser.links if link.get("rel") == "alternate"}
     suffix = name.replace("fa/", "").replace("ps/", "").replace("index.html", "")
     for code, href in [
-        ("en", "https://web.darmaltoon.com/" + suffix),
-        ("fa-AF", "https://web.darmaltoon.com/fa/" + suffix),
-        ("ps-AF", "https://web.darmaltoon.com/ps/" + suffix),
-        ("x-default", "https://web.darmaltoon.com/" + suffix),
+        ("en", "https://darmaltoon.com/" + suffix),
+        ("fa-AF", "https://darmaltoon.com/fa/" + suffix),
+        ("ps-AF", "https://darmaltoon.com/ps/" + suffix),
+        ("x-default", "https://darmaltoon.com/" + suffix),
     ]:
         require(alt.get(code) == href, f"{name}: missing hreflang {code}")
     require("application/ld+json" in data, f"{name}: JSON-LD missing")
@@ -141,7 +141,7 @@ for page_name in SECONDARY:
     require("darmaltoon-merged-wordmark.png" in source, f"{page_name}: branded PNG missing")
     require(len(source.encode("utf-8")) < 36_000, f"{page_name}: secondary HTML exceeds 36 KB")
     canon = [link.get("href") for link in parser.links if link.get("rel") == "canonical"]
-    require(canon == ["https://web.darmaltoon.com/" + page_name], f"{page_name}: incorrect canonical")
+    require(canon == ["https://darmaltoon.com/" + page_name], f"{page_name}: incorrect canonical")
     for link in parser.links:
         href = link.get("href", "")
         if not href or href.startswith(("#", "data:", "tel:", "mailto:", "//")): continue
@@ -170,7 +170,7 @@ for lc in ("fa", "ps"):
     require(source.count('class="rtl-feature"') == 8, f"{lc}: require 8 native HTML feature cards")
     require(source.count('class="rtl-faq-item"') == 5, f"{lc}: require one FAQ section of 5 answers")
     require(source.count('id="faq"') == 1, f"{lc}: duplicate FAQ section")
-    require('data-dark-src="/assets/images/design/dark-dashboard.webp"' in source, f"{lc}: theme-specific image missing")
+    require('data-light-src="/assets/images/hero/darmaltoon-light-dashboard-hd.webp"' in source, f"{lc}: light-design product image missing")
     require(f'/demo.html?lang={lc}' in source, f"{lc}: demo link must preserve chosen language")
     require('class="rtl-logo"' in source, f"{lc}: merged wordmark missing")
     require(source.count('<main') == 1, f"{lc}: semantic main landmark missing")
@@ -208,7 +208,7 @@ for rel, lang, direction in [("privacy.html","en","ltr"),("fa/privacy.html","fa-
     page=SiteParser();page.feed(source)
     require(page.lang==lang and page.direction==direction,f"{rel}: language/direction")
     require(page.headings.count("h1")==1,f"{rel}: one h1")
-    canonical="https://web.darmaltoon.com/"+rel
+    canonical="https://darmaltoon.com/"+rel
     require(any(x.get("href")==canonical and x.get("rel")=="canonical" for x in page.links),f"{rel}: canonical")
     require("application/ld+json" in source,f"{rel}: JSON-LD")
     require("info@darmaltoon.com" in source,f"{rel}: contact")
@@ -218,7 +218,7 @@ for name in ("index.html","demo.html","contact.html","fa/index.html","ps/index.h
     require("privacy.html" in (ROOT/name).read_text(),f"{name}: privacy link")
 # First-party, privacy-preserving analytics should be active across the website.
 INSTRUMENTED = [
-    "index.html","dark.html","about.html","features.html",
+    "index.html","about.html","features.html",
     "pharmadesktop.html","demo.html","contact.html",
     "fa/index.html","ps/index.html","fa/features.html",
     "ps/features.html","fa/pharmadesktop.html","ps/pharmadesktop.html",
@@ -243,9 +243,17 @@ sitemap = ROOT/"sitemap.xml"
 if sitemap.exists():
     try:
         urls = [node.text for node in ET.parse(sitemap).iter() if node.tag.endswith("}loc")]
-        require({"https://web.darmaltoon.com/", "https://web.darmaltoon.com/fa/", "https://web.darmaltoon.com/ps/"}.issubset(urls), "Sitemap missing language URLs")
+        require({"https://darmaltoon.com/", "https://darmaltoon.com/fa/", "https://darmaltoon.com/ps/"}.issubset(urls), "Sitemap missing language URLs")
     except ET.ParseError as e:
         ERRORS.append(f"Sitemap XML invalid: {e}")
+# Light-only release safeguards.
+require(not (ROOT / "dark.html").exists(), "Retired dark page must not remain in public files")
+require("RewriteRule ^dark\\.html$ / [R=301,L]" in (ROOT / ".htaccess").read_text(), "Old dark URL must redirect to the light homepage")
+for rel in ["index.html", "fa/index.html", "ps/index.html"]:
+    page_source = (ROOT / rel).read_text(encoding="utf-8").lower()
+    require("/dark.html" not in page_source, f"{rel}: dark-mode navigation remains")
+    require('id="designswitch"' not in page_source and 'id="themetoggle"' not in page_source, f"{rel}: theme switch remains")
+    require("built for afghan pharmacies" not in page_source, f"{rel}: old headline remains")
 if ERRORS:
     print("FAIL: " + str(len(ERRORS)) + " website checks")
     for error in ERRORS: print(" - " + error)

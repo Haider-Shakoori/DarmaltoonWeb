@@ -37,7 +37,7 @@ function dal_analytics_record(string $event, string $path, string $lang, string 
        'demo_received','contact_received'];
     if (!in_array($event, $events, true)) return;
     // Known site paths only. Query strings and fragments are never stored.
-    $known = ['/','/dark.html','/about.html','/features.html',
+    $known = ['/','/about.html','/features.html',
        '/pharmadesktop.html','/demo.html','/contact.html','/privacy.html',
        '/fa/','/ps/','/fa/features.html','/ps/features.html',
        '/fa/pharmadesktop.html','/ps/pharmadesktop.html',

@@ -12,4 +12,4 @@ $password=rtrim(strtr(base64_encode(random_bytes(24)),'+/','-_'),'=');
 $hash=password_hash($password,PASSWORD_DEFAULT);
 if (file_put_contents($file,$hash."\n",LOCK_EX)===false) exit(1);
 chmod($file,0600);
-echo "Darmaltoon owner analytics login\nURL: https://web.darmaltoon.com/admin/analytics.php\nUsername: not needed\nInitial password (copy now, shown only once): $password\n";
+echo "Darmaltoon owner analytics login\nURL: https://darmaltoon.com/admin/analytics.php\nUsername: not needed\nInitial password (copy now, shown only once): $password\n";

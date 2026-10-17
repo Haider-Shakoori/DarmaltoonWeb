@@ -54,7 +54,7 @@ def internal_file(src, parent):
     return local
 
 
-for theme, rel in [("light", "index.html"), ("dark", "dark.html")]:
+for theme, rel in [("light", "index.html")]:
     source = (ROOT / rel).read_text(encoding="utf-8")
     page = Markup()
     page.feed(source)
@@ -79,7 +79,8 @@ for theme, rel in [("light", "index.html"), ("dark", "dark.html")]:
             f"{rel}: unapproved prices")
     require("privacy.html" in source, f"{rel}: privacy link missing")
     require("first-party-analytics.js" in source, f"{rel}: privacy-aware analytics missing")
-    require("https://web.darmaltoon.com/" in source, f"{rel}: canonical/identity missing")
+    require("https://darmaltoon.com/" in source, f"{rel}: canonical/identity missing")
+    require("/dark.html" not in source and "switch-theme" not in source, f"{rel}: old dark navigation remains")
 
     for img in page.images:
         src = img.get("src")
@@ -96,7 +97,7 @@ for theme, rel in [("light", "index.html"), ("dark", "dark.html")]:
         if path:
             require(path.is_file(), f"{rel}: broken internal link: {href}")
 
-    expected = f"https://web.darmaltoon.com/"
+    expected = f"https://darmaltoon.com/"
     canonical = [e.get("href") for e in page.links if e.get("rel") == "canonical"]
     require(canonical == [expected], f"{rel}: must canonicalize to public English homepage")
 
@@ -111,10 +112,6 @@ for theme, rel in [("light", "index.html"), ("dark", "dark.html")]:
                 "light page: optimized HD hero missing")
         require('id="faq"' in source and source.count('id="faq"') == 1,
                 "light page: duplicate/missing FAQ")
-    else:
-        require("assets/images/design/dark.webp" in source
-                or (ROOT / "assets/css/native-desktop.css").read_text().find("dark.webp") != -1,
-                "dark page: approved artwork reference missing")
 
 
 for lc, code in [("fa", "fa-AF"), ("ps", "ps-AF")]:
@@ -122,6 +119,7 @@ for lc, code in [("fa", "fa-AF"), ("ps", "ps-AF")]:
     source = (ROOT / rel).read_text(encoding="utf-8")
     page = Markup()
     page.feed(source)
+    require('id="designSwitch"' not in source, f"{rel}: old theme switch remains")
     require(f'lang="{code}"' in source and 'dir="rtl"' in source,
             f"{rel}: wrong locale or direction")
     require(page.tags.count("h1") == 1, f"{rel}: needs one semantic H1")
@@ -134,7 +132,7 @@ for lc, code in [("fa", "fa-AF"), ("ps", "ps-AF")]:
             f"{rel}: approved logo missing")
     require(f'/demo.html?lang={lc}' in source, f"{rel}: local-language CTA missing")
     require("privacy.html" in source, f"{rel}: privacy notice missing")
-    require('href="https://web.darmaltoon.com/' + lc + '/"' in source,
+    require('href="https://darmaltoon.com/' + lc + '/"' in source,
             f"{rel}: localized canonical missing")
     for img in page.images:
         require(img.get("alt") is not None, f"{rel}: img alt missing")
@@ -148,7 +146,6 @@ for src in ["assets/js/forms.js", "assets/js/light-demo-mailto.js"]:
 for src, limit in [
     ("assets/images/hero/darmaltoon-light-dashboard-hd.avif", 320_000),
     ("assets/images/hero/darmaltoon-light-dashboard-hd.webp", 480_000),
-    ("assets/images/design/dark.webp", 420_000),
     ("assets/css/ui-enhancements.css", 12_000),
     ("assets/js/ui-enhancements.js", 6_000),
     ("assets/css/rtl-premium.css", 19_000),
@@ -163,4 +160,4 @@ if errors:
     for error in errors:
         print(" - " + error)
     sys.exit(1)
-print("PASS: approved English light/dark designs, native RTL pages, merged logo, links, SEO, forms and asset budgets")
+print("PASS: approved English light-only design, native RTL pages, merged logo, links, SEO, forms and asset budgets")
