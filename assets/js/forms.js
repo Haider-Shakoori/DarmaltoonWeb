@@ -68,10 +68,10 @@
     const data = collectFormData(form);
     const get = (key) => String(data[key] || "").trim().slice(0, 550);
     const name = get("fullName");
-    const subject = kind === "demo"
+    const subject = kind === "demo" || kind === "trial"
       ? "Darmaltoon demo request — " + (get("pharmacyName") || "Pharmacy")
       : "Darmaltoon enquiry — " + (get("subject") || "New message");
-    const fields = kind === "demo"
+    const fields = kind === "demo" || kind === "trial"
       ? [["Name",name],["Pharmacy",get("pharmacyName")],["Phone",get("phone")],
          ["WhatsApp",get("whatsapp")],["Email",get("email")],["Province",get("province")],
          ["City",get("city")],["Computers",get("computers")],
@@ -117,7 +117,7 @@
       : document.documentElement.lang === "ps" ? "ps" : "en";
     return {
       kind, language:lang, website:read("website"),
-      consent:kind === "demo" ? !!form.querySelector('input[name="agree"]')?.checked
+      consent:kind === "demo" || kind === "trial" ? !!form.querySelector('input[name="agree"]')?.checked
         : !!form.querySelector('input[name="contactConsent"]')?.checked,
       name:read("fullName"), phone:read("phone"), email:read("email"),
       pharmacy:read("pharmacyName") || read("company"), message:read("message"),
@@ -178,6 +178,28 @@
     if (!form) return;
     const success = document.getElementById("demoSuccess");
     const inputs = form.querySelectorAll("input, select, textarea");
+    const requestType = form.querySelector('select[name="requestType"]');
+    const trialHelp = document.getElementById('dTrialHelp');
+    const email = form.querySelector('input[name="email"]');
+    const pharmacy = form.querySelector('input[name="pharmacyName"]');
+    const language = () => document.documentElement.lang === 'fa' ? 'fa'
+      : document.documentElement.lang === 'ps' ? 'ps' : 'en';
+    function syncTrialMode() {
+      const trial = requestType?.value === 'trial';
+      if (email) email.required = trial;
+      if (pharmacy) pharmacy.required = trial || pharmacy.hasAttribute('data-always-required');
+      if (trialHelp) trialHelp.hidden = !trial;
+      const button = form.querySelector('button[type="submit"]');
+      if (button) button.textContent = trial
+        ? { en:'Submit 7-Day Trial Request', fa:'درخواست آزمایش ۷ روزه را بفرستید', ps:'د ۷ ورځنۍ آزموینې غوښتنه ولېږئ' }[language()]
+        : { en:'Submit Demo Request', fa:'درخواست دیمو را بفرستید', ps:'د ډیمو غوښتنه ولېږئ' }[language()];
+    }
+    if (requestType) {
+      requestType.value = new URLSearchParams(window.location.search).get('request') === 'trial' ? 'trial' : 'demo';
+      requestType.addEventListener('change', syncTrialMode);
+      document.addEventListener('darmaltoon:language-changed', syncTrialMode);
+    }
+    syncTrialMode();
 
     inputs.forEach((input) => {
       input.addEventListener("blur", () => validateField(input));
@@ -198,7 +220,8 @@
       }
 
       // The server confirms durable storage before a success message is shown.
-      void submitLead(form, success, "demo");
+      const selected = form.querySelector('select[name="requestType"]')?.value === "trial" ? "trial" : "demo";
+      void submitLead(form, success, selected);
     });
   }
 
