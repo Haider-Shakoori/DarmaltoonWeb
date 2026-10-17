@@ -158,6 +158,15 @@ try {
     $queued = @mail('info@darmaltoon.com', $subject, implode("\n", $lines), implode("\r\n", $headers));
     $q = $db->prepare('UPDATE leads SET notification_attempted=1,notification_queued=:queued WHERE id=:id');
     $q->execute([':queued'=>$queued ? 1 : 0, ':id'=>$id]);
+    // Best-effort immediate delivery. If unavailable, the private SQLite record
+    // remains durable and scripts/sync_leads_to_platform.php will replay it.
+    try {
+        require_once dirname(__DIR__).'/scripts/platform-lead-sync.php';
+        dal_platform_sync_batch($db, $privateDir, 10);
+    } catch (Throwable $ignored) {
+        error_log('Darmaltoon platform lead sync unavailable; queued for retry');
+    }
+
     reply(201, ['ok'=>true, 'received'=>true,
       'message'=>'Your request has been recorded. We will use your contact details to follow up.']);
 } catch (Throwable $e) {
