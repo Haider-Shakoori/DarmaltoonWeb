@@ -15,8 +15,9 @@
   <link rel="stylesheet" href="assets/css/main.css" />
   <link rel="stylesheet" href="assets/css/responsive.css" />
   <link rel="stylesheet" href="assets/css/rtl.css" />
-<link rel="stylesheet" href="/assets/css/brand-wordmark.css?v=20261016-newbrand1"></head>
-<body>
+<link rel="stylesheet" href="/assets/css/brand-wordmark.css?v=20261016-newbrand1"><link rel="stylesheet" href="/assets/css/subpages-premium.css?v=20261017-v1">
+</head>
+<body class="subpage subpage-demo">
   <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
 
   <!-- COMPONENT: HEADER -->
@@ -27,8 +28,8 @@
         <ul class="nav-list">
           <li><a href="index.html" data-i18n="nav.home">Home</a></li>
           <li><a href="features.html" data-i18n="nav.features">Features</a></li>
-          <li><a href="pharmadesktop.html" data-i18n="nav.pharmadesktop">PharmaDesktop</a></li>
-          <li><a href="index.html#why" data-i18n="nav.why">Why Darmaltoon</a></li>
+          <li><a href="pharmadesktop.html" data-i18n="nav.pharmadesktop">Windows Desktop</a></li>
+          <li><a href="index.html#how" data-i18n="nav.why">Why Darmaltoon</a></li>
           <li><a href="demo.html" class="is-active" data-i18n="nav.demo">Demo</a></li>
           <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
         </ul>
@@ -47,7 +48,7 @@
       <ul>
         <li><a href="index.html" data-i18n="nav.home">Home</a></li>
         <li><a href="features.html" data-i18n="nav.features">Features</a></li>
-        <li><a href="pharmadesktop.html" data-i18n="nav.pharmadesktop">PharmaDesktop</a></li>
+        <li><a href="pharmadesktop.html" data-i18n="nav.pharmadesktop">Windows Desktop</a></li>
         <li><a href="demo.html" data-i18n="nav.demo">Demo</a></li>
         <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
       </ul>
@@ -62,10 +63,13 @@
       <div class="container narrow center">
         <span class="eyebrow" data-i18n="demo.eyebrow">Demo</span>
         <h1 data-i18n="demo.title">See Darmaltoon in action</h1>
-        <p class="lead" data-i18n="demo.subtitle">Register for a product demonstration and the Darmaltoon team will follow up with you.</p>
+        <p class="lead" data-i18n="demo.subtitle">Tell us about your pharmacy to prepare an email demo request. Nothing is submitted automatically.</p>
       </div>
     </section>
 
+    <section class="subpage-direct-contact" aria-label="Direct contact methods"><div class="container subpage-direct-inner"><div>
+    <strong data-i18n="extra.directTitle">Prefer to speak directly?</strong><p data-i18n="extra.directCopy">Contact us on WhatsApp or email. The form opens an email draft, not an automatic submission.</p>
+    </div><div class="subpage-direct-actions"><a href="https://wa.me/93707413263" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a><a href="mailto:info@businessos.af">info@businessos.af ↗</a></div></div></section>
     <!-- COMPONENT: FORM -->
     <section class="section">
       <div class="container form-wrap">
@@ -157,12 +161,12 @@
             <span class="field-error" data-error-for="dAgree"></span>
           </div>
 
-          <button type="submit" class="btn btn-primary btn-block" data-i18n="demo.submit">Request Demo</button>
+          <button type="submit" class="btn btn-primary btn-block" data-i18n="extra.emailDemo">Open Email Draft</button>
 
           <!-- TODO: Connect demo request to backend endpoint. -->
           <div class="form-success" id="demoSuccess" hidden>
-            <strong data-i18n="form.successTitle">Thank you. Your request is ready to be submitted.</strong>
-            <p data-i18n="form.successBody">Our team will get back to you shortly.</p>
+            <strong data-i18n="form.successTitle">Review your prepared email</strong>
+            <p data-i18n="form.successBody">Nothing has been sent until you press Send in your email app.</p>
           </div>
         </form>
       </div>
@@ -178,22 +182,22 @@
         <p data-i18n="footer.tagline">Modern pharmacy-management software for real pharmacy environments.</p>
         <p class="footer-eco" data-i18n="footer.ecosystem">Part of the BusinessOS ecosystem</p>
       </div>
-      <div class="footer-col"><h4 data-i18n="footer.col1">Darmaltoon</h4><ul><li><a href="about.html" data-i18n="nav.about">About</a></li><li><a href="index.html#why" data-i18n="nav.why">Why Darmaltoon</a></li><li><a href="contact.html" data-i18n="nav.contact">Contact</a></li></ul></div>
-      <div class="footer-col"><h4 data-i18n="footer.col2">Product</h4><ul><li><a href="pharmadesktop.html" data-i18n="nav.pharmadesktop">PharmaDesktop</a></li><li><a href="features.html" data-i18n="nav.features">Features</a></li><li><a href="demo.html" data-i18n="nav.demo">Demo</a></li></ul></div>
+      <div class="footer-col"><h4 data-i18n="footer.col1">Darmaltoon</h4><ul><li><a href="about.html" data-i18n="nav.about">About</a></li><li><a href="index.html#how" data-i18n="nav.why">Why Darmaltoon</a></li><li><a href="contact.html" data-i18n="nav.contact">Contact</a></li></ul></div>
+      <div class="footer-col"><h4 data-i18n="footer.col2">Product</h4><ul><li><a href="pharmadesktop.html" data-i18n="nav.pharmadesktop">Windows Desktop</a></li><li><a href="features.html" data-i18n="nav.features">Features</a></li><li><a href="demo.html" data-i18n="nav.demo">Demo</a></li></ul></div>
       <div class="footer-col"><h4 data-i18n="footer.col3">Resources</h4><ul><li><a href="index.html#faq" data-i18n="nav.faq">FAQ</a></li><li><a href="contact.html" data-i18n="nav.contact">Contact</a></li><li><a href="contact.html" data-i18n="footer.support">Support</a></li></ul></div>
       <div class="footer-col"><h4 data-i18n="footer.col4">Languages</h4><ul class="footer-lang"><li><button data-lang="en" type="button">English</button></li><li><button data-lang="fa" type="button">دری</button></li><li><button data-lang="ps" type="button">پښتو</button></li></ul></div>
     </div>
     <div class="container footer-bottom">
       <span>© <span id="year"></span> Darmaltoon</span>
-      <span class="footer-placeholder">Support: {{ SUPPORT_EMAIL }} · Phone: {{ PHONE_NUMBER }}</span>
+      <span class="footer-placeholder"><a href="mailto:info@businessos.af">info@businessos.af</a> · <a href="https://wa.me/93707413263" target="_blank" rel="noopener noreferrer">WhatsApp: +93 70 741 3263</a></span>
     </div>
   </footer>
 
   <button class="back-top" id="backTop" aria-label="Back to top" hidden>↑</button>
 
-  <script defer src="assets/js/translations.js"></script>
+  <script defer src="assets/js/translations.js?v=20261017-s1"></script>
   <script defer src="assets/js/language.js"></script>
   <script defer src="assets/js/app.js"></script>
-  <script defer src="assets/js/forms.js"></script>
+  <script defer src="assets/js/forms.js?v=20261017-s1"></script>
 </body>
 </html>

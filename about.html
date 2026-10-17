@@ -15,8 +15,9 @@
   <link rel="stylesheet" href="assets/css/main.css" />
   <link rel="stylesheet" href="assets/css/responsive.css" />
   <link rel="stylesheet" href="assets/css/rtl.css" />
-<link rel="stylesheet" href="/assets/css/brand-wordmark.css?v=20261016-newbrand1"></head>
-<body>
+<link rel="stylesheet" href="/assets/css/brand-wordmark.css?v=20261016-newbrand1"><link rel="stylesheet" href="/assets/css/subpages-premium.css?v=20261017-v1">
+</head>
+<body class="subpage subpage-about">
   <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
 
   <!-- COMPONENT: HEADER -->
@@ -27,8 +28,8 @@
         <ul class="nav-list">
           <li><a href="index.html" data-i18n="nav.home">Home</a></li>
           <li><a href="features.html" data-i18n="nav.features">Features</a></li>
-          <li><a href="pharmadesktop.html" data-i18n="nav.pharmadesktop">PharmaDesktop</a></li>
-          <li><a href="index.html#why" data-i18n="nav.why">Why Darmaltoon</a></li>
+          <li><a href="pharmadesktop.html" data-i18n="nav.pharmadesktop">Windows Desktop</a></li>
+          <li><a href="index.html#how" data-i18n="nav.why">Why Darmaltoon</a></li>
           <li><a href="demo.html" data-i18n="nav.demo">Demo</a></li>
           <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
         </ul>
@@ -47,7 +48,7 @@
       <ul>
         <li><a href="index.html" data-i18n="nav.home">Home</a></li>
         <li><a href="features.html" data-i18n="nav.features">Features</a></li>
-        <li><a href="pharmadesktop.html" data-i18n="nav.pharmadesktop">PharmaDesktop</a></li>
+        <li><a href="pharmadesktop.html" data-i18n="nav.pharmadesktop">Windows Desktop</a></li>
         <li><a href="demo.html" data-i18n="nav.demo">Demo</a></li>
         <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
       </ul>
@@ -81,6 +82,14 @@
       </div>
     </section>
 
+    <section class="section subpage-benefits" aria-labelledby="about-values-heading"><div class="container">
+      <div class="subpage-section-heading"><span class="eyebrow" data-i18n="extra.whyEyebrow">WHY DARMALTOON</span><h2 id="about-values-heading" data-i18n="extra.whyTitle">Made for the rhythm of a real pharmacy.</h2>
+      <p data-i18n="extra.whyCopy">Technology should simplify work at the counter, not get in the way.</p></div>
+      <div class="subpage-benefit-grid">
+       <article class="subpage-benefit"><span aria-hidden="true">◈</span><h3 data-i18n="extra.simple">Easy to learn</h3><p data-i18n="extra.simpleCopy">A focused experience for owners and pharmacy staff.</p></article>
+       <article class="subpage-benefit"><span aria-hidden="true">⌖</span><h3 data-i18n="extra.local">Designed locally</h3><p data-i18n="extra.localCopy">English, Dari and Pashto with Afghan pharmacy needs in mind.</p></article>
+       <article class="subpage-benefit"><span aria-hidden="true">⎘</span><h3 data-i18n="extra.flexible">Connected or offline</h3><p data-i18n="extra.flexibleCopy">Discuss a desktop or web setup for your connectivity.</p></article>
+      </div></div></section>
     <!-- COMPONENT: CTA -->
     <section class="section cta-section">
       <div class="container cta-card">
@@ -102,22 +111,22 @@
         <p data-i18n="footer.tagline">Modern pharmacy-management software for real pharmacy environments.</p>
         <p class="footer-eco" data-i18n="footer.ecosystem">Part of the BusinessOS ecosystem</p>
       </div>
-      <div class="footer-col"><h4 data-i18n="footer.col1">Darmaltoon</h4><ul><li><a href="about.html" data-i18n="nav.about">About</a></li><li><a href="index.html#why" data-i18n="nav.why">Why Darmaltoon</a></li><li><a href="contact.html" data-i18n="nav.contact">Contact</a></li></ul></div>
-      <div class="footer-col"><h4 data-i18n="footer.col2">Product</h4><ul><li><a href="pharmadesktop.html" data-i18n="nav.pharmadesktop">PharmaDesktop</a></li><li><a href="features.html" data-i18n="nav.features">Features</a></li><li><a href="demo.html" data-i18n="nav.demo">Demo</a></li></ul></div>
+      <div class="footer-col"><h4 data-i18n="footer.col1">Darmaltoon</h4><ul><li><a href="about.html" data-i18n="nav.about">About</a></li><li><a href="index.html#how" data-i18n="nav.why">Why Darmaltoon</a></li><li><a href="contact.html" data-i18n="nav.contact">Contact</a></li></ul></div>
+      <div class="footer-col"><h4 data-i18n="footer.col2">Product</h4><ul><li><a href="pharmadesktop.html" data-i18n="nav.pharmadesktop">Windows Desktop</a></li><li><a href="features.html" data-i18n="nav.features">Features</a></li><li><a href="demo.html" data-i18n="nav.demo">Demo</a></li></ul></div>
       <div class="footer-col"><h4 data-i18n="footer.col3">Resources</h4><ul><li><a href="index.html#faq" data-i18n="nav.faq">FAQ</a></li><li><a href="contact.html" data-i18n="nav.contact">Contact</a></li><li><a href="contact.html" data-i18n="footer.support">Support</a></li></ul></div>
       <div class="footer-col"><h4 data-i18n="footer.col4">Languages</h4><ul class="footer-lang"><li><button data-lang="en" type="button">English</button></li><li><button data-lang="fa" type="button">دری</button></li><li><button data-lang="ps" type="button">پښتو</button></li></ul></div>
     </div>
     <div class="container footer-bottom">
       <span>© <span id="year"></span> Darmaltoon</span>
-      <span class="footer-placeholder">Support: {{ SUPPORT_EMAIL }} · Phone: {{ PHONE_NUMBER }}</span>
+      <span class="footer-placeholder"><a href="mailto:info@businessos.af">info@businessos.af</a> · <a href="https://wa.me/93707413263" target="_blank" rel="noopener noreferrer">WhatsApp: +93 70 741 3263</a></span>
     </div>
   </footer>
 
   <button class="back-top" id="backTop" aria-label="Back to top" hidden>↑</button>
 
-  <script defer src="assets/js/translations.js"></script>
+  <script defer src="assets/js/translations.js?v=20261017-s1"></script>
   <script defer src="assets/js/language.js"></script>
   <script defer src="assets/js/app.js"></script>
-  <script defer src="assets/js/forms.js"></script>
+  <script defer src="assets/js/forms.js?v=20261017-s1"></script>
 </body>
 </html>
