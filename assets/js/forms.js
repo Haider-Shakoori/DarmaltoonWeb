@@ -1,6 +1,4 @@
-/* =========================================================
-   Darmaltoon — Form validation (frontend only)
-   ========================================================= */
+/* Darmaltoon — localized client validation, private lead intake and email fallback. */
 
 (function () {
   function ready(fn) {
@@ -199,7 +197,7 @@
         return;
       }
 
-      // No submission endpoint is configured. Never imply that the lead was delivered.
+      // The server confirms durable storage before a success message is shown.
       void submitLead(form, success, "demo");
     });
   }
@@ -228,7 +226,7 @@
         return;
       }
 
-      // No submission endpoint is configured. Never imply that a message was sent.
+      // Avoid claiming success until the lead endpoint confirms receipt.
       void submitLead(form, success, "contact");
     });
   }
