@@ -5,6 +5,10 @@
 
 window.DARMALTOON_I18N = {
   en: {
+    "trial.requestType": "How can we help you? *",
+    "trial.demoOption": "Request a product demo",
+    "trial.trialOption": "Apply for a 7-day free trial",
+    "trial.explanation": "Trial applications require an email address and pharmacy name. We review your request before onboarding; submitting does not activate an account or reserve launch pricing. Do not provide your password here.",
     "launch.label": "Darmaltoon Standard Annual — limited founding offer",
     "launch.title": "First 10 paying pharmacies: AFN 5,000 first year",
     "launch.body": "After the first 10 confirmed paying pharmacies, the first-year price becomes AFN 7,000. All Standard customers renew for AFN 5,000 per year. A 7-day trial is available through the separate approval process.",
@@ -304,6 +308,10 @@ window.DARMALTOON_I18N = {
   },
 
   fa: {
+    "trial.requestType": "چه نوع درخواستی دارید؟ *",
+    "trial.demoOption": "درخواست نمایش محصول",
+    "trial.trialOption": "درخواست آزمایش رایگان ۷ روزه",
+    "trial.explanation": "برای درخواست آزمایش، ایمیل و نام دواخانه الزامی است. درخواست شما قبل از فعال‌سازی حساب بررسی می‌شود و ارسال آن تخفیف را رزرو نمی‌کند. رمز عبور خود را اینجا وارد نکنید.",
     "launch.label": "پیشنهاد آغاز کار بستهٔ استاندارد درملتون",
     "launch.title": "۱۰ دواخانه اول: ۵٬۰۰۰ افغانی برای سال نخست",
     "launch.body": "پس از تأیید پرداخت ده مشتری نخست، قیمت سال اول به ۷٬۰۰۰ افغانی افزایش می‌یابد. تمدید سالانه برای همه مشتریان استاندارد ۵٬۰۰۰ افغانی است. آزمایش هفت‌روزه با تأیید جداگانه امکان‌پذیر است.",
@@ -603,6 +611,10 @@ window.DARMALTOON_I18N = {
   },
 
   ps: {
+    "trial.requestType": "څه ډول غوښتنه لرئ؟ *",
+    "trial.demoOption": "د محصول ډیمو غوښتنه",
+    "trial.trialOption": "د ۷ ورځنۍ وړیا آزموینې غوښتنه",
+    "trial.explanation": "د آزموینې غوښتنې لپاره برېښنالیک او د درملتون نوم اړین دي. ستاسو غوښتنه د حساب تر فعالېدو وړاندې ارزول کېږي؛ د تخفیف ځای نه ساتي. خپل پټنوم دلته مه لیکئ.",
     "launch.label": "د درملتون سټنډرډ کلنۍ بستې ځانګړی وړاندیز",
     "launch.title": "لومړني ۱۰ تادیه کوونکي درملتونونه: لومړی کال ۵٬۰۰۰ افغانۍ",
     "launch.body": "له لومړنیو لسو تایید شوو تادیه کوونکو وروسته د لومړي کال بیه ۷٬۰۰۰ افغانۍ ده. د ټولو سټنډرډ پېرودونکو کلنۍ تمدید ۵٬۰۰۰ افغانۍ دی. اووه ورځنۍ وړیا ازموینه د جلا تایید له لارې شونې ده.",
