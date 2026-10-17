@@ -25,7 +25,7 @@ assert "'kind' => (string) $row['kind']" in sync
 assert '"trial.requestType"' in translations and '"trial.trialOption"' in translations
 assert "'fa-AF'" not in forms  # UI uses supported short language keys en/fa/ps.
 assert "payment_reference" not in offer and "owner_email" not in offer  # no sensitive fields.
-assert "Authorization: Bearer" not in demo and "password" not in forms.lower().split("function leadPayload")[1].split("async function submitLead")[0]
+assert "Authorization: Bearer" not in demo and "password" not in forms.split("function leadPayload", 1)[1].split("async function submitLead", 1)[0].lower()
 for path in ("index.html", "fa/index.html", "ps/index.html", "demo.html"):
     text = (ROOT / path).read_text(encoding="utf-8")
     assert "data-founding-availability" in text, path
