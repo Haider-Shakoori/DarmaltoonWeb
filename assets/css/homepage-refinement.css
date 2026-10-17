@@ -1,0 +1,55 @@
+/* Darmaltoon homepage refinement: scoped, progressive enhancements. */
+body:has(.zip-desktop[data-theme=light]) .more #pricing{padding:92px max(34px,calc((100vw - 1320px)/2)) 72px!important;background:linear-gradient(180deg,#f2f8ff 0%,#e8f3ff 100%)!important;align-items:stretch}
+body:has(.zip-desktop[data-theme=light]) .more #pricing .premium-section-header{text-align:center;margin:0 auto 38px;max-width:800px}
+body:has(.zip-desktop[data-theme=light]) .more #pricing .sh2{font-size:clamp(32px,3.4vw,49px)!important;line-height:1.12}
+body:has(.zip-desktop[data-theme=light]) .more #pricing .sp{font-size:15px;line-height:1.8}
+body:has(.zip-desktop[data-theme=light]) .more .home-pricing-layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(290px,.9fr);gap:22px;width:100%;max-width:1180px;margin:0 auto;align-items:stretch}
+body:has(.zip-desktop[data-theme=light]) .more .home-main-plan,body:has(.zip-desktop[data-theme=light]) .more .home-pricing-side{background:white;border:1px solid #d5e4f8;border-radius:22px;box-shadow:0 20px 54px #15477614;padding:clamp(24px,3vw,40px);min-width:0}
+body:has(.zip-desktop[data-theme=light]) .more .home-main-plan{border:2px solid #4c96f9}
+body:has(.zip-desktop[data-theme=light]) .more .home-plan-eyebrow{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:11px;letter-spacing:.075em;font-weight:900;color:#1762bd}
+body:has(.zip-desktop[data-theme=light]) .more .home-plan-status{background:#e8f7f2;color:#087453;letter-spacing:0;border-radius:999px;padding:7px 12px}
+body:has(.zip-desktop[data-theme=light]) .more .home-main-plan h3{font-size:clamp(21px,2.2vw,29px);line-height:1.25;letter-spacing:-.035em;margin:22px 0 9px;color:#102b50}
+body:has(.zip-desktop[data-theme=light]) .more .home-plan-intro{font-size:14px;line-height:1.75;color:#637b98;max-width:600px}
+body:has(.zip-desktop[data-theme=light]) .more .home-price-row{display:flex;align-items:center;gap:30px;background:#f1f7ff;border:1px solid #dceafc;border-radius:15px;padding:24px;margin:28px 0}
+body:has(.zip-desktop[data-theme=light]) .more .home-price-caption{display:block;color:#57718f;font-size:11px;font-weight:800;margin-bottom:8px}
+body:has(.zip-desktop[data-theme=light]) .more .home-price-number{font-weight:950;letter-spacing:-.04em;font-size:clamp(24px,2.5vw,35px);color:#1066e7;white-space:nowrap}
+body:has(.zip-desktop[data-theme=light]) .more .home-renew-price{font-size:clamp(20px,2vw,27px);font-weight:900;letter-spacing:-.03em;color:#0d315e;white-space:nowrap}
+body:has(.zip-desktop[data-theme=light]) .more .home-price-number small,body:has(.zip-desktop[data-theme=light]) .more .home-renew-price small{display:block;font-size:12px;font-weight:600;letter-spacing:0;color:#687e9a;margin-top:3px}
+body:has(.zip-desktop[data-theme=light]) .more .home-price-divider{align-self:stretch;width:1px;background:#cfdeef}
+body:has(.zip-desktop[data-theme=light]) .more .home-plan-checks{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px 22px;margin:0 0 30px;padding:0}
+body:has(.zip-desktop[data-theme=light]) .more .home-plan-checks li{display:flex;gap:9px;align-items:flex-start;color:#345371;font-size:13px;line-height:1.55;padding:0}
+body:has(.zip-desktop[data-theme=light]) .more .home-plan-checks li:before{content:'✓';background:#e3f9ec;color:#0c9c54;display:grid;place-items:center;border-radius:50%;width:20px;height:20px;flex:0 0 20px;font-weight:900}
+body:has(.zip-desktop[data-theme=light]) .more .home-pricing-actions{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+body:has(.zip-desktop[data-theme=light]) .more .home-primary-action{display:inline-flex;gap:18px;align-items:center;justify-content:center;padding:16px 23px;background:#1763eb;color:white;border-radius:12px;font-weight:850;font-size:14px;box-shadow:0 12px 24px #126be730;text-decoration:none}
+body:has(.zip-desktop[data-theme=light]) .more .home-text-action,body:has(.zip-desktop[data-theme=light]) .more .home-side-link{color:#1264d4;font-size:13px;font-weight:850;text-decoration:none}
+body:has(.zip-desktop[data-theme=light]) .more .home-pricing-side{background:linear-gradient(155deg,#fff,#f7fbff)}
+body:has(.zip-desktop[data-theme=light]) .more .home-side-label{color:#156cd2;letter-spacing:.09em;font-size:11px;font-weight:900}
+body:has(.zip-desktop[data-theme=light]) .more .home-pricing-side h3{font-size:25px;line-height:1.28;margin:18px 0 12px;color:#102b50;letter-spacing:-.035em}
+body:has(.zip-desktop[data-theme=light]) .more .home-pricing-side p{font-size:13px;line-height:1.8;color:#587391}
+body:has(.zip-desktop[data-theme=light]) .more .home-side-price{font-size:32px;font-weight:950;letter-spacing:-.04em;color:#113764;margin:21px 0 5px}
+body:has(.zip-desktop[data-theme=light]) .more .home-side-price span{display:block;font-weight:650;font-size:12px;letter-spacing:0;color:#607b99}
+body:has(.zip-desktop[data-theme=light]) .more .home-side-renew{font-size:13px;font-weight:800;color:#14734e;margin-top:12px}
+body:has(.zip-desktop[data-theme=light]) .more .home-side-rule{height:1px;background:#d7e6f6;margin:27px 0}
+body:has(.zip-desktop[data-theme=light]) .more .home-pricing-side h4{font-size:18px;color:#123153;margin:0 0 10px}
+body:has(.zip-desktop[data-theme=light]) .more .home-side-link{display:inline-flex;margin-top:24px;gap:15px;align-items:center}
+body:has(.zip-desktop[data-theme=light]) .more .home-offer-strip{max-width:1180px;width:100%;margin:24px auto 0;display:flex;align-items:center;gap:16px;text-align:left;background:#fff;border:1px solid #cde1fb;border-radius:17px;padding:20px 24px;box-shadow:0 10px 30px #215b8f0a}
+body:has(.zip-desktop[data-theme=light]) .more .home-offer-icon{display:grid;place-items:center;flex:0 0 44px;height:44px;background:#e9f4ff;color:#186ee6;border-radius:12px;font-size:24px}
+body:has(.zip-desktop[data-theme=light]) .more .home-offer-copy{flex:1;min-width:0}
+body:has(.zip-desktop[data-theme=light]) .more .home-offer-copy strong{font-size:14px;color:#123257}
+body:has(.zip-desktop[data-theme=light]) .more .home-offer-copy p{font-size:12px;line-height:1.55;color:#3d7770;margin:4px 0 0}
+body:has(.zip-desktop[data-theme=light]) .more .home-offer-strip>a{border:1px solid #bad8fb;border-radius:9px;padding:12px 16px;white-space:nowrap;color:#135ec9;font-size:12px;font-weight:850;text-decoration:none}
+body:has(.zip-desktop[data-theme=light]) .more .home-price-disclaimer{max-width:1140px;margin:21px auto 0;text-align:center;color:#68819c;font-size:11px;line-height:1.8}
+body:has(.zip-desktop[data-theme=light]) .more #demo{padding-top:90px;padding-bottom:94px}
+body:has(.zip-desktop[data-theme=light]) .more #demo .dm{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(35px,5vw,90px);align-items:start}
+body:has(.zip-desktop[data-theme=light]) .more #demo .dm>div:first-child{padding-top:25px}
+body:has(.zip-desktop[data-theme=light]) .more #demo .dm h2{font-size:clamp(35px,3vw,45px)!important;max-width:440px}
+body:has(.zip-desktop[data-theme=light]) .more #demo .dm>div>p{font-size:15px!important;line-height:1.9!important}
+body:has(.zip-desktop[data-theme=light]) .more #demo .home-demo-form{padding:35px!important;box-shadow:0 24px 56px #174c9020;border-radius:22px}
+body:has(.zip-desktop[data-theme=light]) .more #demo .home-demo-form label{font-size:12px;color:#274466}
+body:has(.zip-desktop[data-theme=light]) .more #demo .home-demo-form input:not([type=checkbox]),body:has(.zip-desktop[data-theme=light]) .more #demo .home-demo-form select,body:has(.zip-desktop[data-theme=light]) .more #demo .home-demo-form textarea{padding:12px 14px;min-height:47px;background:#f7fbff;border:1px solid #cfdff1;outline-offset:2px}
+body:has(.zip-desktop[data-theme=light]) .more #demo .home-demo-form input:focus,body:has(.zip-desktop[data-theme=light]) .more #demo .home-demo-form select:focus,body:has(.zip-desktop[data-theme=light]) .more #demo .home-demo-form textarea:focus{border-color:#277eea;box-shadow:0 0 0 3px #2485e91a}
+body:has(.zip-desktop[data-theme=light]) .more #demo .home-demo-form button{min-height:52px;font-size:14px}
+@media(max-width:1000px){body:has(.zip-desktop[data-theme=light]) .more .home-pricing-layout{grid-template-columns:1fr 0.82fr}body:has(.zip-desktop[data-theme=light]) .more .home-plan-checks{grid-template-columns:1fr}body:has(.zip-desktop[data-theme=light]) .more .home-price-row{gap:16px;padding:18px}}
+@media(max-width:760px){body:has(.zip-desktop[data-theme=light]) .more #pricing{padding:60px 18px!important}body:has(.zip-desktop[data-theme=light]) .more .home-pricing-layout{grid-template-columns:1fr}body:has(.zip-desktop[data-theme=light]) .more .home-plan-checks{grid-template-columns:1fr}body:has(.zip-desktop[data-theme=light]) .more .home-price-row{flex-wrap:wrap}body:has(.zip-desktop[data-theme=light]) .more .home-price-divider{display:none}body:has(.zip-desktop[data-theme=light]) .more .home-offer-strip{flex-wrap:wrap}body:has(.zip-desktop[data-theme=light]) .more .home-offer-strip>a{width:100%;text-align:center}body:has(.zip-desktop[data-theme=light]) .more #demo .dm{grid-template-columns:1fr;gap:20px}body:has(.zip-desktop[data-theme=light]) .more #demo .home-demo-form{padding:22px!important}}
+@media(max-width:480px){body:has(.zip-desktop[data-theme=light]) .more .home-main-plan,body:has(.zip-desktop[data-theme=light]) .more .home-pricing-side{padding:22px}body:has(.zip-desktop[data-theme=light]) .more .home-price-row{display:block}body:has(.zip-desktop[data-theme=light]) .more .home-price-row>div+div{margin-top:20px}body:has(.zip-desktop[data-theme=light]) .more .home-primary-action{width:100%}body:has(.zip-desktop[data-theme=light]) .more .home-demo-form{grid-template-columns:1fr}body:has(.zip-desktop[data-theme=light]) .more .home-demo-form .w{grid-column:1}}
+@media(prefers-reduced-motion:reduce){body:has(.zip-desktop[data-theme=light]) .more .home-primary-action{transition:none}}
