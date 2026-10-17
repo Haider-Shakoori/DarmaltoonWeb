@@ -137,7 +137,7 @@ for page_name in SECONDARY:
     require("subpages-premium.css" in source, f"{page_name}: premium stylesheet not loaded")
     require("index.html#why" not in source, f"{page_name}: broken old home anchor")
     require("{{" not in source, f"{page_name}: unresolved contact placeholder")
-    require("info@businessos.af" in source, f"{page_name}: verified email missing")
+    require("info@darmaltoon.com" in source, f"{page_name}: verified email missing")
     require("darmaltoon-merged-wordmark.png" in source, f"{page_name}: branded PNG missing")
     require(len(source.encode("utf-8")) < 36_000, f"{page_name}: secondary HTML exceeds 36 KB")
     canon = [link.get("href") for link in parser.links if link.get("rel") == "canonical"]
@@ -156,7 +156,7 @@ for page_name in SECONDARY:
 require((ROOT/"assets/css/subpages-premium.css").stat().st_size < 18_000,
         "Secondary styling exceeds 18 KB")
 script = (ROOT/"assets/js/forms.js").read_text(encoding="utf-8")
-require("mailto:info@businessos.af" in script, "Forms must prepare a real email draft")
+require("mailto:info@darmaltoon.com" in script, "Forms must prepare a real email draft")
 require("showNotConfigured" not in script, "Unusable old form interception must be removed")
 require((ROOT/"features.html").read_text().count("<svg") >= 16, "Feature icons should use inline SVGs")
 require((ROOT/"pharmadesktop.html").read_text().count('class="pd-shot pd-preview"') >= 10,
@@ -211,7 +211,7 @@ for rel, lang, direction in [("privacy.html","en","ltr"),("fa/privacy.html","fa-
     canonical="https://web.darmaltoon.com/"+rel
     require(any(x.get("href")==canonical and x.get("rel")=="canonical" for x in page.links),f"{rel}: canonical")
     require("application/ld+json" in source,f"{rel}: JSON-LD")
-    require("info@businessos.af" in source,f"{rel}: contact")
+    require("info@darmaltoon.com" in source,f"{rel}: contact")
     require("privacy-pages.css" in source,f"{rel}: stylesheet")
     require("<loc>"+canonical+"</loc>" in (ROOT/"sitemap.xml").read_text(),f"{rel}: sitemap")
 for name in ("index.html","demo.html","contact.html","fa/index.html","ps/index.html"):

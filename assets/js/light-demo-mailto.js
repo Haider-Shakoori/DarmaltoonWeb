@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'Message: '+read(fd,'message'),
       '','Prepared through the Darmaltoon website. Press Send in your email app.'
     ].join('\n');
-    const url = 'mailto:info@businessos.af?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+    const url = 'mailto:info@darmaltoon.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
     if (box) {
       box.style.display='block';box.setAttribute('role','alert');box.replaceChildren();
       box.append('Online submission is unavailable. Your details have NOT been received. ');

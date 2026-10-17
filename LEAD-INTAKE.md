@@ -7,7 +7,7 @@
 - Valid requests are durably stored in SQLite **outside document root**,
   /home/darmaltoon/.darmaltoon-leads/leads.sqlite.
 - Success displays only after SQLite commits. Email notification goes to
-  info@businessos.af on a best-effort basis; local mail() success does NOT
+  info@darmaltoon.com on a best-effort basis; local mail() success does NOT
   prove mailbox delivery.
 - Unavailable API shows the email-draft fallback instead of false success.
 - No public administrator endpoint exposes contacts.

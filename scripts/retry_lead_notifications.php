@@ -24,11 +24,11 @@ try {
             'Name: '.$lead['name'],'Phone: '.$lead['phone'],
             'Email: '.$lead['email'],'Pharmacy: '.$lead['pharmacy'],
             'Message: '.$lead['message'],'Details: '.$lead['details_json']];
-        $headers=['From: Darmaltoon <noreply@darmaltoon.com>',
+        $headers=['From: Darmaltoon <info@darmaltoon.com>',
           'MIME-Version: 1.0','Content-Type: text/plain; charset=UTF-8'];
         if (!empty($lead['email']) && filter_var($lead['email'],FILTER_VALIDATE_EMAIL))
             $headers[]='Reply-To: '.$lead['email'];
-        $queued=@mail('info@businessos.af',$subject,implode("\n",$lines),implode("\r\n",$headers));
+        $queued=@mail('info@darmaltoon.com',$subject,implode("\n",$lines),implode("\r\n",$headers));
         $update->execute([':queued'=>$queued?1:0,':id'=>$lead['id']]);
     }
     echo count($retry)." notifications checked for retry.\n";
