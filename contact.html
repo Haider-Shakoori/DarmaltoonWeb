@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact — Darmaltoon</title>
+  <title>Contact Darmaltoon | Pharmacy Software Support Afghanistan</title>
   <meta name="description" content="Talk to the Darmaltoon team. Send a message regarding product information, demo, sales, technical support, partnership or general inquiries." />
   <link rel="canonical" href="https://web.darmaltoon.com/contact.html" />
   <meta property="og:title" content="Contact — Darmaltoon" />
@@ -16,6 +16,9 @@
   <link rel="stylesheet" href="assets/css/responsive.css" />
   <link rel="stylesheet" href="assets/css/rtl.css" />
 <link rel="stylesheet" href="/assets/css/brand-wordmark.css?v=20261016-newbrand1"><link rel="stylesheet" href="/assets/css/subpages-premium.css?v=20261017-v1">
+<meta property="og:image" content="https://web.darmaltoon.com/assets/images/hero/darmaltoon-light-dashboard-hd.webp" />
+<meta name="twitter:card" content="summary_large_image" />
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ContactPage","@id":"https://web.darmaltoon.com/contact.html#page","url":"https://web.darmaltoon.com/contact.html","name":"Contact Darmaltoon | Pharmacy Software Support Afghanistan","description":"Talk to the Darmaltoon team. Send a message regarding product information, demo, sales, technical support, partnership or general inquiries.","inLanguage":"en","isPartOf":{"@id":"https://web.darmaltoon.com/#website"},"about":{"@id":"https://web.darmaltoon.com/#software"}},{"@type":"SoftwareApplication","@id":"https://web.darmaltoon.com/#software","name":"Darmaltoon","applicationCategory":"BusinessApplication","operatingSystem":"Windows, Web","url":"https://web.darmaltoon.com/","inLanguage":["en","fa-AF","ps-AF"]}]}</script>
 </head>
 <body class="subpage subpage-contact">
   <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
@@ -68,12 +71,12 @@
     </section>
 
     <section class="subpage-direct-contact" aria-label="Direct contact methods"><div class="container subpage-direct-inner"><div>
-    <strong data-i18n="extra.directTitle">Prefer to speak directly?</strong><p data-i18n="extra.directCopy">Contact us on WhatsApp or email. The form opens an email draft, not an automatic submission.</p>
+    <strong data-i18n="extra.directTitle">Prefer to speak directly?</strong><p data-i18n="extra.directCopy">Contact us on WhatsApp or email. Online submissions are stored securely; an email draft is available if the connection fails.</p>
     </div><div class="subpage-direct-actions"><a href="https://wa.me/93707413263" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a><a href="mailto:info@businessos.af">info@businessos.af ↗</a></div></div></section>
     <!-- COMPONENT: FORM -->
     <section class="section">
       <div class="container form-wrap">
-        <form id="contactForm" class="form-card" novalidate>
+        <form id="contactForm" class="form-card" novalidate><div class="lead-honeypot" aria-hidden="true"><label for="lead-website-cont">Website</label><input id="lead-website-cont" name="website" tabindex="-1" autocomplete="off"></div>
           <div class="form-row">
             <div class="field">
               <label for="cName" data-i18n="contact.fullName">Full Name *</label>
@@ -127,7 +130,8 @@
             <span class="field-error" data-error-for="cMessage"></span>
           </div>
 
-          <button type="submit" class="btn btn-primary btn-block" data-i18n="extra.emailContact">Open Email Draft</button>
+          <div class="field checkbox"><label><input name="contactConsent" type="checkbox" required><span data-i18n="extra.leadConsent">I agree to be contacted in response to this enquiry.</span></label></div>
+          <button type="submit" class="btn btn-primary btn-block" data-i18n="extra.sendRequest">Submit Enquiry</button>
 
           <!-- TODO: Connect contact form to backend endpoint. -->
           <div class="form-success" id="contactSuccess" hidden>
@@ -169,9 +173,9 @@
 
   <button class="back-top" id="backTop" aria-label="Back to top" hidden>↑</button>
 
-  <script defer src="assets/js/translations.js?v=20261017-s1"></script>
+  <script defer src="assets/js/translations.js?v=20261017-leads1"></script>
   <script defer src="assets/js/language.js?v=20261017-langurl1"></script>
   <script defer src="assets/js/app.js"></script>
-  <script defer src="assets/js/forms.js?v=20261017-s1"></script>
+  <script defer src="assets/js/forms.js?v=20261017-leads1"></script>
 </body>
 </html>

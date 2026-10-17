@@ -190,6 +190,18 @@ require((ROOT/"assets/css/rtl-premium.css").is_file() and
         (ROOT/"assets/css/rtl-premium.css").stat().st_size < 19_000, "Premium RTL CSS >19KB")
 require((ROOT/"assets/js/rtl-premium.js").is_file() and
         (ROOT/"assets/js/rtl-premium.js").stat().st_size < 3_000, "Premium RTL JS >3KB")
+# Lead safety checks: forms must not silently discard requests.
+lead = ROOT / "api/lead.php"
+require(lead.is_file(), "Secure lead endpoint is missing")
+if lead.is_file():
+    endpoint = lead.read_text(encoding="utf-8")
+    for marker in ["PDO('sqlite:", "php://input", "HTTP_ORIGIN", "hash_hmac", "Consent required", "Retry-After:", "dirname($siteRoot)", "mail("]:
+        require(marker in endpoint, f"Lead endpoint missing guard: {marker}")
+for js_path in ("assets/js/forms.js", "assets/js/light-demo-mailto.js"):
+    source = (ROOT/js_path).read_text(encoding="utf-8")
+    require("/api/lead.php" in source, f"{js_path}: missing lead endpoint integration")
+require('href="/demo.html" class="zn-button primary"' in home,
+        "Mobile demo CTA must lead to visible form")
 native_css = ROOT / "assets/css/native-mobile.css"
 require(native_css.exists() and native_css.stat().st_size < 15_000, "Native mobile CSS missing or over 15KB")
 for required in ["robots.txt", "sitemap.xml", "llms.txt"]:
