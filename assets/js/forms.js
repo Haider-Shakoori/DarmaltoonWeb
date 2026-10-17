@@ -1,6 +1,4 @@
-/* =========================================================
-   Darmaltoon — Form validation (frontend only)
-   ========================================================= */
+/* Darmaltoon — localized client validation, private lead intake and email fallback. */
 
 (function () {
   function ready(fn) {
@@ -112,6 +110,69 @@
     window.location.href = url;
   }
 
+  function leadPayload(form, kind) {
+    const f = collectFormData(form);
+    const read = key => String(f[key] || "").trim();
+    const lang = document.documentElement.lang === "fa" ? "fa"
+      : document.documentElement.lang === "ps" ? "ps" : "en";
+    return {
+      kind, language:lang, website:read("website"),
+      consent:kind === "demo" ? !!form.querySelector('input[name="agree"]')?.checked
+        : !!form.querySelector('input[name="contactConsent"]')?.checked,
+      name:read("fullName"), phone:read("phone"), email:read("email"),
+      pharmacy:read("pharmacyName") || read("company"), message:read("message"),
+      whatsapp:read("whatsapp"), province:read("province"), city:read("city"),
+      computers:read("computers"), preferredContact:read("preferredContact"),
+      subject:read("subject"), inquiryType:read("inquiryType")
+    };
+  }
+
+  async function submitLead(form, box, kind) {
+    const payload = leadPayload(form, kind);
+    const button = form.querySelector('button[type="submit"]');
+    const lang = payload.language;
+    const received = {
+      en:"Your request has been received and saved. We will use your contact details to follow up.",
+      fa:"درخواست شما دریافت و ثبت شد. برای پاسخ با شما تماس خواهیم گرفت.",
+      ps:"ستاسو غوښتنه ترلاسه او ثبت شوه. د ځواب لپاره به له تاسو سره اړیکه ونیسو."
+    };
+    const tooMany = {
+      en:"Please wait before sending another request.",
+      fa:"لطفاً پیش از ارسال درخواست دیگر کمی صبر کنید.",
+      ps:"مهرباني وکړئ د بلې غوښتنې تر لېږلو لږ انتظار وکړئ."
+    };
+    if (button) button.disabled = true;
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 15000);
+    try {
+      const response = await fetch("/api/lead.php", {
+        method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
+        body:JSON.stringify(payload),signal:controller.signal,credentials:"same-origin"
+      });
+      const result = await response.json();
+      if (response.ok && result.received === true) {
+        if (box) {
+          box.hidden = false;box.classList.remove("form-unavailable","form-draft");
+          box.classList.add("form-draft");box.setAttribute("role","status");
+          box.textContent = received[lang] || received.en;
+        }
+        form.reset();
+      } else if (response.status === 429) {
+        if (box) {
+          box.hidden=false;box.setAttribute("role","alert");box.classList.add("form-draft");
+          box.textContent=tooMany[lang]||tooMany.en;
+        }
+      } else {
+        prepareEmailDraft(form,box,kind);
+      }
+    } catch (err) {
+      prepareEmailDraft(form,box,kind);
+    } finally {
+      window.clearTimeout(timeout);
+      if (button) button.disabled = false;
+    }
+  }
+
   function initDemoForm() {
     const form = document.getElementById("demoForm");
     if (!form) return;
@@ -136,8 +197,8 @@
         return;
       }
 
-      // No submission endpoint is configured. Never imply that the lead was delivered.
-      prepareEmailDraft(form, success, "demo");
+      // The server confirms durable storage before a success message is shown.
+      void submitLead(form, success, "demo");
     });
   }
 
@@ -165,8 +226,8 @@
         return;
       }
 
-      // No submission endpoint is configured. Never imply that a message was sent.
-      prepareEmailDraft(form, success, "contact");
+      // Avoid claiming success until the lead endpoint confirms receipt.
+      void submitLead(form, success, "contact");
     });
   }
 

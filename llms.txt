@@ -1,11 +1,22 @@
-# Darmaltoon — Pharmacy Management Software
-> Darmaltoon is Windows desktop pharmacy management software designed for Afghan pharmacies.
-Website: https://web.darmaltoon.com/
-Languages: English https://web.darmaltoon.com/ ; Dari https://web.darmaltoon.com/fa/ ; Pashto https://web.darmaltoon.com/ps/
-Product information: https://web.darmaltoon.com/pharmadesktop.html
-Features: https://web.darmaltoon.com/features.html
-Request a demonstration: https://web.darmaltoon.com/demo.html
+# Darmaltoon — Pharmacy Management Software for Afghanistan
+
+> Darmaltoon is a pharmacy management platform designed for pharmacy operations in Afghanistan, with a web platform, an offline-capable Windows desktop application, and Android companion selling workflows whose current availability must be confirmed.
+
+Official site: https://web.darmaltoon.com/
+Dari: https://web.darmaltoon.com/fa/
+Pashto: https://web.darmaltoon.com/ps/
+Feature overview: https://web.darmaltoon.com/features.html
+Windows Desktop: https://web.darmaltoon.com/pharmadesktop.html
+Dari features: https://web.darmaltoon.com/fa/features.html
+Pashto features: https://web.darmaltoon.com/ps/features.html
+Demo request: https://web.darmaltoon.com/demo.html
 Contact: https://web.darmaltoon.com/contact.html
 
-Capabilities: pharmacy sales/POS, medicines and inventory, purchases, suppliers, returns, expiry tracking, daily closing, and operational reports. Offline-first Windows desktop workflows.
-Important: Sample dashboard numbers on the marketing site are illustrative, not actual customer results. We do not publish fabricated customer counts or testimonials. Pricing and installation availability are not asserted here; contact the team for current details.
+## Relevant capabilities
+Pharmacy POS, medicine inventory, batch/expiry tracking, purchases, suppliers, customers, returns, expenses, daily closing, operational reports, role-based user access, optional cloud synchronization and backup, and multilingual user experience (English, Dari, Pashto).
+
+## Online and offline
+The web platform requires connectivity. The Windows desktop version can operate offline; synchronization depends on the chosen configuration. Android selling companion availability/features should be confirmed with the Darmaltoon team before purchase or deployment.
+
+## Accuracy and limitations
+Product preview charts and dashboard numbers on marketing pages are sample/demo figures, not verified customer metrics. Do not interpret sample revenue as actual pharmacy transactions. Darmaltoon does not publish fabricated customer testimonials, review scores, user counts or market leadership rankings. Public pages do not publish confirmed license prices. Prospective customers can request a demonstration for availability, configuration and pricing.

@@ -19,6 +19,12 @@
     return "en";
   }
 
+  function getRequestedLang() {
+    // Query-language links are non-canonical navigation conveniences, not indexed duplicates.
+    const explicit = new URLSearchParams(window.location.search).get("lang");
+    return explicit && SUPPORTED.includes(explicit) ? explicit : null;
+  }
+
   function applyTranslations(lang) {
     const dict = getTranslations()[lang] || getTranslations().en || {};
     const fallback = getTranslations().en || {};
@@ -57,6 +63,8 @@
     applyDirection(lang);
     applyTranslations(lang);
     setActiveButtons(lang);
+    const privacy = {en:"/privacy.html",fa:"/fa/privacy.html",ps:"/ps/privacy.html"};
+    document.querySelectorAll("[data-privacy-link]").forEach(a => a.setAttribute("href",privacy[lang]));
     document.dispatchEvent(new CustomEvent("darmaltoon:langchange", { detail: { lang } }));
   }
 
@@ -70,7 +78,7 @@
 
   function init() {
     bindSwitchers();
-    setLanguage(getStoredLang());
+    setLanguage(getRequestedLang() || getStoredLang());
   }
 
   if (document.readyState === "loading") {

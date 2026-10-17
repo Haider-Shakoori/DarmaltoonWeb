@@ -436,3 +436,10 @@ body:has(.zip-desktop[data-theme=light]) .more #faq summary:focus-visible,
 body:has(.zip-desktop[data-theme=light]) .more a:focus-visible{
  outline:3px solid #2786ed;outline-offset:3px
 }
+
+/* Low-bandwidth lead intake with accessible consent; avoid layout changes elsewhere. */
+#df .lead-home-honeypot {position:absolute;left:-10000px;top:-10000px;overflow:hidden;width:1px;height:1px}
+#df .lead-home-consent{padding:8px 0}
+#df .lead-home-consent label{display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.55;color:#516685}
+#df .lead-home-consent input{width:16px;min-width:16px;height:16px;margin-top:2px;accent-color:#0d75e8}
+#df button[disabled]{opacity:.65;cursor:wait}
