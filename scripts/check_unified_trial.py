@@ -22,9 +22,9 @@ assert "$db->commit();" in intake
 assert "'trial_requested'" in analytics
 assert "PDO::PARAM_INT" in sync
 assert "'kind' => (string) $row['kind']" in sync
-assert "'trial.requestType'" in translations and '"trial.trialOption"' in translations
+assert '"trial.requestType"' in translations and '"trial.trialOption"' in translations
 assert "'fa-AF'" not in forms  # UI uses supported short language keys en/fa/ps.
-assert "API" not in offer or "api" in offer  # proxy is isolated from admin data.
+assert "payment_reference" not in offer and "owner_email" not in offer  # no sensitive fields.
 assert "Authorization: Bearer" not in demo and "password" not in forms.lower().split("function leadPayload")[1].split("async function submitLead")[0]
 for path in ("index.html", "fa/index.html", "ps/index.html", "demo.html"):
     text = (ROOT / path).read_text(encoding="utf-8")
