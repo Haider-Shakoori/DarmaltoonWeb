@@ -12,15 +12,16 @@ Start from 0 verified paying pharmacies. First goal is 10 paying installations, 
 - Windows app: .NET/WPF offline-first SQLite deployment; validate each supported perpetual/annual/offline license and LAN scenario before offering as a commercial commitment.
 - Known gap: public marketing leads are not currently evidenced as connected to a managed sales pipeline, demo outcome, quote, payment receipt, onboarding and renewals.
 
-## Proposed offers (UNAPPROVED price-test hypotheses)
-| Segment | Initial offer | Price hypothesis | Validation |
-| - | - | - | - |
-| 1-PC pharmacy | Essential: safe core POS, batch/expiry, stock, closing | 790 AFN/month | 10+ owner interviews, willingness to pay |
-| 2+ workstations | Professional: LAN, more Windows seats, optional sync, reports | 1,490 AFN/month | run paid pilot; verify feature gates |
-| Chain | Enterprise: multi-branch, migration, priority support | case-by-case quotation | discovery call and written SOW |
-| Fully offline | annual paid desktop license + separately priced maintenance | TBD | offline activation/renewal QA without internet |
-
-Never gate medicine safety controls, stock audit integrity, POS closing, or access to export of the customer's own data behind premium upsell. Respect actual supported features. Annual payment discounted only after commercial validation. Setup/import/training billed separately when stated clearly.
+## Confirmed launch prices (owner decision, 2026-10-17)
+- **AFN 5,000 for the first 12 months of a standard pharmacy license.**
+- **AFN 3,000 for each subsequent 12-month renewal.**
+- Year 1 and annual renewal are *not* monthly subscriptions. Do not market the above as monthly.
+- Renewal represents a 40% discount relative to year 1. No separate onboarding/setup component has been promised or priced.
+- Commercial scope still to be confirmed: number of branches, Windows terminals/users and Android devices; eligibility for optional sync/hosting, installation/training, support hours and data migration; policies for fully disconnected renewal/activation, grace/recovery, cancellations/refunds and renewal price changes. Clearly specify what is included before publishing or taking payments.
+- Multi-branch installations, extra devices, premium support and integrations may need separately quoted pricing; **not yet approved**.
+- Keep safety-critical controls (expiry integrity, audited stock movement, Daily Closing and export of customer data) available in the base licensed product.
+- Confirm commercial invoices/receipts and verified collected payments, not plans or uncollected invoices, are counted as revenue.
+- These are owner-set launch prices, not validated willingness-to-pay or a claim of current production availability.
 
 ## Sales funnel and metrics
 **Source (non-PII aggregate) -> qualified lead -> contact made -> demo scheduled -> demo completed -> trial approved -> paid -> activated/onboarded -> renewed/upgraded**.
@@ -34,7 +35,7 @@ Prospect conversion and paid revenue are different from page views: calculate tr
 3. Add sales-lead status and owner follow-up through authenticated platform-side CRM or tightly authorized private owner tool, not marketing public HTML. Existing lead storage remains authoritative until a verified idempotent import is deployed.
 4. Review actual licensing, 7-day trials, provisioning, installer SmartScreen/codesigning, multi-PC and fully offline renewal. No marketing claim until tested.
 5. Draft customer onboarding checklist: demo account, medicine master CSV, opening balances, receipt template, employee training, signed acceptance, backup/export demonstration.
-6. Interview at least 10 Kabul pharmacies; record size, branch count, computers, losses from expiries, preferred billing/payment frequency, willingness to pay. No fake social proof.
+6. Interview at least 10 Kabul pharmacies; record size, branch count, computers, losses from expiries, responses to the set 5,000 AFN initial / 3,000 AFN renewal prices, willingness to pay, and renewal objections. Do not change owner-approved prices without a new decision. No fake social proof.
 7. Write one-page EN/Dari/Pashto offer and 3-minute walkthrough using verified, sanitized app screenshots, not image-only text.
 
 ## Days 15–30 — Phase 1, first revenue
@@ -48,7 +49,7 @@ Prospect conversion and paid revenue are different from page views: calculate tr
 - Add private sales/revenue dashboard: qualified leads, stage conversion, response time, installs, active trials, paid, renewals due (7/30 days), failed payment follow-up, MRR and churn.
 - Establish monthly customer interviews and referrals (no incentives that compromise medical purchasing).
 - Publish customer-approved case studies only after signed permission; earn searchable product-intent content for pharmacy software, stock, expiry and offline POS in all 3 languages.
-- A/B test no more than one price or onboarding variable at a time, document sample sizes.
+- A/B test onboarding copy and offers without unapproved pricing changes; document sample sizes.
 
 ## Days 61–90 — Phase 3, channel scalability
 - Start field resellers/installation technicians with written commission paid on collected revenue, clear pricing, reversible license issue workflows.
@@ -68,8 +69,7 @@ P2. Branch/chain account management, sales partner program and advanced analytic
 P3. Optional wholesaler integration subject to regulation, security, partnership approval and proof of value. No patient data monetization.
 
 ## Financial model
-MRR = sum of paid recurring subscriptions normalized to months; exclude setup fees, unpaid invoices, trial accounts and one-time license sales.
-Annualized run-rate = 12 × current MRR (not booked revenue or profit). Revenue targets at constant 1,490 AFN monthly ARPA: 10=14,900 AFN, 25=37,250, 100=149,000, 1000=1,490,000. All hypothetical gross recurring revenue, excluding costs, churn and discounts.
+Annual customer cash collection is billed at 5,000 AFN for the first year, 3,000 AFN for the annual renewal from year two onward. Hypothetical full collection, no churn: 10 clients = 50,000 AFN first-year / 30,000 AFN subsequent renewal-year receipts; 25 = 125,000 / 75,000; 100 = 500,000 / 300,000; 1,000 = 5,000,000 / 3,000,000. These are cohort illustrations, not forecasts or realized revenue. New customers in later years each still start with 5,000 AFN. Revenue recognition may differ from cash collection and should be accrued over the service period. Do not treat annual invoices as monthly cash collections; if useful, describe the 5,000 / 12 and 3,000 / 12 monthly equivalents as ratios only.
 Gross margin needs payment collection, server/support, travel/onboarding, acquisition, tax and customer care costs; measure by cohort. Do not promise profitability before real unit economics.
 
 ## Acceptance gates
