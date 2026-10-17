@@ -197,7 +197,7 @@
     if (requestType) {
       requestType.value = new URLSearchParams(window.location.search).get('request') === 'trial' ? 'trial' : 'demo';
       requestType.addEventListener('change', syncTrialMode);
-      document.addEventListener('darmaltoon:language-changed', syncTrialMode);
+      document.addEventListener('darmaltoon:langchange', syncTrialMode);
     }
     syncTrialMode();
 
