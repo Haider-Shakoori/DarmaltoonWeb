@@ -47,8 +47,51 @@ for service in ["chatgpt","perplexity","gemini","copilot","claude"]:
 admin=(ROOT/"admin/analytics.php").read_text()
 if "ai_mention_checks" not in admin or "save_ai_check" not in admin:bad.append("manual audit missing")
 if "isset($_POST['password']) || isset($_POST['logout'])" not in admin:bad.append("login guard missing")
+
+# Product-specific, crawlable discovery pages: distinguish capabilities from
+# educational guides and verify all native-language routes stay in the sitemap.
+product_slug = "medicine-expiry-inventory-software.html"
+for code, lang, direction in [("en", "en", "ltr"), ("fa", "fa-AF", "rtl"), ("ps", "ps-AF", "rtl")]:
+ prefix = "" if code == "en" else code + "/"
+ rel = prefix + product_slug
+ page = ROOT / rel
+ url = "https://darmaltoon.com/" + rel
+ if not page.is_file():
+  bad.append("product page missing " + rel)
+  continue
+ html = page.read_text()
+ parser = P()
+ parser.feed(html)
+ if parser.lang != lang or parser.direction != direction:
+  bad.append(rel + " language/direction")
+ if parser.h.count("h1") != 1 or parser.h.count("h2") < 2:
+  bad.append(rel + " headings")
+ if parser.meta.get("robots", "").find("noindex") >= 0:
+  bad.append(rel + " noindex")
+ if not any(link.get("rel") == "canonical" and link.get("href") == url for link in parser.links):
+  bad.append(rel + " canonical")
+ for alt, target in (("en", ""), ("fa-AF", "fa/"), ("ps-AF", "ps/")):
+  if not any(link.get("hreflang") == alt and link.get("href") == "https://darmaltoon.com/" + target + product_slug for link in parser.links):
+   bad.append(rel + " missing hreflang " + alt)
+ if "<loc>" + url + "</loc>" not in sitemap:
+  bad.append(rel + " missing sitemap entry")
+ if ("/" + rel) not in (ROOT / (prefix + "guides/index.html")).read_text():
+  bad.append(rel + " not linked from guides")
+ match = re.search(r'<script type="application/ld\+json">(.+?)</script>', html)
+ if not match:
+  bad.append(rel + " missing product structured data")
+ else:
+  try:
+   structured = json.loads(match.group(1))
+   graph = structured.get("@graph", [])
+   if not any(node.get("@type") == "WebPage" and node.get("url") == url for node in graph):
+    bad.append(rel + " WebPage URL mismatch")
+   if not any(node.get("@type") == "SoftwareApplication" and node.get("name") == "Darmaltoon" for node in graph):
+    bad.append(rel + " SoftwareApplication identity")
+  except ValueError:
+   bad.append(rel + " malformed structured data")
 if bad:
  print("FAIL SEO/AIO",len(bad))
  for b in bad:print(" -",b)
  raise SystemExit(1)
-print("PASS: 12 guide pages, hreflang, structured data, internal links, AI attribution and audit controls")
+print("PASS: 12 guide pages, three product pages, hreflang, structured data, AI analytics and links")
