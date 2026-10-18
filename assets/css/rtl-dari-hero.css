@@ -32,3 +32,44 @@ html[lang="fa-AF"] .rtl-hero-demo-disclaimer {
   }
   html[lang="fa-AF"] .rtl-hero-demo-disclaimer { font-size:10px; }
 }
+
+/* Tablet/mobile: show the exact supplied photo as a readable standalone visual.
+   Keep the title and conversion buttons on a clean light background. */
+@media(max-width:940px) {
+  html[lang="fa-AF"] .rtl-hero::before {
+    background-image:linear-gradient(180deg,#eef8ff,#f7fbff) !important;
+    background-size:cover !important;
+    transform:none !important;
+  }
+  html[lang="fa-AF"] .rtl-hero::after { display:none !important; }
+  html[lang="fa-AF"] .rtl-product-visual {
+    display:block !important;
+    width:min(100%,660px) !important;
+    margin:18px auto 0 !important;
+    padding:0 !important;
+  }
+  html[lang="fa-AF"] .rtl-product-frame {
+    border:0 !important;
+    border-radius:15px !important;
+    overflow:hidden !important;
+    background:transparent !important;
+    box-shadow:0 14px 28px rgba(25,60,100,.14) !important;
+  }
+  html[lang="fa-AF"] .rtl-product-frame img {
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    aspect-ratio:1400/788 !important;
+    object-fit:cover !important;
+    background:transparent !important;
+  }
+  html[lang="fa-AF"] .rtl-sample-tag {
+    display:block !important;
+    color:#536681 !important;
+    text-align:center !important;
+    font-size:10px !important;
+    margin-top:8px !important;
+    line-height:1.6 !important;
+  }
+  html[lang="fa-AF"] .rtl-hero-demo-disclaimer { display:none !important; }
+}
