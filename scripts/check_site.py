@@ -170,7 +170,9 @@ for lc in ("fa", "ps"):
     require(source.count('class="rtl-feature"') == 8, f"{lc}: require 8 native HTML feature cards")
     require(source.count('class="rtl-faq-item"') == 5, f"{lc}: require one FAQ section of 5 answers")
     require(source.count('id="faq"') == 1, f"{lc}: duplicate FAQ section")
-    require('data-light-src="/assets/images/hero/darmaltoon-light-dashboard-hd.webp"' in source, f"{lc}: light-design product image missing")
+    hero_asset = ("/assets/images/hero/darmaltoon-dari-hero-final.avif" if lc == "fa"
+                  else "/assets/images/hero/darmaltoon-light-dashboard-hd.webp")
+    require(f'data-light-src="{hero_asset}"' in source, f"{lc}: light-design product image missing")
     require(f'/demo.html?lang={lc}' in source, f"{lc}: demo link must preserve chosen language")
     require('class="rtl-logo"' in source, f"{lc}: merged wordmark missing")
     require(source.count('<main') == 1, f"{lc}: semantic main landmark missing")
