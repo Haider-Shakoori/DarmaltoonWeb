@@ -77,7 +77,7 @@ for code, lang, direction in [("en", "en", "ltr"), ("fa", "fa-AF", "rtl"), ("ps"
   bad.append(rel + " missing sitemap entry")
  if ("/" + rel) not in (ROOT / (prefix + "guides/index.html")).read_text():
   bad.append(rel + " not linked from guides")
- match = re.search(r'<script type="application/ld\\+json">(.+?)</script>', html)
+ match = re.search(r'<script type="application/ld\+json">(.+?)</script>', html)
  if not match:
   bad.append(rel + " missing product structured data")
  else:
