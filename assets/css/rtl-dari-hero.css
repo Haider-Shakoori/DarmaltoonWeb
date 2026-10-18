@@ -1,0 +1,34 @@
+/* Live Dari hero photograph: illustrative software mockup, old artwork fallback. */
+html[lang="fa-AF"] .rtl-hero::before {
+  transform: none !important;
+  transform-origin: center center !important;
+  background-image: url('/assets/images/hero/darmaltoon-dari-hero-final.avif'), url('/assets/images/hero/darmaltoon-light-dashboard-hd.webp') !important;
+  background-size: cover, cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center 45% !important;
+}
+html[lang="fa-AF"] .rtl-hero::after {
+  display: block !important;
+  background: linear-gradient(to left, rgba(245,251,255,.98) 0%, rgba(245,251,255,.91) 24%, rgba(245,251,255,.72) 40%, rgba(245,251,255,.04) 70%, transparent 82%) !important;
+}
+@media(max-width:940px) {
+  html[lang="fa-AF"] .rtl-hero::after {
+    background:linear-gradient(to left, rgba(245,251,255,.98), rgba(245,251,255,.88) 67%, rgba(245,251,255,.60)) !important;
+  }
+}
+
+/* Clearly distinguish marketing visualization from live pharmacy records. */
+html[lang="fa-AF"] .rtl-hero-demo-disclaimer {
+  display:block;
+  margin-top:12px;
+  max-width:480px;
+  font-size:11px;
+  line-height:1.8;
+  color:#536681;
+}
+@media(max-width:600px) {
+  html[lang="fa-AF"] .rtl-hero::before {
+    background-position: 46% center !important;
+  }
+  html[lang="fa-AF"] .rtl-hero-demo-disclaimer { font-size:10px; }
+}

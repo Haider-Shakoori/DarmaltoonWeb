@@ -7,18 +7,47 @@
   // Respect the browser's expressed tracking preferences.
   if (navigator.globalPrivacyControl === true || navigator.doNotTrack === '1'
       || window.doNotTrack === '1') return;
+  // Do not emit measurements from known synthetic/headless browser contexts.
+  if (navigator.webdriver === true ||
+      /(?:HeadlessChrome|PhantomJS|Playwright|Puppeteer|Selenium|Lighthouse)/i.test(navigator.userAgent || '')) return;
   const known = new Set([
     '/', '/about.html', '/features.html', '/pharmadesktop.html',
     '/demo.html', '/contact.html', '/privacy.html', '/fa/', '/ps/',
     '/fa/features.html', '/ps/features.html', '/fa/pharmadesktop.html',
     '/ps/pharmadesktop.html', '/fa/privacy.html', '/ps/privacy.html',
     '/guides/', '/fa/guides/', '/ps/guides/',
+    '/medicine-expiry-inventory-software.html', '/fa/medicine-expiry-inventory-software.html',
+    '/ps/medicine-expiry-inventory-software.html',
     '/guides/pharmacy-inventory.html', '/fa/guides/pharmacy-inventory.html', '/ps/guides/pharmacy-inventory.html',
     '/guides/expiry-tracking.html', '/fa/guides/expiry-tracking.html', '/ps/guides/expiry-tracking.html',
     '/guides/offline-pharmacy-software.html', '/fa/guides/offline-pharmacy-software.html', '/ps/guides/offline-pharmacy-software.html'
   ]);
   const path = location.pathname;
   if (!known.has(path)) return;
+
+  // GA4 is separate from the local visit counters. All existing owner,
+  // privacy-control and bot exclusions above apply before GA can initialize.
+  const gaId = 'G-EYBZX45DX7';
+  let gaStarted = false;
+  const startGoogleAnalytics = () => {
+    if (gaStarted || window['ga-disable-' + gaId]) return;
+    gaStarted = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', gaId, {
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false
+    });
+    if (!document.getElementById('darmaltoon-ga4-loader')) {
+      const tag = document.createElement('script');
+      tag.id = 'darmaltoon-ga4-loader';
+      tag.async = true;
+      tag.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(gaId);
+      document.head.appendChild(tag);
+    }
+  };
+
   const language = document.documentElement.lang.toLowerCase().startsWith('fa') ? 'fa'
     : document.documentElement.lang.toLowerCase().startsWith('ps') ? 'ps' : 'en';
   const device = window.innerWidth <= 600 ? 'mobile'
@@ -94,14 +123,27 @@
       body:payload,credentials:'same-origin',keepalive:true
     }).catch(()=>{});
   };
-  send('page_view');
-  // Simple engagement signal, not a precise time-on-page measurement.
+  // Count a prerendered or background tab only after someone actually views it.
+  let viewed = false;
   let engaged = false;
-  const markEngaged = () => { if (!engaged && document.visibilityState !== 'hidden') { engaged = true; send('engaged'); } };
-  if (typeof setTimeout === 'function') setTimeout(markEngaged, 12000);
+  const markEngaged = () => {
+    if (viewed && !engaged && document.visibilityState === 'visible') {
+      engaged = true; send('engaged');
+    }
+  };
+  const recordVisibleView = () => {
+    if (viewed || document.prerendering || document.visibilityState !== 'visible') return;
+    viewed = true;
+    startGoogleAnalytics();
+    send('page_view');
+    if (typeof setTimeout === 'function') setTimeout(markEngaged, 12000);
+  };
+  recordVisibleView();
+  document.addEventListener('visibilitychange', recordVisibleView, {passive:true});
+  document.addEventListener('prerenderingchange', recordVisibleView, {passive:true});
   document.addEventListener('click', (event)=>{
     const a = event.target.closest?.('a[href]');
-    if (!a) return;
+    if (!a || !viewed) return;
     const href = a.getAttribute('href') || '';
     let kind='';
     if (/^https:\/\/wa\.me\//i.test(href)) kind='whatsapp_click';

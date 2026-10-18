@@ -22,6 +22,8 @@ jobs:
         run: python scripts/check_seo_aio.py
       - name: AI referral classifier regression
         run: node scripts/check_ai_referrals.js
+      - name: Verify GA4 load and privacy exclusions
+        run: node scripts/check_ga4.js
       - name: Validate the unified demo/trial form and safe server-side intake
         run: python scripts/check_unified_trial.py
       - name: Verify canonical Laravel API mount isolates marketing PHP
