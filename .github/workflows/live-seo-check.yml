@@ -1,0 +1,15 @@
+name: Darmaltoon live SEO deployment audit
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  live-seo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Confirm sitemap parity, language pages and crawlability
+        run: python3 scripts/check_live_seo.py --origin https://darmaltoon.com
