@@ -1,6 +1,29 @@
 /* Darmaltoon first-party analytics: anonymous browser/session estimates, privacy opt-outs. */
 (() => {
   'use strict';
+  // Explicit opt-out for human-operated QA and automated browser tests.
+  // Open any marketing page with ?dt_qa=1 to exclude this browser for 30 days;
+  // ?dt_qa=0 removes only this QA setting (not the owner's separate opt-out).
+  // Run this before Google Analytics initializes or the first-party beacon fires.
+  const qaParam = new URLSearchParams(location.search).get('dt_qa');
+  const qaKey = 'dt_analytics_qa_exclude';
+  if (qaParam === '1' || qaParam === '0') {
+    const enabled = qaParam === '1';
+    try {
+      document.cookie = qaKey + '=' + (enabled ? '1' : '')
+        + '; Path=/; Max-Age=' + (enabled ? 2592000 : 0) + '; SameSite=Lax; Secure';
+    } catch { /* cookie access may be disabled */ }
+    try {
+      if (enabled) localStorage.setItem(qaKey, '1');
+      else localStorage.removeItem(qaKey);
+    } catch { /* storage access may be disabled */ }
+  }
+  if (qaParam === '1') return;
+  if (qaParam !== '0') {
+    if ((document.cookie || '').split(';').some(v => v.trim() === qaKey + '=1')) return;
+    try { if (localStorage.getItem(qaKey) === '1') return; }
+    catch { /* storage access may be disabled */ }
+  }
   // Owner browser exclusion is also enforced by the server; never send owner events.
   if ((document.cookie || '').split(';').some(v => v.trim() === 'dt_analytics_exclude=1')) return;
   if (typeof localStorage !== 'undefined' && localStorage.getItem('dt_analytics_optout') === '1') return;

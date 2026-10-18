@@ -27,7 +27,7 @@ function tiny(array $d,string $key,int $max): string {
     return is_string($v) ? substr($v,0,$max) : '';
 }
 // Exclude signed-in platform-owner browser visits across *.darmaltoon.com.
-if (($_COOKIE['dt_analytics_exclude'] ?? '') === '1') dal_reply(202);
+if (($_COOKIE['dt_analytics_exclude'] ?? '') === '1' || ($_COOKIE['dt_analytics_qa_exclude'] ?? '') === '1') dal_reply(202);
 if (!empty($data['optOut'])) dal_reply(202);
 $event=tiny($data,'event',30);
 $path=tiny($data,'path',100);
